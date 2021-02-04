@@ -1,0 +1,35 @@
+.footer .footer-widget h4 {
+    display: block;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: normal;
+}
+.footer ul{
+    list-style: none inside;
+}
+.footer{
+    background-color: #ffb0bd;
+    margin-top: 15px;
+}
+.footer span{
+    color: white;
+}
+.footer .footer-widget .list-menu a {
+    color: #8b6363;
+    display: block;
+    font-size: 14px;
+}
+.footer p{
+    color: #9f4747;;
+}
+.head{
+    height: 28px;
+    background-color: #f8a3a3;
+    line-height: 28px;
+    text-align: center;
+}
+.site-footer{
+    padding-top: 25px;
+    border-top: #ff90a2 solid 5px;
+    padding-bottom: 5px;
+}
