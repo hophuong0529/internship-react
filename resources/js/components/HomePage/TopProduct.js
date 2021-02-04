@@ -1,5 +1,6 @@
 import {Component} from "react";
 import {Col, Container, Row} from "react-bootstrap";
+import {Link} from "react-router-dom";
 
 class TopProduct extends Component {
     constructor() {
@@ -27,17 +28,18 @@ class TopProduct extends Component {
                     marginTop: '15px',
                     paddingTop: '10px',
                 }}>
-                    <div className="thumbnail" style={{}}>
-                        <img src={"../../" + product.images[0].path}
-                             className="imgProduct" alt=""/>
-                        <div className="order">
-                            <a href="#" className="btn btn-outline-danger"
-                               style={{width: '100px'}}>Đặt mua</a>
+                    <div className="thumbnail">
+                        <div className="img-order">
+                            <img src={"../../../" + product.images[0].path}
+                                 className="imgProduct" alt=""/>
+                            <div className="order">
+                                <a href="#" className="btn btn-outline-danger"
+                                   style={{width: '100px'}}>Đặt mua</a>
+                            </div>
                         </div>
                         <div style={{zIndex: 2, position: 'inherit'}}>
                             <div className="productName">
-                                <a href="#"
-                                   style={{color: '#ba1826'}}>{product.name}</a>
+                                <Link to={`/${product.id}`} className="link-detail">{product.name}</Link>
                             </div>
                             <div className="price">
                                 {product.price.toLocaleString()}₫
@@ -68,7 +70,7 @@ class TopProduct extends Component {
                     </Row>
                 </Container>
                 <div style={{textAlign: "center", padding: '20px'}}>
-                    <a className="btn-pink">Xem thêm</a>
+                    <a href="" className="btn-pink">Xem thêm</a>
                 </div>
             </div>
 

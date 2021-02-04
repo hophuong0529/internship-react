@@ -1,9 +1,10 @@
 import React, {Component} from "react";
 import {Col, Container, Row} from "react-bootstrap";
-import Categories from "./Categories";
+import Categories from "../Categories";
 import Carousel from "./Carousel";
 import LatestProduct from "./LatestProduct";
 import TopProduct from "./TopProduct";
+import '../../../css/home.css'
 
 class Home extends Component {
     render() {

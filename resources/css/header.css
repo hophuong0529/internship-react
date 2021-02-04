@@ -1,14 +1,16 @@
-body{
+body {
     background-color: white;
     font-family: Roboto, sans-serif;
     font-size: 15px;
 }
-#login_wrapper{
+
+#login_wrapper {
     height: 130px;
     background-color: #eb9b9b;
-    padding-left: 0!important;
-    padding-right: 0!important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
 }
+
 #goTop {
     display: none;
     opacity: 0.8;
@@ -17,96 +19,114 @@ body{
     right: 30px;
     z-index: 99;
     outline: none;
-    background-color: rgba(0,0,0,.3);
+    background-color: rgba(0, 0, 0, .3);
     color: white;
     cursor: pointer;
     padding: 18px 22px 5px 22px;
     border-radius: 4px;
 }
-.fa-phone{
+
+.fa-phone {
     font-size: 16px;
     line-height: 18px;
 }
+
 @font-face {
     font-family: Crass;
     src: url(../fonts/Crass.ttf);
 }
+
 @font-face {
     font-family: Mightype;
     src: url(../fonts/Mightype.otf);
 }
+
 @font-face {
     font-family: Roboto;
     src: url(../fonts/Roboto-Regular.ttf);
 }
-.title h1{
+
+.title h1 {
     padding-top: 10px;
     color: black;
     font-family: Crass, sans-serif;
     padding-left: 90px;
 }
-.title p{
+
+.title p {
     color: white;
     padding-left: 90px;
     font-size: 15px;
 }
-#contact{
+
+#contact {
     position: absolute;
     right: 50px;
     padding-top: 8px;
 }
-#contact ul li{
+
+#contact ul li {
     padding-top: 3px;
     line-height: 20px;
     list-style: none;
     color: black;
     padding-left: 100px;
 }
-.input-group{
+
+.input-group {
     padding-left: 40px;
     padding-right: 45px;
     padding-top: 25px;
 }
-nav{
-    background-color: #ffb0bd!important;
+
+nav {
+    background-color: #ffb0bd !important;
     z-index: 999;
 }
-.header{
-    background-color: #fca2b1!important;
+
+.header {
+    background-color: #fca2b1 !important;
     color: white;
     font-size: .95rem;
 }
-.slide{
+
+.slide {
     padding-top: 10px;
 }
-.container-fluid{
-    padding-left: 0!important;
-    padding-right: 0!important;
+
+.container-fluid {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
 }
-.content{
+
+.content {
     background-color: white;
     margin-top: 15px;
     padding-top: 20px;
     padding-left: 25px;
 }
-.list-group{
+
+.list-group {
     padding-top: 15px;
     padding-left: 20px;
     padding-right: 10px;
 }
-.text{
+
+.text {
     font-weight: bold;
     color: white;
     padding-top: 10px;
 }
-.promptTextBubble{
+
+.promptTextBubble {
     background-color: #f1f0f0;
     border-radius: 1.3em;
     display: inline-block;
     font-size: 11pt;
     padding: 8px 12px;
 }
-.mess{
+
+.mess {
     padding-left: 5px;
     width: 375px;
     height: 202px;
@@ -120,6 +140,7 @@ nav{
     z-index: 1000;
     cursor: pointer;
 }
+
 .subButtonText {
     color: rgba(0, 0, 0, .45);
     line-height: 20px;
@@ -127,35 +148,44 @@ nav{
     text-align: center;
     font-size: 12px;
 }
-.btn-mess{
+
+.btn-mess {
     padding-top: 12px;
     padding-left: 35px;
 }
-.btn-mess a{
+
+.btn-mess a {
     width: 89%;
     border-radius: 12px;
 }
-.name{
+
+.name {
     color: rgba(0, 0, 0, .45);
     font-size: 12px;
     padding-left: 75px;
 }
-.card-title a:hover{
+
+.card-title a:hover {
     color: #ffb0bd;
 }
-.card-title a{
+
+.card-title a {
     color: #ba1826;
 }
-.row{
+
+.row {
     margin-right: 0;
 }
-.list-group-item{
+
+.list-group-item {
     background-color: #ffd1d9;
 }
-.list-group-item-action{
+
+.list-group-item-action {
     color: #ae0000;
     font-weight: bold;
 }
+
 .btn-pink {
     width: 200px;
     padding: 12px;
@@ -166,11 +196,9 @@ nav{
     font-size: 16px;
     text-decoration: none;
 }
+
 .btn-pink:hover {
     color: white;
     font-weight: bold;
     text-decoration: none;
-}
-.nav-link:hover{
-    color: black;
 }
