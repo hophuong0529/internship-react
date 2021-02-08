@@ -3,9 +3,9 @@ import {ListUl} from "react-bootstrap-icons";
 import {ListGroup} from "react-bootstrap";
 
 class Categories extends Component {
-    constructor() {
+    constructor(props) {
 
-        super();
+        super(props);
         this.state = {
             categories: [],
         }

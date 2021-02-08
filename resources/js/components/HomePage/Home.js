@@ -4,7 +4,6 @@ import Categories from "../Categories";
 import Carousel from "./Carousel";
 import LatestProduct from "./LatestProduct";
 import TopProduct from "./TopProduct";
-import '../../../css/home.css'
 
 class Home extends Component {
     render() {

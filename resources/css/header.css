@@ -202,3 +202,80 @@ nav {
     font-weight: bold;
     text-decoration: none;
 }
+
+.productName, .price, .order {
+    text-align: center;
+}
+
+.productName {
+    padding-top: 10px;
+    min-height: 74px;
+}
+
+.link-detail {
+    font-size: 18px;
+    color: rgb(186, 24, 38);
+    text-decoration: none;
+    font-weight: bold;
+    z-index: 10000000;
+}
+
+.link-detail:hover {
+    text-decoration: none;
+    color: rgb(255 142 152);
+}
+
+.order {
+    padding-top: 10px;
+}
+
+.home span {
+    font-family: Mightype, sans-serif;
+    font-size: 40px;
+}
+
+.home {
+    padding: 30px;
+    text-align: center;
+}
+
+.imgProduct {
+    opacity: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: .4s ease;
+    backface-visibility: hidden;
+    padding-bottom: 10px;
+}
+
+.thumbnail {
+    position: relative;
+    text-align: center;
+    padding: 10px;
+}
+
+.img-order {
+    height: 230px;
+    overflow: hidden;
+}
+
+.img-order:hover .imgProduct {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.img-order:hover .order {
+    opacity: 1;
+}
+
+.order {
+    transition: .4s ease;
+    opacity: 0;
+    position: absolute;
+    top: 62.3%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}

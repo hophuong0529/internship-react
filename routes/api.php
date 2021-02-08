@@ -23,4 +23,8 @@ Route::get('/latest-product', [HomeController::class, 'productLatest']);
 
 Route::get('/top-product', [HomeController::class, 'productTop']);
 
+Route::get('/related-product/{name}', [HomeController::class, 'productRelated']);
+
 Route::get('/categories', [HomeController::class, 'categories']);
+
+Route::get('/products/{name}', [HomeController::class, 'detailProduct']);
