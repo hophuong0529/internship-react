@@ -1,13 +1,14 @@
 import {Component} from "react";
 import {Col, Container, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
+import axios from "axios";
 
-class TopProduct extends Component {
+class SearchItem extends Component {
     constructor(props) {
 
         super(props);
         this.state = {
-            products: [],
+            products: []
         }
     }
 
@@ -31,13 +32,13 @@ class TopProduct extends Component {
     }
 
     componentDidMount() {
-        fetch('/api/top-product')
-            .then(response => {
-                return response.json();
+        const keyword = (this.props.location.search).substr(3)
+
+        axios.get(`/api/search/${keyword}`).then(response => {
+            this.setState({
+                products: response.data,
             })
-            .then(products => {
-                this.setState({products});
-            });
+        })
     }
 
     renderProducts() {
@@ -49,7 +50,7 @@ class TopProduct extends Component {
                 }}>
                     <div className="thumbnail">
                         <div className="img-order">
-                            <Link to={'/product/' + this.convertToSlug(product.name)}>
+                            <Link to={'/' + this.convertToSlug(product.name)}>
                                 <img src={"../../../" + product.images[0].path}
                                      className="imgProduct" alt=""/>
                             </Link>
@@ -60,7 +61,7 @@ class TopProduct extends Component {
                         </div>
                         <div style={{zIndex: 2, position: 'inherit'}}>
                             <div className="productName">
-                                <Link to={'/product/' + this.convertToSlug(product.name)}
+                                <Link to={'/' + this.convertToSlug(product.name)} href="#"
                                       className="link-detail">{product.name}</Link>
                             </div>
                             <div className="price">
@@ -76,28 +77,21 @@ class TopProduct extends Component {
     render() {
         return (
             <div>
-                <div style={{height: '60px', backgroundColor: '#eb9b9b'}}>
-                    <h3 style={{
-                        lineHeight: '2.45',
-                        fontWeight: 'bold',
-                        paddingLeft: '10%',
-                        marginBottom: '20px',
-                        marginTop: '15px',
-                        color: 'brown'
-                    }}>Sản phẩm bán chạy</h3>
-                </div>
+                <h1 style={{
+                    textAlign: 'center',
+                    fontWeight: 'bold',
+                    paddingTop: '30px',
+                    color: '#c20000'
+                }}>Kết quả tìm kiếm</h1>
                 <Container>
                     <Row>
                         {this.renderProducts()}
                     </Row>
                 </Container>
-                <div style={{textAlign: "center", padding: '20px'}}>
-                    <a href="" className="btn-pink">Xem thêm</a>
-                </div>
             </div>
 
         );
     }
 }
 
-export default TopProduct
+export default SearchItem

@@ -37,7 +37,7 @@ class Detail extends Component {
     componentDidMount() {
         const product_name = this.props.match.params.name
 
-        axios.get(`/api/products/${product_name}`).then(response => {
+        axios.get(`/api/product/${product_name}`).then(response => {
             this.setState({
                 product: response.data,
                 images: response.data.images
@@ -71,7 +71,7 @@ class Detail extends Component {
                         </div>
                         <div style={{zIndex: 2, position: 'inherit'}}>
                             <div className="productName">
-                                <Link to={'/' + this.convertToSlug(product.name)} href="#"
+                                <Link to={'/product/' + this.convertToSlug(product.name)} href="#"
                                       className="link-detail">{product.name}</Link>
                             </div>
                             <div className="price">
@@ -86,7 +86,6 @@ class Detail extends Component {
 
     render() {
         const {product, images} = this.state
-        const image_first = images[0]
 
         return (
             <div key={product.id}>
@@ -96,7 +95,7 @@ class Detail extends Component {
                             <div id="carouselExampleCaptions" className="carousel slide" data-ride="carousel">
                                 <div className="carousel-inner">
                                     {images.map(image => (
-                                        <div className={"carousel-item" + (image === image_first ? " active" : "")}
+                                        <div className={"carousel-item" + (image === images[0] ? " active" : "")}
                                              key={image.id}>
                                             <img style={{width: "60%"}} className="d-block w-100"
                                                  src={"../../../" + image.path}
@@ -133,7 +132,7 @@ class Detail extends Component {
                                 * Chỉ còn {product.quantity} sản phẩm
                             </div>
                             <button className="btn btn-outline-danger"
-                                    style={{marginTop: '30px', marginBottom: '30px', width: '200px'}}>Đặt mua ngay
+                                    style={{marginTop: '20px', marginBottom: '30px', width: '200px'}}>Đặt mua ngay
                             </button>
                             <div>
                                 <label style={{fontWeight: "bold"}}>Mô tả:</label>

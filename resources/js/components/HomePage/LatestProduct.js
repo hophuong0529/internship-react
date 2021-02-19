@@ -49,7 +49,7 @@ class LatestProduct extends Component {
                 }}>
                     <div className="thumbnail">
                         <div className="img-order">
-                            <Link to={'/' + this.convertToSlug(product.name)}>
+                            <Link to={'/product/' + this.convertToSlug(product.name)}>
                                 <img src={"../../../" + product.images[0].path}
                                      className="imgProduct" alt=""/>
                             </Link>
@@ -60,7 +60,8 @@ class LatestProduct extends Component {
                         </div>
                         <div style={{zIndex: 2, position: 'inherit'}}>
                             <div className="productName">
-                                <Link to={'/' + this.convertToSlug(product.name)} href="#" className="link-detail">{product.name}</Link>
+                                <Link to={'/product/' + this.convertToSlug(product.name)} href="#"
+                                      className="link-detail">{product.name}</Link>
                             </div>
                             <div className="price">
                                 {product.price.toLocaleString()}₫

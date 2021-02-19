@@ -5,8 +5,8 @@ body {
 }
 
 #login_wrapper {
-    height: 130px;
-    background-color: #eb9b9b;
+    height: 125px;
+    background-color: #ffadbb;
     padding-left: 0 !important;
     padding-right: 0 !important;
 }
@@ -62,7 +62,7 @@ body {
 #contact {
     position: absolute;
     right: 50px;
-    padding-top: 8px;
+    padding-top: 25px;
 }
 
 #contact ul li {
@@ -80,7 +80,7 @@ body {
 }
 
 nav {
-    background-color: #ffb0bd !important;
+    background-color: #ff9faf !important;
     z-index: 999;
 }
 

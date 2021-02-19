@@ -19,12 +19,18 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/latest-product', [HomeController::class, 'productLatest']);
+Route::get('latest-product', [HomeController::class, 'productLatest']);
 
-Route::get('/top-product', [HomeController::class, 'productTop']);
+Route::get('top-product', [HomeController::class, 'productTop']);
 
-Route::get('/related-product/{name}', [HomeController::class, 'productRelated']);
+Route::get('products', [HomeController::class, 'allProduct']);
 
-Route::get('/categories', [HomeController::class, 'categories']);
+Route::get('search/{keyword}', [HomeController::class, 'search']);
 
-Route::get('/products/{name}', [HomeController::class, 'detailProduct']);
+Route::get('related-product/{name}', [HomeController::class, 'productRelated']);
+
+Route::get('categories', [HomeController::class, 'categories']);
+
+Route::get('product/{name}', [HomeController::class, 'detailProduct']);
+
+Route::post('login', [HomeController::class, 'login']);
