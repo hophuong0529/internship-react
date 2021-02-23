@@ -1,85 +1,74 @@
-import {Component} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import '../../css/login.css'
 import axios from "axios";
+import {AccountContext} from "./contexts/AccountContext";
+import {useHistory} from "react-router";
 
-class Login extends Component {
+function Login() {
+    const history = useHistory()
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [account, setAccount] = useContext(AccountContext);
 
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            username: '',
-            password: '',
-        };
-        this.handleUsernameChange = this.handleUsernameChange.bind(this);
-        this.handlePasswordChange = this.handlePasswordChange.bind(this);
-        this.handleLogin = this.handleLogin.bind(this)
+    function handleUsernameChange(event) {
+        setUsername(event.target.value);
     }
 
-    handleUsernameChange(event) {
-        this.setState({username: event.target.value});
+    function handlePasswordChange(event) {
+        setPassword(event.target.value);
     }
 
-    handlePasswordChange(event) {
-        this.setState({password: event.target.value});
-    }
-
-    handleLogin(event) {
+    const handleLogin = event => {
         event.preventDefault()
 
-        const {history} = this.props
-
-        const username = this.state.username
-        const password = this.state.password
-
         axios.post(`/api/login`, {username, password})
-            .then(() => {
-                alert('Đăng nhập thành công.')
-                history.push('/')
+            .then(response => {
+                setAccount(response.data)
+                alert('Đăng nhập thành công. Chào mừng bạn quay trở lại.')
+                history.push(`/`)
             })
+
             .catch(() => {
                 alert('Tên đăng nhập hoặc mật khẩu không chính xác.')
             })
     }
 
-    render() {
-        return (
-            <main id="MAIN_1">
-                <div id="DIV_2">
-                    <div id="DIV_3">
-                        <a href="#" rel="nofollow" id="A_4">Đăng nhập</a> <a href="#" rel="nofollow"
-                                                                             id="A_5">Đăng ký</a>
-                    </div>
-                    <form id="FORM_6" onSubmit={this.handleLogin}>
-                        <input type="hidden" id="INPUT_7"/>
-                        <div id="DIV_8">
-                            <input type="text" name="username" value={this.state.username}
-                                   onChange={this.handleUsernameChange} id="INPUT_9"
-                                   placeholder="Nhập tên đăng nhập" required/>
-                        </div>
-                        <div id="DIV_10">
-                            <input type="password" name="password" value={this.state.password}
-                                   onChange={this.handlePasswordChange} id="INPUT_11"
-                                   placeholder="Mật khẩu" required/>
-                        </div>
-                        <div id="DIV_12">
-                            <button id="BUTTON_13">Đăng nhập</button>
-                            <a href="#" rel="nofollow" id="A_14">Quên mật khẩu?</a>
-                            <p id="P_15">
-                                Hoặc đăng nhập với
-                            </p>
-                            <div id="DIV_16">
-                                <a id="A_17"> Đăng nhập bằng facebook</a>
-                            </div>
-                            <div id="DIV_19">
-                                <a id="A_20"> Đăng nhập Google</a>
-                            </div>
-                        </div>
-                    </form>
+    return (
+        <main id="MAIN_login_10">
+            <div id="DIV_login_20">
+                <div id="DIV_login_30">
+                    <a href="#" rel="nofollow" id="A_login_40">Đăng nhập</a>
+                    <a href="#" rel="nofollow" id="A_login_50">Đăng ký</a>
                 </div>
-            </main>
-        )
-    }
+                <form id="FORM_login_60" onSubmit={handleLogin}>
+                    <input type="hidden" id="INPUT_login_70"/>
+                    <div id="DIV_login_80">
+                        <input type="text" name="username" value={username}
+                               onChange={handleUsernameChange} id="INPUT_login_90"
+                               placeholder="Nhập tên đăng nhập" required/>
+                    </div>
+                    <div id="DIV_login_100">
+                        <input type="password" name="password" value={password}
+                               onChange={handlePasswordChange} id="INPUT_login_101"
+                               placeholder="Mật khẩu" required/>
+                    </div>
+                    <div id="DIV_login_102">
+                        <button id="BUTTON_login_103">Đăng nhập</button>
+                        <a href="#" rel="nofollow" id="A_login_104">Quên mật khẩu?</a>
+                        <p id="P_login_105">
+                            Hoặc đăng nhập với
+                        </p>
+                        <div id="DIV_login_106">
+                            <a id="A_login_107"> Đăng nhập bằng facebook</a>
+                        </div>
+                        <div id="DIV_login_109">
+                            <a id="A_login_200"> Đăng nhập Google</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </main>
+    )
 }
 
 export default Login

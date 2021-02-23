@@ -1,40 +1,61 @@
-import {Shop} from "react-bootstrap-icons";
-import React, {Component} from "react";
+import {BagCheckFill, Shop} from "react-bootstrap-icons";
+import React, {useContext} from "react";
 import {Link} from "react-router-dom";
+import {AccountContext} from "./contexts/AccountContext";
+import {CartContext} from "./contexts/CartContext";
 
-class Navigation extends Component {
-    render() {
-        return (
-            <nav className="navbar navbar-expand-lg navbar-light" style={{borderTop: 'white 3px solid', paddingLeft: '50px'}}>
-                <a className="navbar-brand" href="#" style={{width: '50px', textAlign: 'center'}}>
-                    <Shop style={{fontSize: '25px'}}/>
-                </a>
-                <button className="navbar-toggler" type="button" data-toggle="collapse"
-                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"/>
-                </button>
-                <div className="collapse navbar-collapse" id="navbarCollapse">
-                    <ul className="navbar-nav mr-auto">
-                        <li className="nav-item active">
-                            <a className="nav-link" href="/">TRANG CHỦ</a>
+function Navigation() {
+    const [account, setAccount] = useContext(AccountContext);
+
+    return (
+        <nav className="navbar navbar-expand-lg navbar-light"
+             style={{borderTop: 'white 3px solid', paddingLeft: '50px'}}>
+            <Link to="#" className="navbar-brand" style={{width: '50px', textAlign: 'center'}}>
+                <Shop style={{fontSize: '25px'}}/>
+            </Link>
+            <button className="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon"/>
+            </button>
+            <div className="collapse navbar-collapse" id="navbarCollapse">
+                <ul className="navbar-nav mr-auto">
+                    <li className="nav-item active">
+                        <Link to="/" className="nav-link">TRANG CHỦ</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="#" className="nav-link">SẢN PHẨM</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="#" className="nav-link">GIỚI THIỆU</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="#" className="nav-link">TIN TỨC</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="#" className="nav-link">LIÊN HỆ</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/products" className="nav-link">Tất cả</Link>
+                    </li>
+                </ul>
+                {account.length !== 0 ? (
+                    <ul className="navbar-nav justify-content-end">
+                        <li className="nav-item">
+                            <span className="nav-link">Xin chào, {account.name}</span>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/">SẢN PHẨM</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="/">GIỚI THIỆU</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="/">TIN TỨC</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="/">LIÊN HỆ</a>
-                        </li>
-                        <li className="nav-item">
-                            <Link to="/products" className="nav-link">Tất cả</Link>
+                            <CartContext.Consumer>
+                                {({cartItems}) => (
+                                    <Link to="/cart" className="nav-link">
+                                        <BagCheckFill style={{marginTop: '-5px'}}/>({cartItems.length}) Giỏ hàng
+                                    </Link>
+                                )}
+                            </CartContext.Consumer>
                         </li>
                     </ul>
+
+                ) : (
                     <ul className="navbar-nav justify-content-end">
                         <li className="nav-item">
                             <Link to="/login" className="nav-link">Đăng nhập</Link>
@@ -42,11 +63,16 @@ class Navigation extends Component {
                         <li className="nav-item">
                             <Link to="#" className="nav-link">Đăng ký</Link>
                         </li>
+                        <li className="nav-item">
+                            <Link to="/cart" className="nav-link">
+                                <BagCheckFill style={{marginTop: '-5px'}}/> Giỏ hàng
+                            </Link>
+                        </li>
                     </ul>
-                </div>
-            </nav>
-        )
-    }
+                )}
+            </div>
+        </nav>
+    )
 }
 
 export default Navigation
