@@ -2150,12 +2150,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Col.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Container.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Row.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Col.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Container.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Row.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _contexts_CartContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./contexts/CartContext */ "./resources/js/components/contexts/CartContext.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 
@@ -2180,6 +2181,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
 
 
 
@@ -2237,7 +2239,7 @@ var AllProducts = /*#__PURE__*/function (_Component) {
       var _this3 = this;
 
       return this.state.products.map(function (product) {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__.default, {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__.default, {
           xs: 12,
           sm: 8,
           md: 3,
@@ -2249,8 +2251,8 @@ var AllProducts = /*#__PURE__*/function (_Component) {
             className: "thumbnail",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
               className: "img-order",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
-                to: '/' + _this3.convertToSlug(product.name),
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
+                to: '/product/' + _this3.convertToSlug(product.name),
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
                   src: "../../../" + product.images[0].path,
                   className: "imgProduct",
@@ -2258,13 +2260,22 @@ var AllProducts = /*#__PURE__*/function (_Component) {
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
                 className: "order",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
-                  href: "#",
-                  className: "btn btn-outline-danger",
-                  style: {
-                    width: '100px'
-                  },
-                  children: "\u0110\u1EB7t mua"
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_contexts_CartContext__WEBPACK_IMPORTED_MODULE_3__.CartContext.Consumer, {
+                  children: function children(_ref) {
+                    var addToCart = _ref.addToCart;
+                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", {
+                      onClick: function onClick() {
+                        return addToCart(product);
+                      },
+                      className: "btn btn-outline-danger",
+                      style: {
+                        marginTop: '20px',
+                        marginBottom: '30px',
+                        width: '200px'
+                      },
+                      children: "\u0110\u1EB7t mua ngay"
+                    });
+                  }
                 })
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
@@ -2274,8 +2285,8 @@ var AllProducts = /*#__PURE__*/function (_Component) {
               },
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
                 className: "productName",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
-                  to: '/' + _this3.convertToSlug(product.name),
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
+                  to: '/product/' + _this3.convertToSlug(product.name),
                   href: "#",
                   className: "link-detail",
                   children: product.name
@@ -2301,8 +2312,8 @@ var AllProducts = /*#__PURE__*/function (_Component) {
             color: '#c20000'
           },
           children: "T\u1EA5t c\u1EA3 s\u1EA3n ph\u1EA9m"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__.default, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__.default, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__.default, {
             children: this.renderProducts()
           })
         })]
@@ -2325,14 +2336,11 @@ var AllProducts = /*#__PURE__*/function (_Component) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ App)
-/* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Header */ "./resources/js/components/Header.js");
 /* harmony import */ var _Navigation__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Navigation */ "./resources/js/components/Navigation.js");
 /* harmony import */ var _Footer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Footer */ "./resources/js/components/Footer.js");
@@ -2341,6 +2349,73 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _AllProducts__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./AllProducts */ "./resources/js/components/AllProducts.js");
 /* harmony import */ var _Login__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Login */ "./resources/js/components/Login.js");
 /* harmony import */ var _SearchItem__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./SearchItem */ "./resources/js/components/SearchItem.js");
+/* harmony import */ var _Cart__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./Cart */ "./resources/js/components/Cart.js");
+/* harmony import */ var _contexts_AccountContext__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./contexts/AccountContext */ "./resources/js/components/contexts/AccountContext.js");
+/* harmony import */ var _contexts_CartContext__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./contexts/CartContext */ "./resources/js/components/contexts/CartContext.js");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function App() {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_contexts_AccountContext__WEBPACK_IMPORTED_MODULE_12__.AccountProvider, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_contexts_CartContext__WEBPACK_IMPORTED_MODULE_13__.CartProvider, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.BrowserRouter, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Header__WEBPACK_IMPORTED_MODULE_3__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Navigation__WEBPACK_IMPORTED_MODULE_4__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
+          exact: true,
+          path: "/",
+          component: _HomePage_Home__WEBPACK_IMPORTED_MODULE_6__.default
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
+          path: "/products",
+          component: _AllProducts__WEBPACK_IMPORTED_MODULE_8__.default
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
+          path: "/login",
+          component: _Login__WEBPACK_IMPORTED_MODULE_9__.default
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
+          path: "/product/:name",
+          component: _DetailPage_Detail__WEBPACK_IMPORTED_MODULE_7__.default
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
+          path: "/search",
+          component: _SearchItem__WEBPACK_IMPORTED_MODULE_10__.default
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
+          path: "/cart",
+          component: _Cart__WEBPACK_IMPORTED_MODULE_11__.default
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Footer__WEBPACK_IMPORTED_MODULE_5__.default, {})]
+      })
+    })
+  });
+}
+
+react_dom__WEBPACK_IMPORTED_MODULE_2__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(App, {}), document.getElementById('app'));
+
+/***/ }),
+
+/***/ "./resources/js/components/Cart.js":
+/*!*****************************************!*\
+  !*** ./resources/js/components/Cart.js ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _css_cart_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../css/cart.css */ "./resources/css/cart.css");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 
@@ -2369,56 +2444,297 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+var Cart = /*#__PURE__*/function (_Component) {
+  _inherits(Cart, _Component);
 
+  var _super = _createSuper(Cart);
 
-
-
-
-
-
-
-
-var App = /*#__PURE__*/function (_Component) {
-  _inherits(App, _Component);
-
-  var _super = _createSuper(App);
-
-  function App() {
-    _classCallCheck(this, App);
+  function Cart() {
+    _classCallCheck(this, Cart);
 
     return _super.apply(this, arguments);
   }
 
-  _createClass(App, [{
+  _createClass(Cart, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.BrowserRouter, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Header__WEBPACK_IMPORTED_MODULE_3__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Navigation__WEBPACK_IMPORTED_MODULE_4__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
-          exact: true,
-          path: "/",
-          component: _HomePage_Home__WEBPACK_IMPORTED_MODULE_6__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
-          path: "/products",
-          component: _AllProducts__WEBPACK_IMPORTED_MODULE_8__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
-          path: "/login",
-          component: _Login__WEBPACK_IMPORTED_MODULE_9__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
-          path: "/product/:name",
-          component: _DetailPage_Detail__WEBPACK_IMPORTED_MODULE_7__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
-          path: "/search",
-          component: _SearchItem__WEBPACK_IMPORTED_MODULE_10__.default
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Footer__WEBPACK_IMPORTED_MODULE_5__.default, {})]
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+        id: "DIV_1",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+          id: "DIV_2",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("table", {
+              id: "TABLE_4",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("thead", {
+                id: "THEAD_5",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("tr", {
+                  id: "TR_6",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("th", {
+                    id: "TH_7",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("i", {
+                      id: "I_8"
+                    }), " S\u1EA3n ph\u1EA9m"]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("th", {
+                    id: "TH_9",
+                    children: "M\xF4 t\u1EA3"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("th", {
+                    id: "TH_10",
+                    children: "\u0110\u01A1n gi\xE1"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("th", {
+                    id: "TH_11",
+                    children: "S\u1ED1 l\u01B0\u1EE3ng"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("th", {
+                    id: "TH_12",
+                    children: "T\u1ED5ng"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("th", {
+                    id: "TH_13",
+                    children: "Thao t\xE1c"
+                  })]
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("tbody", {
+                id: "TBODY_14",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("tr", {
+                  id: "TR_15",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("td", {
+                    id: "TD_16",
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                      id: "DIV_17",
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("i", {
+                        id: "I_18"
+                      }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
+                        href: "https://moji.vn/mu-len-idol-blackpink-rose-little-st-xam-p28682488.html",
+                        title: "M\u0169 len idol BlackPink Rose little stamp - X\xE1m",
+                        id: "A_19",
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
+                          src: "https://storage.googleapis.com/cdn.nhanh.vn/store/7534/ps/20210206/21011134_gr_thumb.jpg",
+                          alt: "M\u0169 len idol BlackPink Rose little stamp - X\xE1m",
+                          id: "IMG_20"
+                        })
+                      })]
+                    })
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("td", {
+                    id: "TD_21",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
+                      href: "https://moji.vn/mu-len-idol-blackpink-rose-little-st-xam-p28682488.html",
+                      title: "M\u0169 len idol BlackPink Rose little stamp - X\xE1m",
+                      id: "A_22",
+                      children: "M\u0169 len idol BlackPink Rose little stamp - X\xE1m"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                      id: "DIV_23",
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
+                        id: "P_24",
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
+                          id: "STRONG_25",
+                          children: "80.000\u0111"
+                        })
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
+                        id: "P_26"
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                        id: "DIV_27",
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+                          id: "DIV_28",
+                          children: "-"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
+                          type: "text",
+                          value: "2",
+                          id: "INPUT_29"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+                          id: "DIV_30",
+                          children: "+"
+                        })]
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
+                        id: "P_31"
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
+                        id: "P_32",
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
+                          id: "STRONG_33",
+                          children: "160.000\u0111"
+                        })
+                      }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
+                        href: "javascript:void(0)",
+                        id: "A_34",
+                        children: "X\xF3a"
+                      })]
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("td", {
+                    id: "TD_35",
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
+                      id: "STRONG_36",
+                      children: "80.000\u0111"
+                    })
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("td", {
+                    id: "TD_37",
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                      id: "DIV_38",
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+                        id: "DIV_39",
+                        children: "-"
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
+                        type: "text",
+                        value: "2",
+                        id: "INPUT_40"
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+                        id: "DIV_41",
+                        children: "+"
+                      })]
+                    })
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("td", {
+                    id: "TD_42",
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
+                      id: "STRONG_43",
+                      children: "160.000\u0111"
+                    })
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("td", {
+                    id: "TD_44",
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
+                      href: "javascript:void(0)",
+                      id: "A_45",
+                      children: "X\xF3a"
+                    })
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("tr", {
+                  id: "TR_46",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("td", {
+                    id: "TD_47",
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                      id: "DIV_48",
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("i", {
+                        id: "I_49"
+                      }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
+                        href: "https://moji.vn/mu-len-idol-blackpink-jennie-little-st-tim-p28682486.html",
+                        title: "M\u0169 len idol BlackPink Jennie little stamp - T\xEDm",
+                        id: "A_50",
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
+                          src: "https://storage.googleapis.com/cdn.nhanh.vn/store/7534/ps/20210206/21011133_pp_thumb.jpg",
+                          alt: "M\u0169 len idol BlackPink Jennie little stamp - T\xEDm",
+                          id: "IMG_51"
+                        })
+                      })]
+                    })
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("td", {
+                    id: "TD_52",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
+                      href: "https://moji.vn/mu-len-idol-blackpink-jennie-little-st-tim-p28682486.html",
+                      title: "M\u0169 len idol BlackPink Jennie little stamp - T\xEDm",
+                      id: "A_53",
+                      children: "M\u0169 len idol BlackPink Jennie little stamp - T\xEDm"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                      id: "DIV_54",
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
+                        id: "P_55",
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
+                          id: "STRONG_56",
+                          children: "80.000\u0111"
+                        })
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
+                        id: "P_57"
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                        id: "DIV_58",
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+                          id: "DIV_59",
+                          children: "-"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
+                          type: "text",
+                          value: "1",
+                          id: "INPUT_60"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+                          id: "DIV_61",
+                          children: "+"
+                        })]
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
+                        id: "P_62"
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
+                        id: "P_63",
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
+                          id: "STRONG_64",
+                          children: "80.000\u0111"
+                        })
+                      }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
+                        href: "javascript:void(0)",
+                        id: "A_65",
+                        children: "X\xF3a"
+                      })]
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("td", {
+                    id: "TD_66",
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
+                      id: "STRONG_67",
+                      children: "80.000\u0111"
+                    })
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("td", {
+                    id: "TD_68",
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                      id: "DIV_69",
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+                        id: "DIV_70",
+                        children: "-"
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
+                        type: "text",
+                        value: "1",
+                        id: "INPUT_71"
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+                        id: "DIV_72",
+                        children: "+"
+                      })]
+                    })
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("td", {
+                    id: "TD_73",
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("strong", {
+                      id: "STRONG_74",
+                      children: "80.000\u0111"
+                    })
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("td", {
+                    id: "TD_75",
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
+                      href: "javascript:void(0)",
+                      id: "A_76",
+                      children: "X\xF3a"
+                    })
+                  })]
+                })]
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+              id: "DIV_77",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
+                id: "P_78",
+                children: "H\u1ED7 tr\u1EE3 ship 20k cho \u0111\u01A1n h\xE0ng tr\xEAn 300k n\u1ED9i th\xE0nh HN, HCM"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
+                id: "P_79",
+                children: "H\u1ED7 tr\u1EE3 ship 30k cho \u0111\u01A1n h\xE0ng tr\xEAn 500k to\xE0n qu\u1ED1c"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
+                id: "P_80",
+                children: "\u0110\u01A1n h\xE0ng tr\xEAn website \u0111\u01B0\u1EE3c x\u1EED l\xFD trong gi\u1EDD h\xE0nh ch\xEDnh"
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+              id: "DIV_81",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                id: "DIV_82",
+                children: ["T\u1ED5ng: 240.000", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("sub", {
+                  id: "SUB_83",
+                  children: "\u0111"
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+                id: "DIV_84"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
+                href: "https://moji.vn/product",
+                id: "A_85",
+                children: "Ti\u1EBFp t\u1EE5c mua s\u1EAFm"
+              }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
+                href: "https://moji.vn/cart/checkout",
+                id: "A_86",
+                children: "Thanh to\xE1n"
+              })]
+            })]
+          })
+        })
       });
     }
   }]);
 
-  return App;
+  return Cart;
 }(react__WEBPACK_IMPORTED_MODULE_1__.Component);
 
-
-react_dom__WEBPACK_IMPORTED_MODULE_2__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(App, {}), document.getElementById('app'));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Cart);
 
 /***/ }),
 
@@ -2555,11 +2871,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/caret-right-fill.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Col.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Container.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Row.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/caret-right-fill.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Col.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Container.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Row.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _contexts_CartContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../contexts/CartContext */ "./resources/js/components/contexts/CartContext.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 
@@ -2584,6 +2901,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
 
 
 
@@ -2651,7 +2969,7 @@ var Detail = /*#__PURE__*/function (_Component) {
       var _this3 = this;
 
       return this.state.products.map(function (product) {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__.default, {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__.default, {
           xs: 12,
           sm: 8,
           md: 3,
@@ -2663,7 +2981,7 @@ var Detail = /*#__PURE__*/function (_Component) {
             className: "thumbnail",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
               className: "img-order",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
                 to: '/' + _this3.convertToSlug(product.name),
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
                   src: "../../../" + product.images[0].path,
@@ -2672,13 +2990,22 @@ var Detail = /*#__PURE__*/function (_Component) {
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
                 className: "order",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
-                  href: "#",
-                  className: "btn btn-outline-danger",
-                  style: {
-                    width: '100px'
-                  },
-                  children: "\u0110\u1EB7t mua"
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_contexts_CartContext__WEBPACK_IMPORTED_MODULE_3__.CartContext.Consumer, {
+                  children: function children(_ref) {
+                    var addToCart = _ref.addToCart;
+                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", {
+                      onClick: function onClick() {
+                        return addToCart(product);
+                      },
+                      className: "btn btn-outline-danger",
+                      style: {
+                        marginTop: '20px',
+                        marginBottom: '30px',
+                        width: '200px'
+                      },
+                      children: "\u0110\u1EB7t mua ngay"
+                    });
+                  }
                 })
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
@@ -2688,7 +3015,7 @@ var Detail = /*#__PURE__*/function (_Component) {
               },
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
                 className: "productName",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
                   to: '/product/' + _this3.convertToSlug(product.name),
                   href: "#",
                   className: "link-detail",
@@ -2775,7 +3102,7 @@ var Detail = /*#__PURE__*/function (_Component) {
                 },
                 children: product.name
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_5__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_6__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
                   style: {
                     fontWeight: 'bold'
                   },
@@ -2793,14 +3120,22 @@ var Detail = /*#__PURE__*/function (_Component) {
                   color: 'red'
                 },
                 children: ["* Ch\u1EC9 c\xF2n ", product.quantity, " s\u1EA3n ph\u1EA9m"]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", {
-                className: "btn btn-outline-danger",
-                style: {
-                  marginTop: '20px',
-                  marginBottom: '30px',
-                  width: '200px'
-                },
-                children: "\u0110\u1EB7t mua ngay"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_contexts_CartContext__WEBPACK_IMPORTED_MODULE_3__.CartContext.Consumer, {
+                children: function children(_ref2) {
+                  var addToCart = _ref2.addToCart;
+                  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", {
+                    onClick: function onClick() {
+                      return addToCart(product);
+                    },
+                    className: "btn btn-outline-danger",
+                    style: {
+                      marginTop: '20px',
+                      marginBottom: '30px',
+                      width: '200px'
+                    },
+                    children: "\u0110\u1EB7t mua ngay"
+                  });
+                }
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
                   style: {
@@ -2830,8 +3165,8 @@ var Detail = /*#__PURE__*/function (_Component) {
               },
               children: "S\u1EA3n ph\u1EA9m c\xF3 li\xEAn quan"
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__.default, {
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__.default, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__.default, {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__.default, {
               children: this.renderProducts()
             })
           })]
@@ -3119,7 +3454,6 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
 
 
 
@@ -3503,10 +3837,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Col.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Container.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Row.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Col.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Container.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Row.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _contexts_CartContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../contexts/CartContext */ "./resources/js/components/contexts/CartContext.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 
@@ -3531,6 +3866,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
 
 
 
@@ -3589,7 +3925,7 @@ var LatestProduct = /*#__PURE__*/function (_Component) {
       var _this3 = this;
 
       return this.state.products.map(function (product) {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__.default, {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__.default, {
           xs: 12,
           sm: 8,
           md: 3,
@@ -3601,7 +3937,7 @@ var LatestProduct = /*#__PURE__*/function (_Component) {
             className: "thumbnail",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
               className: "img-order",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
                 to: '/product/' + _this3.convertToSlug(product.name),
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
                   src: "../../../" + product.images[0].path,
@@ -3610,13 +3946,22 @@ var LatestProduct = /*#__PURE__*/function (_Component) {
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
                 className: "order",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
-                  href: "#",
-                  className: "btn btn-outline-danger",
-                  style: {
-                    width: '100px'
-                  },
-                  children: "\u0110\u1EB7t mua"
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_contexts_CartContext__WEBPACK_IMPORTED_MODULE_2__.CartContext.Consumer, {
+                  children: function children(_ref) {
+                    var addToCart = _ref.addToCart;
+                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", {
+                      onClick: function onClick() {
+                        return addToCart(product);
+                      },
+                      className: "btn btn-outline-danger",
+                      style: {
+                        marginTop: '20px',
+                        marginBottom: '30px',
+                        width: '200px'
+                      },
+                      children: "\u0110\u1EB7t mua"
+                    });
+                  }
                 })
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
@@ -3626,7 +3971,7 @@ var LatestProduct = /*#__PURE__*/function (_Component) {
               },
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
                 className: "productName",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
                   to: '/product/' + _this3.convertToSlug(product.name),
                   href: "#",
                   className: "link-detail",
@@ -3661,8 +4006,8 @@ var LatestProduct = /*#__PURE__*/function (_Component) {
             },
             children: "S\u1EA3n ph\u1EA9m m\u1EDBi nh\u1EA5t"
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__.default, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__.default, {
             children: this.renderProducts()
           })
         })]
@@ -3690,10 +4035,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Col.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Container.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Row.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Col.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Container.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Row.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _contexts_CartContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../contexts/CartContext */ "./resources/js/components/contexts/CartContext.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 
@@ -3718,6 +4064,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
 
 
 
@@ -3776,7 +4123,7 @@ var TopProduct = /*#__PURE__*/function (_Component) {
       var _this3 = this;
 
       return this.state.products.map(function (product) {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__.default, {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__.default, {
           xs: 12,
           sm: 8,
           md: 3,
@@ -3788,7 +4135,7 @@ var TopProduct = /*#__PURE__*/function (_Component) {
             className: "thumbnail",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
               className: "img-order",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
                 to: '/product/' + _this3.convertToSlug(product.name),
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
                   src: "../../../" + product.images[0].path,
@@ -3797,13 +4144,22 @@ var TopProduct = /*#__PURE__*/function (_Component) {
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
                 className: "order",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
-                  href: "#",
-                  className: "btn btn-outline-danger",
-                  style: {
-                    width: '100px'
-                  },
-                  children: "\u0110\u1EB7t mua"
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_contexts_CartContext__WEBPACK_IMPORTED_MODULE_2__.CartContext.Consumer, {
+                  children: function children(_ref) {
+                    var addToCart = _ref.addToCart;
+                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", {
+                      onClick: function onClick() {
+                        return addToCart(product);
+                      },
+                      className: "btn btn-outline-danger",
+                      style: {
+                        marginTop: '20px',
+                        marginBottom: '30px',
+                        width: '200px'
+                      },
+                      children: "\u0110\u1EB7t mua ngay"
+                    });
+                  }
                 })
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
@@ -3813,7 +4169,7 @@ var TopProduct = /*#__PURE__*/function (_Component) {
               },
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
                 className: "productName",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
                   to: '/product/' + _this3.convertToSlug(product.name),
                   className: "link-detail",
                   children: product.name
@@ -3847,8 +4203,8 @@ var TopProduct = /*#__PURE__*/function (_Component) {
             },
             children: "S\u1EA3n ph\u1EA9m b\xE1n ch\u1EA1y"
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__.default, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__.default, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__.default, {
             children: this.renderProducts()
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
@@ -3889,170 +4245,145 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _css_login_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../css/login.css */ "./resources/css/login.css");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+/* harmony import */ var _contexts_AccountContext__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./contexts/AccountContext */ "./resources/js/components/contexts/AccountContext.js");
+/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/esm/react-router.js");
 
 
 
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
 
 
-var Login = /*#__PURE__*/function (_Component) {
-  _inherits(Login, _Component);
 
-  var _super = _createSuper(Login);
 
-  function Login(props) {
-    var _this;
+function Login() {
+  var history = (0,react_router__WEBPACK_IMPORTED_MODULE_5__.useHistory)();
 
-    _classCallCheck(this, Login);
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(''),
+      _useState2 = _slicedToArray(_useState, 2),
+      username = _useState2[0],
+      setUsername = _useState2[1];
 
-    _this = _super.call(this, props);
-    _this.state = {
-      username: '',
-      password: ''
-    };
-    _this.handleUsernameChange = _this.handleUsernameChange.bind(_assertThisInitialized(_this));
-    _this.handlePasswordChange = _this.handlePasswordChange.bind(_assertThisInitialized(_this));
-    _this.handleLogin = _this.handleLogin.bind(_assertThisInitialized(_this));
-    return _this;
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(''),
+      _useState4 = _slicedToArray(_useState3, 2),
+      password = _useState4[0],
+      setPassword = _useState4[1];
+
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_contexts_AccountContext__WEBPACK_IMPORTED_MODULE_4__.AccountContext),
+      _useContext2 = _slicedToArray(_useContext, 2),
+      account = _useContext2[0],
+      setAccount = _useContext2[1];
+
+  function handleUsernameChange(event) {
+    setUsername(event.target.value);
   }
 
-  _createClass(Login, [{
-    key: "handleUsernameChange",
-    value: function handleUsernameChange(event) {
-      this.setState({
-        username: event.target.value
-      });
-    }
-  }, {
-    key: "handlePasswordChange",
-    value: function handlePasswordChange(event) {
-      this.setState({
-        password: event.target.value
-      });
-    }
-  }, {
-    key: "handleLogin",
-    value: function handleLogin(event) {
-      event.preventDefault();
-      var history = this.props.history;
-      var username = this.state.username;
-      var password = this.state.password;
-      axios__WEBPACK_IMPORTED_MODULE_3___default().post("/api/login", {
-        username: username,
-        password: password
-      }).then(function () {
-        alert('Đăng nhập thành công.');
-        history.push('/');
-      })["catch"](function () {
-        alert('Tên đăng nhập hoặc mật khẩu không chính xác.');
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("main", {
-        id: "MAIN_1",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-          id: "DIV_2",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-            id: "DIV_3",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
-              href: "#",
-              rel: "nofollow",
-              id: "A_4",
-              children: "\u0110\u0103ng nh\u1EADp"
-            }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
-              href: "#",
-              rel: "nofollow",
-              id: "A_5",
-              children: "\u0110\u0103ng k\xFD"
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("form", {
-            id: "FORM_6",
-            onSubmit: this.handleLogin,
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
-              type: "hidden",
-              id: "INPUT_7"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-              id: "DIV_8",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
-                type: "text",
-                name: "username",
-                value: this.state.username,
-                onChange: this.handleUsernameChange,
-                id: "INPUT_9",
-                placeholder: "Nh\u1EADp t\xEAn \u0111\u0103ng nh\u1EADp",
-                required: true
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-              id: "DIV_10",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
-                type: "password",
-                name: "password",
-                value: this.state.password,
-                onChange: this.handlePasswordChange,
-                id: "INPUT_11",
-                placeholder: "M\u1EADt kh\u1EA9u",
-                required: true
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-              id: "DIV_12",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", {
-                id: "BUTTON_13",
-                children: "\u0110\u0103ng nh\u1EADp"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
-                href: "#",
-                rel: "nofollow",
-                id: "A_14",
-                children: "Qu\xEAn m\u1EADt kh\u1EA9u?"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
-                id: "P_15",
-                children: "Ho\u1EB7c \u0111\u0103ng nh\u1EADp v\u1EDBi"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-                id: "DIV_16",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
-                  id: "A_17",
-                  children: " \u0110\u0103ng nh\u1EADp b\u1EB1ng facebook"
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-                id: "DIV_19",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
-                  id: "A_20",
-                  children: " \u0110\u0103ng nh\u1EADp Google"
-                })
-              })]
-            })]
-          })]
-        })
-      });
-    }
-  }]);
+  function handlePasswordChange(event) {
+    setPassword(event.target.value);
+  }
 
-  return Login;
-}(react__WEBPACK_IMPORTED_MODULE_1__.Component);
+  var handleLogin = function handleLogin(event) {
+    event.preventDefault();
+    axios__WEBPACK_IMPORTED_MODULE_3___default().post("/api/login", {
+      username: username,
+      password: password
+    }).then(function (response) {
+      setAccount(response.data);
+      alert('Đăng nhập thành công. Chào mừng bạn quay trở lại.');
+      history.push("/");
+    })["catch"](function () {
+      alert('Tên đăng nhập hoặc mật khẩu không chính xác.');
+    });
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("main", {
+    id: "MAIN_login_10",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+      id: "DIV_login_20",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+        id: "DIV_login_30",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
+          href: "#",
+          rel: "nofollow",
+          id: "A_login_40",
+          children: "\u0110\u0103ng nh\u1EADp"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
+          href: "#",
+          rel: "nofollow",
+          id: "A_login_50",
+          children: "\u0110\u0103ng k\xFD"
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("form", {
+        id: "FORM_login_60",
+        onSubmit: handleLogin,
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
+          type: "hidden",
+          id: "INPUT_login_70"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+          id: "DIV_login_80",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
+            type: "text",
+            name: "username",
+            value: username,
+            onChange: handleUsernameChange,
+            id: "INPUT_login_90",
+            placeholder: "Nh\u1EADp t\xEAn \u0111\u0103ng nh\u1EADp",
+            required: true
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+          id: "DIV_login_100",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
+            type: "password",
+            name: "password",
+            value: password,
+            onChange: handlePasswordChange,
+            id: "INPUT_login_101",
+            placeholder: "M\u1EADt kh\u1EA9u",
+            required: true
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+          id: "DIV_login_102",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", {
+            id: "BUTTON_login_103",
+            children: "\u0110\u0103ng nh\u1EADp"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
+            href: "#",
+            rel: "nofollow",
+            id: "A_login_104",
+            children: "Qu\xEAn m\u1EADt kh\u1EA9u?"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
+            id: "P_login_105",
+            children: "Ho\u1EB7c \u0111\u0103ng nh\u1EADp v\u1EDBi"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+            id: "DIV_login_106",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
+              id: "A_login_107",
+              children: " \u0110\u0103ng nh\u1EADp b\u1EB1ng facebook"
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+            id: "DIV_login_109",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
+              id: "A_login_200",
+              children: " \u0110\u0103ng nh\u1EADp Google"
+            })
+          })]
+        })]
+      })]
+    })
+  });
+}
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Login);
 
@@ -4070,154 +4401,173 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-/* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/shop.js");
+/* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/shop.js");
+/* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/bag-check-fill.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _contexts_AccountContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./contexts/AccountContext */ "./resources/js/components/contexts/AccountContext.js");
+/* harmony import */ var _contexts_CartContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./contexts/CartContext */ "./resources/js/components/contexts/CartContext.js");
 
 
 
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
 
 
-var Navigation = /*#__PURE__*/function (_Component) {
-  _inherits(Navigation, _Component);
 
-  var _super = _createSuper(Navigation);
 
-  function Navigation() {
-    _classCallCheck(this, Navigation);
+function Navigation() {
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_contexts_AccountContext__WEBPACK_IMPORTED_MODULE_2__.AccountContext),
+      _useContext2 = _slicedToArray(_useContext, 2),
+      account = _useContext2[0],
+      setAccount = _useContext2[1];
 
-    return _super.apply(this, arguments);
-  }
-
-  _createClass(Navigation, [{
-    key: "render",
-    value: function render() {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("nav", {
-        className: "navbar navbar-expand-lg navbar-light",
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("nav", {
+    className: "navbar navbar-expand-lg navbar-light",
+    style: {
+      borderTop: 'white 3px solid',
+      paddingLeft: '50px'
+    },
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+      to: "#",
+      className: "navbar-brand",
+      style: {
+        width: '50px',
+        textAlign: 'center'
+      },
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_5__.default, {
         style: {
-          borderTop: 'white 3px solid',
-          paddingLeft: '50px'
-        },
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
-          className: "navbar-brand",
-          href: "#",
-          style: {
-            width: '50px',
-            textAlign: 'center'
-          },
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_2__.default, {
-            style: {
-              fontSize: '25px'
+          fontSize: '25px'
+        }
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", {
+      className: "navbar-toggler",
+      type: "button",
+      "data-toggle": "collapse",
+      "data-target": "#navbarSupportedContent",
+      "aria-controls": "navbarSupportedContent",
+      "aria-expanded": "false",
+      "aria-label": "Toggle navigation",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
+        className: "navbar-toggler-icon"
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+      className: "collapse navbar-collapse",
+      id: "navbarCollapse",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("ul", {
+        className: "navbar-nav mr-auto",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
+          className: "nav-item active",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+            to: "/",
+            className: "nav-link",
+            children: "TRANG CH\u1EE6"
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
+          className: "nav-item",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+            to: "#",
+            className: "nav-link",
+            children: "S\u1EA2N PH\u1EA8M"
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
+          className: "nav-item",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+            to: "#",
+            className: "nav-link",
+            children: "GI\u1EDAI THI\u1EC6U"
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
+          className: "nav-item",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+            to: "#",
+            className: "nav-link",
+            children: "TIN T\u1EE8C"
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
+          className: "nav-item",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+            to: "#",
+            className: "nav-link",
+            children: "LI\xCAN H\u1EC6"
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
+          className: "nav-item",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+            to: "/products",
+            className: "nav-link",
+            children: "T\u1EA5t c\u1EA3"
+          })
+        })]
+      }), account.length !== 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("ul", {
+        className: "navbar-nav justify-content-end",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
+          className: "nav-item",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
+            className: "nav-link",
+            children: ["Xin ch\xE0o, ", account.name]
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
+          className: "nav-item",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_contexts_CartContext__WEBPACK_IMPORTED_MODULE_3__.CartContext.Consumer, {
+            children: function children(_ref) {
+              var cartItems = _ref.cartItems;
+              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+                to: "/cart",
+                className: "nav-link",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_6__.default, {
+                  style: {
+                    marginTop: '-5px'
+                  }
+                }), "(", cartItems.length, ") Gi\u1ECF h\xE0ng"]
+              });
             }
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", {
-          className: "navbar-toggler",
-          type: "button",
-          "data-toggle": "collapse",
-          "data-target": "#navbarSupportedContent",
-          "aria-controls": "navbarSupportedContent",
-          "aria-expanded": "false",
-          "aria-label": "Toggle navigation",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", {
-            className: "navbar-toggler-icon"
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-          className: "collapse navbar-collapse",
-          id: "navbarCollapse",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("ul", {
-            className: "navbar-nav mr-auto",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
-              className: "nav-item active",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
-                className: "nav-link",
-                href: "/",
-                children: "TRANG CH\u1EE6"
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
-              className: "nav-item",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
-                className: "nav-link",
-                href: "/",
-                children: "S\u1EA2N PH\u1EA8M"
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
-              className: "nav-item",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
-                className: "nav-link",
-                href: "/",
-                children: "GI\u1EDAI THI\u1EC6U"
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
-              className: "nav-item",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
-                className: "nav-link",
-                href: "/",
-                children: "TIN T\u1EE8C"
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
-              className: "nav-item",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
-                className: "nav-link",
-                href: "/",
-                children: "LI\xCAN H\u1EC6"
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
-              className: "nav-item",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-                to: "/products",
-                className: "nav-link",
-                children: "T\u1EA5t c\u1EA3"
-              })
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("ul", {
-            className: "navbar-nav justify-content-end",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
-              className: "nav-item",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-                to: "/login",
-                className: "nav-link",
-                children: "\u0110\u0103ng nh\u1EADp"
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
-              className: "nav-item",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-                to: "#",
-                className: "nav-link",
-                children: "\u0110\u0103ng k\xFD"
-              })
-            })]
-          })]
         })]
-      });
-    }
-  }]);
-
-  return Navigation;
-}(react__WEBPACK_IMPORTED_MODULE_1__.Component);
+      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("ul", {
+        className: "navbar-nav justify-content-end",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
+          className: "nav-item",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+            to: "/login",
+            className: "nav-link",
+            children: "\u0110\u0103ng nh\u1EADp"
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
+          className: "nav-item",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+            to: "#",
+            className: "nav-link",
+            children: "\u0110\u0103ng k\xFD"
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
+          className: "nav-item",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+            to: "/cart",
+            className: "nav-link",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_6__.default, {
+              style: {
+                marginTop: '-5px'
+              }
+            }), " Gi\u1ECF h\xE0ng"]
+          })
+        })]
+      })]
+    })]
+  });
+}
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Navigation);
 
@@ -4401,6 +4751,103 @@ var SearchItem = /*#__PURE__*/function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_1__.Component);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SearchItem);
+
+/***/ }),
+
+/***/ "./resources/js/components/contexts/AccountContext.js":
+/*!************************************************************!*\
+  !*** ./resources/js/components/contexts/AccountContext.js ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "AccountContext": () => (/* binding */ AccountContext),
+/* harmony export */   "AccountProvider": () => (/* binding */ AccountProvider)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+var AccountContext = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.createContext)(null);
+var AccountProvider = function AccountProvider(props) {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
+      _useState2 = _slicedToArray(_useState, 2),
+      account = _useState2[0],
+      setAccount = _useState2[1];
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(AccountContext.Provider, {
+    value: [account, setAccount],
+    children: props.children
+  });
+};
+
+/***/ }),
+
+/***/ "./resources/js/components/contexts/CartContext.js":
+/*!*********************************************************!*\
+  !*** ./resources/js/components/contexts/CartContext.js ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "CartContext": () => (/* binding */ CartContext),
+/* harmony export */   "CartProvider": () => (/* binding */ CartProvider)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+var CartContext = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.createContext)(null);
+var CartProvider = function CartProvider(props) {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
+      _useState2 = _slicedToArray(_useState, 2),
+      cartItems = _useState2[0],
+      setCartItems = _useState2[1];
+
+  var addToCart = function addToCart(product) {
+    console.log("product: ", product);
+    setCartItems(cartItems.concat(product));
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(CartContext.Provider, {
+    value: {
+      cartItems: cartItems,
+      setCartItems: setCartItems,
+      addToCart: addToCart
+    },
+    children: props.children
+  });
+};
 
 /***/ }),
 
@@ -8906,6 +9353,39 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/css/cart.css":
+/*!******************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/css/cart.css ***!
+  \******************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/getUrl.js */ "./node_modules/css-loader/dist/runtime/getUrl.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _fonts_Nunito_Bold_ttf__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../fonts/Nunito-Bold.ttf */ "./resources/fonts/Nunito-Bold.ttf");
+/* harmony import */ var _fonts_Nunito_Black_ttf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../fonts/Nunito-Black.ttf */ "./resources/fonts/Nunito-Black.ttf");
+// Imports
+
+
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+var ___CSS_LOADER_URL_REPLACEMENT_0___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_fonts_Nunito_Bold_ttf__WEBPACK_IMPORTED_MODULE_2__.default);
+var ___CSS_LOADER_URL_REPLACEMENT_1___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_fonts_Nunito_Black_ttf__WEBPACK_IMPORTED_MODULE_3__.default);
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "@font-face {\n    font-family: Nunito-Bold;\n    src: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n}\n\n@font-face {\n    font-family: Nunito-Black;\n    src: url(" + ___CSS_LOADER_URL_REPLACEMENT_1___ + ");\n}\n\n#DIV_1 {\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    inline-size: 1140px;\n    -webkit-margin-end: 189.6px;\n            margin-inline-end: 189.6px;\n    -webkit-margin-start: 189.6px;\n            margin-inline-start: 189.6px;\n    max-inline-size: 1140px;\n    max-width: 1140px;\n    -webkit-padding-end: 15px;\n            padding-inline-end: 15px;\n    -webkit-padding-start: 15px;\n            padding-inline-start: 15px;\n    perspective-origin: 570px 519.5px;\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 570px 519.5px;\n    width: 1140px;\n    border: 0px none rgb(29, 33, 41);\n    font: 16px / 24px Nunito-Regular;\n    margin: 30px 189.6px;\n    outline: rgb(29, 33, 41) none 0px;\n    padding: 0px 15px;\n}\n\n/*#DIV_1*/\n\n#DIV_1:after {\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(29, 33, 41);\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#DIV_1:after*/\n\n#DIV_1:before {\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(29, 33, 41);\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#DIV_1:before*/\n\n#DIV_2 {\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    display: flex;\n    inline-size: 1140px;\n    -webkit-margin-end: -15px;\n            margin-inline-end: -15px;\n    -webkit-margin-start: -15px;\n            margin-inline-start: -15px;\n    perspective-origin: 570px 519.5px;\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 570px 519.5px;\n    width: 1140px;\n    border: 0px none rgb(29, 33, 41);\n    flex-flow: row wrap;\n    font: 16px / 24px Nunito-Regular;\n    margin: 0px -15px;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#DIV_2*/\n\n#DIV_2:after {\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    display: block;\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(29, 33, 41);\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#DIV_2:after*/\n\n#DIV_2:before {\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    display: block;\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(29, 33, 41);\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#DIV_2:before*/\n\n#DIV_3 {\n    block-size: 490.4px;\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    bottom: 0px;\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    height: 490.4px;\n    inline-size: 1140px;\n    inset-block-end: 0px;\n    inset-block-start: 0px;\n    inset-inline-end: 0px;\n    inset-inline-start: 0px;\n    left: 0px;\n    -webkit-margin-after: 35px;\n            margin-block-end: 35px;\n    -webkit-margin-before: 25px;\n            margin-block-start: 25px;\n    max-inline-size: 100%;\n    max-width: 100%;\n    min-block-size: auto;\n    min-height: auto;\n    min-inline-size: auto;\n    min-width: auto;\n    -webkit-padding-end: 15px;\n            padding-inline-end: 15px;\n    -webkit-padding-start: 15px;\n            padding-inline-start: 15px;\n    perspective-origin: 570px 245.2px;\n    position: relative;\n    right: 0px;\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    top: 0px;\n    transform-origin: 570px 245.2px;\n    width: 1140px;\n    border: 0px none rgb(29, 33, 41);\n    flex: 0 0 100%;\n    font: 16px / 24px Nunito-Regular;\n    margin: 25px 0px 35px;\n    outline: rgb(29, 33, 41) none 0px;\n    padding: 0px 15px;\n}\n\n/*#DIV_3*/\n\n#DIV_3:after {\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(29, 33, 41);\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#DIV_3:after*/\n\n#DIV_3:before {\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(29, 33, 41);\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#DIV_3:before*/\n\n#TABLE_4 {\n    block-size: 292px;\n    border-collapse: collapse;\n    bottom: 0px;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    height: 292px;\n    inline-size: 1109.6px;\n    inset-block-end: 0px;\n    inset-block-start: 0px;\n    inset-inline-end: 0px;\n    inset-inline-start: 0px;\n    left: 0px;\n    -webkit-margin-after: 16px;\n            margin-block-end: 16px;\n    perspective-origin: 554.8px 146px;\n    position: relative;\n    right: 0px;\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    top: 0px;\n    transform-origin: 554.8px 146px;\n    width: 1109.6px;\n    font: 16px / 24px Nunito-Regular;\n    margin: 0px 0px 16px;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#TABLE_4*/\n\n#TABLE_4:after {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#TABLE_4:after*/\n\n#TABLE_4:before {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#TABLE_4:before*/\n\n#THEAD_5 {\n    block-size: 40.8px;\n    border-block-end-color: rgb(128, 128, 128);\n    border-block-start-color: rgb(128, 128, 128);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(128, 128, 128);\n    border-inline-start-color: rgb(128, 128, 128);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    height: 40.8px;\n    inline-size: 1108.8px;\n    perspective-origin: 554.4px 20.4px;\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 554.4px 20.4px;\n    width: 1108.8px;\n    border: 0px none rgb(128, 128, 128);\n    border-radius: 5px;\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#THEAD_5*/\n\n#THEAD_5:after {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#THEAD_5:after*/\n\n#THEAD_5:before {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#THEAD_5:before*/\n\n#TR_6 {\n    block-size: 40.8px;\n    border-block-end-color: rgb(128, 128, 128);\n    border-block-start-color: rgb(128, 128, 128);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(222, 226, 230);\n    border-inline-end-style: solid;\n    border-inline-end-width: 1px;\n    border-inline-start-color: rgb(222, 226, 230);\n    border-inline-start-style: solid;\n    border-inline-start-width: 1px;\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    height: 40.8px;\n    inline-size: 1108.8px;\n    perspective-origin: 554.4px 20.4px;\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 554.4px 20.4px;\n    vertical-align: middle;\n    width: 1108.8px;\n    border-top: 0px none rgb(128, 128, 128);\n    border-right: 1px solid rgb(222, 226, 230);\n    border-bottom: 0px none rgb(128, 128, 128);\n    border-left: 1px solid rgb(222, 226, 230);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#TR_6*/\n\n#TR_6:after {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#TR_6:after*/\n\n#TR_6:before {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#TR_6:before*/\n\n#TH_7 {\n    block-size: 40.8px;\n    border-block-end-color: rgb(222, 226, 230);\n    border-block-end-style: solid;\n    border-block-end-width: 1px;\n    border-block-start-color: rgb(222, 226, 230);\n    border-block-start-style: solid;\n    border-block-start-width: 1px;\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    height: 40.8px;\n    inline-size: 122.4px;\n    -webkit-padding-after: 8px;\n            padding-block-end: 8px;\n    -webkit-padding-before: 8px;\n            padding-block-start: 8px;\n    -webkit-padding-end: 8px;\n            padding-inline-end: 8px;\n    -webkit-padding-start: 8px;\n            padding-inline-start: 8px;\n    perspective-origin: 61.2px 20.4px;\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 61.2px 20.4px;\n    vertical-align: bottom;\n    width: 122.4px;\n    border-top: 1px solid rgb(222, 226, 230);\n    border-right: 0px none rgb(33, 37, 41);\n    border-bottom: 1px solid rgb(222, 226, 230);\n    border-left: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 700 16px / 24px Nunito-Bold;\n    outline: rgb(33, 37, 41) none 0px;\n    padding: 8px;\n}\n\n/*#TH_7*/\n\n#TH_7:after {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 700 16px / 24px Nunito-Bold;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#TH_7:after*/\n\n#TH_7:before {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 700 16px / 24px Nunito-Bold;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#TH_7:before*/\n\n#I_8, #I_18, #I_49 {\n    border-block-end-color: rgb(255, 176, 189);\n    border-block-start-color: rgb(255, 176, 189);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(255, 176, 189);\n    border-inline-start-color: rgb(255, 176, 189);\n    box-sizing: border-box;\n    caret-color: rgb(255, 176, 189);\n    color: rgb(255, 176, 189);\n    -moz-column-rule-color: rgb(255, 176, 189);\n         column-rule-color: rgb(255, 176, 189);\n    display: none;\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(255, 176, 189);\n            text-decoration: none solid rgb(255, 176, 189);\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(255, 176, 189);\n    border-spacing: 1.6px 1.6px;\n    font: 24px / 24px FontAwesome;\n    outline: rgb(255, 176, 189) none 0px;\n}\n\n/*#I_8, #I_18, #I_49*/\n\n#I_8:after, #I_18:after, #I_49:after {\n    border-block-end-color: rgb(255, 176, 189);\n    border-block-start-color: rgb(255, 176, 189);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(255, 176, 189);\n    border-inline-start-color: rgb(255, 176, 189);\n    box-sizing: border-box;\n    caret-color: rgb(255, 176, 189);\n    color: rgb(255, 176, 189);\n    -moz-column-rule-color: rgb(255, 176, 189);\n         column-rule-color: rgb(255, 176, 189);\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(255, 176, 189);\n            text-decoration: none solid rgb(255, 176, 189);\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(255, 176, 189);\n    border-spacing: 1.6px 1.6px;\n    font: 24px / 24px FontAwesome;\n    outline: rgb(255, 176, 189) none 0px;\n}\n\n/*#I_8:after, #I_18:after, #I_49:after*/\n\n#I_8:before, #I_18:before, #I_49:before {\n    border-block-end-color: rgb(255, 176, 189);\n    border-block-start-color: rgb(255, 176, 189);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(255, 176, 189);\n    border-inline-start-color: rgb(255, 176, 189);\n    box-sizing: border-box;\n    caret-color: rgb(255, 176, 189);\n    color: rgb(255, 176, 189);\n    -moz-column-rule-color: rgb(255, 176, 189);\n         column-rule-color: rgb(255, 176, 189);\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(255, 176, 189);\n            text-decoration: none solid rgb(255, 176, 189);\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(255, 176, 189);\n    border-spacing: 1.6px 1.6px;\n    font: 24px / 24px FontAwesome;\n    outline: rgb(255, 176, 189) none 0px;\n}\n\n/*#I_8:before, #I_18:before, #I_49:before*/\n\n#TH_9 {\n    block-size: 40.8px;\n    border-block-end-color: rgb(222, 226, 230);\n    border-block-end-style: solid;\n    border-block-end-width: 1px;\n    border-block-start-color: rgb(222, 226, 230);\n    border-block-start-style: solid;\n    border-block-start-width: 1px;\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    height: 40.8px;\n    inline-size: 308.8px;\n    -webkit-padding-after: 8px;\n            padding-block-end: 8px;\n    -webkit-padding-before: 8px;\n            padding-block-start: 8px;\n    -webkit-padding-end: 8px;\n            padding-inline-end: 8px;\n    -webkit-padding-start: 8px;\n            padding-inline-start: 8px;\n    perspective-origin: 154.4px 20.4px;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 154.4px 20.4px;\n    vertical-align: bottom;\n    width: 308.8px;\n    border-top: 1px solid rgb(222, 226, 230);\n    border-right: 0px none rgb(33, 37, 41);\n    border-bottom: 1px solid rgb(222, 226, 230);\n    border-left: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 700 16px / 24px Nunito-Bold;\n    outline: rgb(33, 37, 41) none 0px;\n    padding: 8px;\n}\n\n/*#TH_9*/\n\n#TH_9:after {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 700 16px / 24px Nunito-Bold;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#TH_9:after*/\n\n#TH_9:before {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 700 16px / 24px Nunito-Bold;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#TH_9:before*/\n\n#TH_10, #TH_11 {\n    block-size: 40.8px;\n    border-block-end-color: rgb(222, 226, 230);\n    border-block-end-style: solid;\n    border-block-end-width: 1px;\n    border-block-start-color: rgb(222, 226, 230);\n    border-block-start-style: solid;\n    border-block-start-width: 1px;\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    height: 40.8px;\n    inline-size: 184.8px;\n    -webkit-padding-after: 8px;\n            padding-block-end: 8px;\n    -webkit-padding-before: 8px;\n            padding-block-start: 8px;\n    -webkit-padding-end: 8px;\n            padding-inline-end: 8px;\n    -webkit-padding-start: 8px;\n            padding-inline-start: 8px;\n    perspective-origin: 92.4px 20.4px;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 92.4px 20.4px;\n    vertical-align: bottom;\n    width: 184.8px;\n    border-top: 1px solid rgb(222, 226, 230);\n    border-right: 0px none rgb(33, 37, 41);\n    border-bottom: 1px solid rgb(222, 226, 230);\n    border-left: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 700 16px / 24px Nunito-Bold;\n    outline: rgb(33, 37, 41) none 0px;\n    padding: 8px;\n}\n\n/*#TH_10, #TH_11*/\n\n#TH_10:after, #TH_11:after {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 700 16px / 24px Nunito-Bold;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#TH_10:after, #TH_11:after*/\n\n#TH_10:before, #TH_11:before {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 700 16px / 24px Nunito-Bold;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#TH_10:before, #TH_11:before*/\n\n#TH_12 {\n    block-size: 40.8px;\n    border-block-end-color: rgb(222, 226, 230);\n    border-block-end-style: solid;\n    border-block-end-width: 1px;\n    border-block-start-color: rgb(222, 226, 230);\n    border-block-start-style: solid;\n    border-block-start-width: 1px;\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    height: 40.8px;\n    inline-size: 184.8px;\n    -webkit-padding-after: 8px;\n            padding-block-end: 8px;\n    -webkit-padding-before: 8px;\n            padding-block-start: 8px;\n    -webkit-padding-end: 8px;\n            padding-inline-end: 8px;\n    -webkit-padding-start: 8px;\n            padding-inline-start: 8px;\n    perspective-origin: 92.4px 20.4px;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 92.4px 20.4px;\n    vertical-align: bottom;\n    width: 184.8px;\n    border-top: 1px solid rgb(222, 226, 230);\n    border-right: 0px none rgb(33, 37, 41);\n    border-bottom: 1px solid rgb(222, 226, 230);\n    border-left: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 700 16px / 24px Nunito-Bold;\n    outline: rgb(33, 37, 41) none 0px;\n    padding: 8px;\n}\n\n/*#TH_12*/\n\n#TH_12:after {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 700 16px / 24px Nunito-Bold;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#TH_12:after*/\n\n#TH_12:before {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 700 16px / 24px Nunito-Bold;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#TH_12:before*/\n\n#TH_13 {\n    block-size: 40.8px;\n    border-block-end-color: rgb(222, 226, 230);\n    border-block-end-style: solid;\n    border-block-end-width: 1px;\n    border-block-start-color: rgb(222, 226, 230);\n    border-block-start-style: solid;\n    border-block-start-width: 1px;\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    height: 40.8px;\n    inline-size: 123.2px;\n    -webkit-padding-after: 8px;\n            padding-block-end: 8px;\n    -webkit-padding-before: 8px;\n            padding-block-start: 8px;\n    -webkit-padding-end: 8px;\n            padding-inline-end: 8px;\n    -webkit-padding-start: 8px;\n            padding-inline-start: 8px;\n    perspective-origin: 61.6px 20.4px;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 61.6px 20.4px;\n    vertical-align: bottom;\n    width: 123.2px;\n    border-top: 1px solid rgb(222, 226, 230);\n    border-right: 0px none rgb(33, 37, 41);\n    border-bottom: 1px solid rgb(222, 226, 230);\n    border-left: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 700 16px / 24px Nunito-Bold;\n    outline: rgb(33, 37, 41) none 0px;\n    padding: 8px;\n}\n\n/*#TH_13*/\n\n#TH_13:after {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 700 16px / 24px Nunito-Bold;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#TH_13:after*/\n\n#TH_13:before {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 700 16px / 24px Nunito-Bold;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#TH_13:before*/\n\n#TBODY_14 {\n    block-size: 250.4px;\n    border-block-end-color: rgb(128, 128, 128);\n    border-block-start-color: rgb(128, 128, 128);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(128, 128, 128);\n    border-inline-start-color: rgb(128, 128, 128);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    height: 250.4px;\n    inline-size: 1108.8px;\n    perspective-origin: 554.4px 125.2px;\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 554.4px 125.2px;\n    width: 1108.8px;\n    border: 0px none rgb(128, 128, 128);\n    border-radius: 5px;\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#TBODY_14*/\n\n#TBODY_14:after {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#TBODY_14:after*/\n\n#TBODY_14:before {\n    block-size: 16px;\n    border-block-end-color: rgb(255, 255, 255);\n    border-block-start-color: rgb(255, 255, 255);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(255, 255, 255);\n    border-inline-start-color: rgb(255, 255, 255);\n    bottom: 0px;\n    box-sizing: border-box;\n    caret-color: rgb(255, 255, 255);\n    color: rgb(255, 255, 255);\n    -moz-column-rule-color: rgb(255, 255, 255);\n         column-rule-color: rgb(255, 255, 255);\n    display: block;\n    height: 16px;\n    inline-size: 122.4px;\n    inset-block-end: 0px;\n    inset-block-start: 0px;\n    inset-inline-end: 1px;\n    inset-inline-start: -1px;\n    left: -1px;\n    perspective-origin: 61.2px 8px;\n    position: relative;\n    right: 1px;\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(255, 255, 255);\n            text-decoration: none solid rgb(255, 255, 255);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    top: 0px;\n    transform-origin: 61.2px 8px;\n    width: 122.4px;\n    z-index: 1;\n    background: rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box;\n    border: 0px none rgb(255, 255, 255);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 16px Nunito-Regular;\n    outline: rgb(255, 255, 255) none 0px;\n}\n\n/*#TBODY_14:before*/\n\n#TR_15 {\n    block-size: 116.8px;\n    border-block-end-color: rgb(128, 128, 128);\n    border-block-start-color: rgb(128, 128, 128);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(204, 204, 204);\n    border-inline-end-style: solid;\n    border-inline-end-width: 1px;\n    border-inline-start-color: rgb(204, 204, 204);\n    border-inline-start-style: solid;\n    border-inline-start-width: 1px;\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    height: 116.8px;\n    inline-size: 1108.8px;\n    perspective-origin: 554.4px 58.4px;\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 554.4px 58.4px;\n    vertical-align: middle;\n    width: 1108.8px;\n    border-top: 0px none rgb(128, 128, 128);\n    border-right: 1px solid rgb(204, 204, 204);\n    border-bottom: 0px none rgb(128, 128, 128);\n    border-left: 1px solid rgb(204, 204, 204);\n    border-radius: 10px 10px 0px 0px;\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n    overflow: hidden;\n}\n\n/*#TR_15*/\n\n#TR_15:after {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#TR_15:after*/\n\n#TR_15:before {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#TR_15:before*/\n\n#TD_16 {\n    block-size: 116.8px;\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(204, 204, 204);\n    border-block-start-style: solid;\n    border-block-start-width: 1px;\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    height: 116.8px;\n    inline-size: 122.4px;\n    -webkit-padding-after: 8px;\n            padding-block-end: 8px;\n    -webkit-padding-before: 8px;\n            padding-block-start: 8px;\n    -webkit-padding-end: 8px;\n            padding-inline-end: 8px;\n    -webkit-padding-start: 8px;\n            padding-inline-start: 8px;\n    perspective-origin: 61.2px 58.4px;\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 61.2px 58.4px;\n    vertical-align: middle;\n    width: 122.4px;\n    border-top: 1px solid rgb(204, 204, 204);\n    border-right: 0px none rgb(33, 37, 41);\n    border-bottom: 0px none rgb(33, 37, 41);\n    border-left: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n    padding: 8px;\n}\n\n/*#TD_16*/\n\n#TD_16:after {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#TD_16:after*/\n\n#TD_16:before {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#TD_16:before*/\n\n#DIV_17, #DIV_48 {\n    align-items: center;\n    block-size: 100px;\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    display: flex;\n    height: 100px;\n    inline-size: 105.6px;\n    perspective-origin: 52.8px 50px;\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 52.8px 50px;\n    width: 105.6px;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#DIV_17, #DIV_48*/\n\n#DIV_17:after, #DIV_48:after {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    display: block;\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#DIV_17:after, #DIV_48:after*/\n\n#DIV_17:before, #DIV_48:before {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    display: block;\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#DIV_17:before, #DIV_48:before*/\n\n#A_19, #A_50 {\n    block-size: 100px;\n    border-block-end-color: rgb(47, 47, 47);\n    border-block-start-color: rgb(47, 47, 47);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(47, 47, 47);\n    border-inline-start-color: rgb(47, 47, 47);\n    box-sizing: border-box;\n    caret-color: rgb(47, 47, 47);\n    color: rgb(47, 47, 47);\n    -moz-column-rule-color: rgb(47, 47, 47);\n         column-rule-color: rgb(47, 47, 47);\n    display: block;\n    height: 100px;\n    inline-size: 105.6px;\n    min-block-size: auto;\n    min-height: auto;\n    min-inline-size: auto;\n    min-width: auto;\n    perspective-origin: 52.8px 50px;\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(47, 47, 47);\n            text-decoration: none solid rgb(47, 47, 47);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 52.8px 50px;\n    width: 105.6px;\n    border: 0px none rgb(47, 47, 47);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(47, 47, 47) none 0px;\n}\n\n/*#A_19, #A_50*/\n\n#A_19:after, #A_50:after {\n    border-block-end-color: rgb(47, 47, 47);\n    border-block-start-color: rgb(47, 47, 47);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(47, 47, 47);\n    border-inline-start-color: rgb(47, 47, 47);\n    box-sizing: border-box;\n    caret-color: rgb(47, 47, 47);\n    color: rgb(47, 47, 47);\n    -moz-column-rule-color: rgb(47, 47, 47);\n         column-rule-color: rgb(47, 47, 47);\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(47, 47, 47);\n            text-decoration: none solid rgb(47, 47, 47);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(47, 47, 47);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(47, 47, 47) none 0px;\n}\n\n/*#A_19:after, #A_50:after*/\n\n#A_19:before, #A_50:before {\n    border-block-end-color: rgb(47, 47, 47);\n    border-block-start-color: rgb(47, 47, 47);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(47, 47, 47);\n    border-inline-start-color: rgb(47, 47, 47);\n    box-sizing: border-box;\n    caret-color: rgb(47, 47, 47);\n    color: rgb(47, 47, 47);\n    -moz-column-rule-color: rgb(47, 47, 47);\n         column-rule-color: rgb(47, 47, 47);\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(47, 47, 47);\n            text-decoration: none solid rgb(47, 47, 47);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(47, 47, 47);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(47, 47, 47) none 0px;\n}\n\n/*#A_19:before, #A_50:before*/\n\n#IMG_20, #IMG_51 {\n    block-size: 100px;\n    border-block-end-color: rgb(47, 47, 47);\n    border-block-start-color: rgb(47, 47, 47);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(47, 47, 47);\n    border-inline-start-color: rgb(47, 47, 47);\n    box-sizing: border-box;\n    caret-color: rgb(47, 47, 47);\n    color: rgb(47, 47, 47);\n    -moz-column-rule-color: rgb(47, 47, 47);\n         column-rule-color: rgb(47, 47, 47);\n    cursor: pointer;\n    height: 100px;\n    inline-size: 105.6px;\n    -webkit-margin-start: 5px;\n            margin-inline-start: 5px;\n    max-inline-size: 100%;\n    max-width: 100%;\n    -o-object-fit: scale-down;\n       object-fit: scale-down;\n    perspective-origin: 52.8px 50px;\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(47, 47, 47);\n            text-decoration: none solid rgb(47, 47, 47);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 52.8px 50px;\n    vertical-align: middle;\n    width: 105.6px;\n    border: 0px none rgb(47, 47, 47);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    margin: 0px 0px 0px 5px;\n    outline: rgb(47, 47, 47) none 0px;\n}\n\n/*#IMG_20, #IMG_51*/\n\n#IMG_20:after, #IMG_51:after {\n    border-block-end-color: rgb(47, 47, 47);\n    border-block-start-color: rgb(47, 47, 47);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(47, 47, 47);\n    border-inline-start-color: rgb(47, 47, 47);\n    box-sizing: border-box;\n    caret-color: rgb(47, 47, 47);\n    color: rgb(47, 47, 47);\n    -moz-column-rule-color: rgb(47, 47, 47);\n         column-rule-color: rgb(47, 47, 47);\n    cursor: pointer;\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(47, 47, 47);\n            text-decoration: none solid rgb(47, 47, 47);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(47, 47, 47);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(47, 47, 47) none 0px;\n}\n\n/*#IMG_20:after, #IMG_51:after*/\n\n#IMG_20:before, #IMG_51:before {\n    border-block-end-color: rgb(47, 47, 47);\n    border-block-start-color: rgb(47, 47, 47);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(47, 47, 47);\n    border-inline-start-color: rgb(47, 47, 47);\n    box-sizing: border-box;\n    caret-color: rgb(47, 47, 47);\n    color: rgb(47, 47, 47);\n    -moz-column-rule-color: rgb(47, 47, 47);\n         column-rule-color: rgb(47, 47, 47);\n    cursor: pointer;\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(47, 47, 47);\n            text-decoration: none solid rgb(47, 47, 47);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(47, 47, 47);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(47, 47, 47) none 0px;\n}\n\n/*#IMG_20:before, #IMG_51:before*/\n\n#TD_21 {\n    block-size: 116.8px;\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(204, 204, 204);\n    border-block-start-style: solid;\n    border-block-start-width: 1px;\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    height: 116.8px;\n    inline-size: 308.8px;\n    -webkit-padding-after: 8px;\n            padding-block-end: 8px;\n    -webkit-padding-before: 8px;\n            padding-block-start: 8px;\n    -webkit-padding-end: 8px;\n            padding-inline-end: 8px;\n    -webkit-padding-start: 8px;\n            padding-inline-start: 8px;\n    perspective-origin: 154.4px 58.4px;\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 154.4px 58.4px;\n    vertical-align: middle;\n    width: 308.8px;\n    border-top: 1px solid rgb(204, 204, 204);\n    border-right: 0px none rgb(33, 37, 41);\n    border-bottom: 0px none rgb(33, 37, 41);\n    border-left: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n    padding: 8px;\n}\n\n/*#TD_21*/\n\n#TD_21:after {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#TD_21:after*/\n\n#TD_21:before {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#TD_21:before*/\n\n#A_22, #A_45, #A_53, #A_76 {\n    border-block-end-color: rgb(47, 47, 47);\n    border-block-start-color: rgb(47, 47, 47);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(47, 47, 47);\n    border-inline-start-color: rgb(47, 47, 47);\n    box-sizing: border-box;\n    caret-color: rgb(47, 47, 47);\n    color: rgb(47, 47, 47);\n    -moz-column-rule-color: rgb(47, 47, 47);\n         column-rule-color: rgb(47, 47, 47);\n    perspective-origin: 0px 0px;\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(47, 47, 47);\n            text-decoration: none solid rgb(47, 47, 47);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 0px 0px;\n    border: 0px none rgb(47, 47, 47);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(47, 47, 47) none 0px;\n}\n\n/*#A_22, #A_45, #A_53, #A_76*/\n\n#A_22:after, #A_45:after, #A_53:after, #A_76:after {\n    border-block-end-color: rgb(47, 47, 47);\n    border-block-start-color: rgb(47, 47, 47);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(47, 47, 47);\n    border-inline-start-color: rgb(47, 47, 47);\n    box-sizing: border-box;\n    caret-color: rgb(47, 47, 47);\n    color: rgb(47, 47, 47);\n    -moz-column-rule-color: rgb(47, 47, 47);\n         column-rule-color: rgb(47, 47, 47);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(47, 47, 47);\n            text-decoration: none solid rgb(47, 47, 47);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(47, 47, 47);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(47, 47, 47) none 0px;\n}\n\n/*#A_22:after, #A_45:after, #A_53:after, #A_76:after*/\n\n#A_22:before, #A_45:before, #A_53:before, #A_76:before {\n    border-block-end-color: rgb(47, 47, 47);\n    border-block-start-color: rgb(47, 47, 47);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(47, 47, 47);\n    border-inline-start-color: rgb(47, 47, 47);\n    box-sizing: border-box;\n    caret-color: rgb(47, 47, 47);\n    color: rgb(47, 47, 47);\n    -moz-column-rule-color: rgb(47, 47, 47);\n         column-rule-color: rgb(47, 47, 47);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(47, 47, 47);\n            text-decoration: none solid rgb(47, 47, 47);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(47, 47, 47);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(47, 47, 47) none 0px;\n}\n\n/*#A_22:before, #A_45:before, #A_53:before, #A_76:before*/\n\n#DIV_23, #DIV_54 {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    display: none;\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#DIV_23, #DIV_54*/\n\n#DIV_23:after, #DIV_54:after {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#DIV_23:after, #DIV_54:after*/\n\n#DIV_23:before, #DIV_54:before {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#DIV_23:before, #DIV_54:before*/\n\n#P_24, #P_26, #P_31, #P_55, #P_57, #P_62 {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    -webkit-margin-after: 16px;\n            margin-block-end: 16px;\n    -webkit-margin-before: 0px;\n            margin-block-start: 0px;\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    margin: 0px 0px 16px;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#P_24, #P_26, #P_31, #P_55, #P_57, #P_62*/\n\n#P_24:after, #P_26:after, #P_31:after, #P_55:after, #P_57:after, #P_62:after {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#P_24:after, #P_26:after, #P_31:after, #P_55:after, #P_57:after, #P_62:after*/\n\n#P_24:before, #P_26:before, #P_31:before, #P_55:before, #P_57:before, #P_62:before {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#P_24:before, #P_26:before, #P_31:before, #P_55:before, #P_57:before, #P_62:before*/\n\n#STRONG_25, #STRONG_56 {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    display: block;\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 700 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#STRONG_25, #STRONG_56*/\n\n#STRONG_25:after, #STRONG_56:after {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 700 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#STRONG_25:after, #STRONG_56:after*/\n\n#STRONG_25:before, #STRONG_56:before {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 700 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#STRONG_25:before, #STRONG_56:before*/\n\n#DIV_27, #DIV_58 {\n    align-items: center;\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    display: flex;\n    justify-content: center;\n    -webkit-margin-start: 5px;\n            margin-inline-start: 5px;\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    margin: 0px 0px 0px 5px;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#DIV_27, #DIV_58*/\n\n#DIV_27:after, #DIV_58:after {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    display: block;\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#DIV_27:after, #DIV_58:after*/\n\n#DIV_27:before, #DIV_58:before {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    display: block;\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#DIV_27:before, #DIV_58:before*/\n\n#DIV_28, #DIV_30, #DIV_59, #DIV_61 {\n    align-items: center;\n    border-block-end-color: rgb(208, 208, 208);\n    border-block-end-style: solid;\n    border-block-end-width: 1px;\n    border-block-start-color: rgb(208, 208, 208);\n    border-block-start-style: solid;\n    border-block-start-width: 1px;\n    border-collapse: collapse;\n    border-inline-end-color: rgb(208, 208, 208);\n    border-inline-end-style: solid;\n    border-inline-end-width: 1px;\n    border-inline-start-color: rgb(208, 208, 208);\n    border-inline-start-style: solid;\n    border-inline-start-width: 1px;\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    cursor: pointer;\n    display: flex;\n    justify-content: center;\n    min-block-size: 30px;\n    min-height: 30px;\n    min-inline-size: 30px;\n    min-width: 30px;\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 1px solid rgb(208, 208, 208);\n    border-radius: 3px;\n    border-spacing: 1.6px 1.6px;\n    font: 18px / 27px Nunito-Bold;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#DIV_28, #DIV_30, #DIV_59, #DIV_61*/\n\n#DIV_28:after, #DIV_30:after, #DIV_59:after, #DIV_61:after {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    cursor: pointer;\n    display: block;\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 18px / 27px Nunito-Bold;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#DIV_28:after, #DIV_30:after, #DIV_59:after, #DIV_61:after*/\n\n#DIV_28:before, #DIV_30:before, #DIV_59:before, #DIV_61:before {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    cursor: pointer;\n    display: block;\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 18px / 27px Nunito-Bold;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#DIV_28:before, #DIV_30:before, #DIV_59:before, #DIV_61:before*/\n\n#INPUT_29, #INPUT_60 {\n    align-items: center;\n    -webkit-appearance: none;\n       -moz-appearance: none;\n            appearance: none;\n    border-block-end-color: rgb(0, 0, 0);\n    border-block-end-style: none;\n    border-block-end-width: 0px;\n    border-block-start-color: rgb(0, 0, 0);\n    border-block-start-style: none;\n    border-block-start-width: 0px;\n    border-collapse: collapse;\n    border-inline-end-color: rgb(0, 0, 0);\n    border-inline-end-style: none;\n    border-inline-end-width: 0px;\n    border-inline-start-color: rgb(0, 0, 0);\n    border-inline-start-style: none;\n    border-inline-start-width: 0px;\n    display: flex;\n    inline-size: 50px;\n    justify-content: center;\n    min-block-size: 30px;\n    min-height: 30px;\n    text-align: center;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    width: 50px;\n    border: 0px none rgb(0, 0, 0);\n    border-spacing: 1.6px 1.6px;\n    font: 14px / 21px Nunito-Regular;\n}\n\n/*#INPUT_29, #INPUT_60*/\n\n#INPUT_29:after, #INPUT_60:after {\n    border-collapse: collapse;\n    box-sizing: border-box;\n    display: block;\n    text-align: center;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border-spacing: 1.6px 1.6px;\n    font: 14px / 21px Nunito-Regular;\n}\n\n/*#INPUT_29:after, #INPUT_60:after*/\n\n#INPUT_29:before, #INPUT_60:before {\n    border-collapse: collapse;\n    box-sizing: border-box;\n    display: block;\n    text-align: center;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border-spacing: 1.6px 1.6px;\n    font: 14px / 21px Nunito-Regular;\n}\n\n/*#INPUT_29:before, #INPUT_60:before*/\n\n#P_32, #P_63 {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    -webkit-margin-after: 16px;\n            margin-block-end: 16px;\n    -webkit-margin-before: 0px;\n            margin-block-start: 0px;\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    margin: 0px 0px 16px;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#P_32, #P_63*/\n\n#P_32:after, #P_63:after {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#P_32:after, #P_63:after*/\n\n#P_32:before, #P_63:before {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#P_32:before, #P_63:before*/\n\n#STRONG_33, #STRONG_64 {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 700 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#STRONG_33, #STRONG_64*/\n\n#STRONG_33:after, #STRONG_64:after {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 700 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#STRONG_33:after, #STRONG_64:after*/\n\n#STRONG_33:before, #STRONG_64:before {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 700 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#STRONG_33:before, #STRONG_64:before*/\n\n#A_34, #A_65 {\n    border-block-end-color: rgb(47, 47, 47);\n    border-block-start-color: rgb(47, 47, 47);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(47, 47, 47);\n    border-inline-start-color: rgb(47, 47, 47);\n    box-sizing: border-box;\n    caret-color: rgb(47, 47, 47);\n    color: rgb(47, 47, 47);\n    -moz-column-rule-color: rgb(47, 47, 47);\n         column-rule-color: rgb(47, 47, 47);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(47, 47, 47);\n            text-decoration: none solid rgb(47, 47, 47);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(47, 47, 47);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(47, 47, 47) none 0px;\n}\n\n/*#A_34, #A_65*/\n\n#A_34:after, #A_65:after {\n    border-block-end-color: rgb(47, 47, 47);\n    border-block-start-color: rgb(47, 47, 47);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(47, 47, 47);\n    border-inline-start-color: rgb(47, 47, 47);\n    box-sizing: border-box;\n    caret-color: rgb(47, 47, 47);\n    color: rgb(47, 47, 47);\n    -moz-column-rule-color: rgb(47, 47, 47);\n         column-rule-color: rgb(47, 47, 47);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(47, 47, 47);\n            text-decoration: none solid rgb(47, 47, 47);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(47, 47, 47);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(47, 47, 47) none 0px;\n}\n\n/*#A_34:after, #A_65:after*/\n\n#A_34:before, #A_65:before {\n    border-block-end-color: rgb(47, 47, 47);\n    border-block-start-color: rgb(47, 47, 47);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(47, 47, 47);\n    border-inline-start-color: rgb(47, 47, 47);\n    box-sizing: border-box;\n    caret-color: rgb(47, 47, 47);\n    color: rgb(47, 47, 47);\n    -moz-column-rule-color: rgb(47, 47, 47);\n         column-rule-color: rgb(47, 47, 47);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(47, 47, 47);\n            text-decoration: none solid rgb(47, 47, 47);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(47, 47, 47);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(47, 47, 47) none 0px;\n}\n\n/*#A_34:before, #A_65:before*/\n\n#TD_35, #TD_42 {\n    block-size: 116.8px;\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(204, 204, 204);\n    border-block-start-style: solid;\n    border-block-start-width: 1px;\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    height: 116.8px;\n    inline-size: 184.8px;\n    -webkit-padding-after: 8px;\n            padding-block-end: 8px;\n    -webkit-padding-before: 8px;\n            padding-block-start: 8px;\n    -webkit-padding-end: 8px;\n            padding-inline-end: 8px;\n    -webkit-padding-start: 8px;\n            padding-inline-start: 8px;\n    perspective-origin: 92.4px 58.4px;\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 92.4px 58.4px;\n    vertical-align: middle;\n    width: 184.8px;\n    border-top: 1px solid rgb(204, 204, 204);\n    border-right: 0px none rgb(33, 37, 41);\n    border-bottom: 0px none rgb(33, 37, 41);\n    border-left: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n    padding: 8px;\n}\n\n/*#TD_35, #TD_42*/\n\n#TD_35:after, #TD_42:after {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#TD_35:after, #TD_42:after*/\n\n#TD_35:before, #TD_42:before {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#TD_35:before, #TD_42:before*/\n\n#STRONG_36, #STRONG_67 {\n    block-size: 24px;\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    display: block;\n    height: 24px;\n    inline-size: 168.8px;\n    perspective-origin: 84.4px 12px;\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 84.4px 12px;\n    width: 168.8px;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 700 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#STRONG_36, #STRONG_67*/\n\n#STRONG_36:after, #STRONG_67:after {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 700 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#STRONG_36:after, #STRONG_67:after*/\n\n#STRONG_36:before, #STRONG_67:before {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 700 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#STRONG_36:before, #STRONG_67:before*/\n\n#TD_37 {\n    block-size: 116.4px;\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(204, 204, 204);\n    border-block-start-style: solid;\n    border-block-start-width: 1px;\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    height: 116.4px;\n    inline-size: 184.8px;\n    -webkit-padding-after: 8px;\n            padding-block-end: 8px;\n    -webkit-padding-before: 8px;\n            padding-block-start: 8px;\n    -webkit-padding-end: 8px;\n            padding-inline-end: 8px;\n    -webkit-padding-start: 8px;\n            padding-inline-start: 8px;\n    perspective-origin: 92.4px 58.2px;\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 92.4px 58.2px;\n    vertical-align: middle;\n    width: 184.8px;\n    border-top: 1px solid rgb(204, 204, 204);\n    border-right: 0px none rgb(33, 37, 41);\n    border-bottom: 0px none rgb(33, 37, 41);\n    border-left: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n    padding: 8px;\n}\n\n/*#TD_37*/\n\n#TD_37:after {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#TD_37:after*/\n\n#TD_37:before {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#TD_37:before*/\n\n#DIV_38, #DIV_69 {\n    align-items: center;\n    block-size: 30px;\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    display: flex;\n    height: 30px;\n    inline-size: 163.8px;\n    justify-content: center;\n    -webkit-margin-start: 5px;\n            margin-inline-start: 5px;\n    perspective-origin: 81.9px 15px;\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 81.9px 15px;\n    width: 163.8px;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    margin: 0px 0px 0px 5px;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#DIV_38, #DIV_69*/\n\n#DIV_38:after, #DIV_69:after {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    display: block;\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#DIV_38:after, #DIV_69:after*/\n\n#DIV_38:before, #DIV_69:before {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    display: block;\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#DIV_38:before, #DIV_69:before*/\n\n#DIV_39, #DIV_41, #DIV_70, #DIV_72 {\n    align-items: center;\n    block-size: 30px;\n    border-block-end-color: rgb(208, 208, 208);\n    border-block-end-style: solid;\n    border-block-end-width: 1px;\n    border-block-start-color: rgb(208, 208, 208);\n    border-block-start-style: solid;\n    border-block-start-width: 1px;\n    border-collapse: collapse;\n    border-inline-end-color: rgb(208, 208, 208);\n    border-inline-end-style: solid;\n    border-inline-end-width: 1px;\n    border-inline-start-color: rgb(208, 208, 208);\n    border-inline-start-style: solid;\n    border-inline-start-width: 1px;\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    cursor: pointer;\n    display: flex;\n    height: 30px;\n    inline-size: 30px;\n    justify-content: center;\n    min-block-size: 30px;\n    min-height: 30px;\n    min-inline-size: 30px;\n    min-width: 30px;\n    perspective-origin: 15px 15px;\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 15px 15px;\n    width: 30px;\n    border: 1px solid rgb(208, 208, 208);\n    border-radius: 3px;\n    border-spacing: 1.6px 1.6px;\n    font: 18px / 27px Nunito-Bold;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#DIV_39, #DIV_41, #DIV_70, #DIV_72*/\n\n#DIV_39:after, #DIV_41:after, #DIV_70:after, #DIV_72:after {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    cursor: pointer;\n    display: block;\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 18px / 27px Nunito-Bold;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#DIV_39:after, #DIV_41:after, #DIV_70:after, #DIV_72:after*/\n\n#DIV_39:before, #DIV_41:before, #DIV_70:before, #DIV_72:before {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    cursor: pointer;\n    display: block;\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 18px / 27px Nunito-Bold;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#DIV_39:before, #DIV_41:before, #DIV_70:before, #DIV_72:before*/\n\n#INPUT_40, #INPUT_71 {\n    align-items: center;\n    -webkit-appearance: none;\n       -moz-appearance: none;\n            appearance: none;\n    block-size: 30px;\n    border-block-end-color: rgb(0, 0, 0);\n    border-block-end-style: none;\n    border-block-end-width: 0px;\n    border-block-start-color: rgb(0, 0, 0);\n    border-block-start-style: none;\n    border-block-start-width: 0px;\n    border-collapse: collapse;\n    border-inline-end-color: rgb(0, 0, 0);\n    border-inline-end-style: none;\n    border-inline-end-width: 0px;\n    border-inline-start-color: rgb(0, 0, 0);\n    border-inline-start-style: none;\n    border-inline-start-width: 0px;\n    display: flex;\n    height: 30px;\n    inline-size: 50px;\n    justify-content: center;\n    min-block-size: 30px;\n    min-height: 30px;\n    min-inline-size: auto;\n    min-width: auto;\n    perspective-origin: 25px 15px;\n    text-align: center;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 25px 15px;\n    width: 50px;\n    border: 0px none rgb(0, 0, 0);\n    border-spacing: 1.6px 1.6px;\n    font: 14px / 21px Nunito-Regular;\n}\n\n/*#INPUT_40, #INPUT_71*/\n\n#INPUT_40:after, #INPUT_71:after {\n    border-collapse: collapse;\n    box-sizing: border-box;\n    display: block;\n    text-align: center;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border-spacing: 1.6px 1.6px;\n    font: 14px / 21px Nunito-Regular;\n}\n\n/*#INPUT_40:after, #INPUT_71:after*/\n\n#INPUT_40:before, #INPUT_71:before {\n    border-collapse: collapse;\n    box-sizing: border-box;\n    display: block;\n    text-align: center;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border-spacing: 1.6px 1.6px;\n    font: 14px / 21px Nunito-Regular;\n}\n\n/*#INPUT_40:before, #INPUT_71:before*/\n\n#STRONG_43, #STRONG_74 {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    perspective-origin: 0px 0px;\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 0px 0px;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 700 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#STRONG_43, #STRONG_74*/\n\n#STRONG_43:after, #STRONG_74:after {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 700 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#STRONG_43:after, #STRONG_74:after*/\n\n#STRONG_43:before, #STRONG_74:before {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 700 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#STRONG_43:before, #STRONG_74:before*/\n\n#TD_44 {\n    block-size: 116.8px;\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(204, 204, 204);\n    border-block-start-style: solid;\n    border-block-start-width: 1px;\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    height: 116.8px;\n    inline-size: 123.2px;\n    -webkit-padding-after: 8px;\n            padding-block-end: 8px;\n    -webkit-padding-before: 8px;\n            padding-block-start: 8px;\n    -webkit-padding-end: 8px;\n            padding-inline-end: 8px;\n    -webkit-padding-start: 8px;\n            padding-inline-start: 8px;\n    perspective-origin: 61.6px 58.4px;\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 61.6px 58.4px;\n    vertical-align: middle;\n    width: 123.2px;\n    border-top: 1px solid rgb(204, 204, 204);\n    border-right: 0px none rgb(33, 37, 41);\n    border-bottom: 0px none rgb(33, 37, 41);\n    border-left: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n    padding: 8px;\n}\n\n/*#TD_44*/\n\n#TD_44:after {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#TD_44:after*/\n\n#TD_44:before {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#TD_44:before*/\n\n#TR_46 {\n    block-size: 116.8px;\n    border-block-end-color: rgb(128, 128, 128);\n    border-block-start-color: rgb(128, 128, 128);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(204, 204, 204);\n    border-inline-end-style: solid;\n    border-inline-end-width: 1px;\n    border-inline-start-color: rgb(204, 204, 204);\n    border-inline-start-style: solid;\n    border-inline-start-width: 1px;\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    height: 116.8px;\n    inline-size: 1108.8px;\n    perspective-origin: 554.4px 58.4px;\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 554.4px 58.4px;\n    vertical-align: middle;\n    width: 1108.8px;\n    border-top: 0px none rgb(128, 128, 128);\n    border-right: 1px solid rgb(204, 204, 204);\n    border-bottom: 0px none rgb(128, 128, 128);\n    border-left: 1px solid rgb(204, 204, 204);\n    border-radius: 0px 0px 10px 10px;\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n    overflow: hidden;\n}\n\n/*#TR_46*/\n\n#TR_46:after {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#TR_46:after*/\n\n#TR_46:before {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#TR_46:before*/\n\n#TD_47 {\n    block-size: 116.8px;\n    border-block-end-color: rgb(204, 204, 204);\n    border-block-end-style: solid;\n    border-block-end-width: 1px;\n    border-block-start-color: rgb(204, 204, 204);\n    border-block-start-style: solid;\n    border-block-start-width: 1px;\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    height: 116.8px;\n    inline-size: 122.4px;\n    -webkit-padding-after: 8px;\n            padding-block-end: 8px;\n    -webkit-padding-before: 8px;\n            padding-block-start: 8px;\n    -webkit-padding-end: 8px;\n            padding-inline-end: 8px;\n    -webkit-padding-start: 8px;\n            padding-inline-start: 8px;\n    perspective-origin: 61.2px 58.4px;\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 61.2px 58.4px;\n    vertical-align: middle;\n    width: 122.4px;\n    border-top: 1px solid rgb(204, 204, 204);\n    border-right: 0px none rgb(33, 37, 41);\n    border-bottom: 1px solid rgb(204, 204, 204);\n    border-left: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n    padding: 8px;\n}\n\n/*#TD_47*/\n\n#TD_47:after {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#TD_47:after*/\n\n#TD_47:before {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#TD_47:before*/\n\n#TD_52 {\n    block-size: 116.8px;\n    border-block-end-color: rgb(204, 204, 204);\n    border-block-end-style: solid;\n    border-block-end-width: 1px;\n    border-block-start-color: rgb(204, 204, 204);\n    border-block-start-style: solid;\n    border-block-start-width: 1px;\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    height: 116.8px;\n    inline-size: 308.8px;\n    -webkit-padding-after: 8px;\n            padding-block-end: 8px;\n    -webkit-padding-before: 8px;\n            padding-block-start: 8px;\n    -webkit-padding-end: 8px;\n            padding-inline-end: 8px;\n    -webkit-padding-start: 8px;\n            padding-inline-start: 8px;\n    perspective-origin: 154.4px 58.4px;\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 154.4px 58.4px;\n    vertical-align: middle;\n    width: 308.8px;\n    border-top: 1px solid rgb(204, 204, 204);\n    border-right: 0px none rgb(33, 37, 41);\n    border-bottom: 1px solid rgb(204, 204, 204);\n    border-left: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n    padding: 8px;\n}\n\n/*#TD_52*/\n\n#TD_52:after {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#TD_52:after*/\n\n#TD_52:before {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#TD_52:before*/\n\n#TD_66, #TD_73 {\n    block-size: 116.8px;\n    border-block-end-color: rgb(204, 204, 204);\n    border-block-end-style: solid;\n    border-block-end-width: 1px;\n    border-block-start-color: rgb(204, 204, 204);\n    border-block-start-style: solid;\n    border-block-start-width: 1px;\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    height: 116.8px;\n    inline-size: 184.8px;\n    -webkit-padding-after: 8px;\n            padding-block-end: 8px;\n    -webkit-padding-before: 8px;\n            padding-block-start: 8px;\n    -webkit-padding-end: 8px;\n            padding-inline-end: 8px;\n    -webkit-padding-start: 8px;\n            padding-inline-start: 8px;\n    perspective-origin: 92.4px 58.4px;\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 92.4px 58.4px;\n    vertical-align: middle;\n    width: 184.8px;\n    border-top: 1px solid rgb(204, 204, 204);\n    border-right: 0px none rgb(33, 37, 41);\n    border-bottom: 1px solid rgb(204, 204, 204);\n    border-left: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n    padding: 8px;\n}\n\n/*#TD_66, #TD_73*/\n\n#TD_66:after, #TD_73:after {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#TD_66:after, #TD_73:after*/\n\n#TD_66:before, #TD_73:before {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#TD_66:before, #TD_73:before*/\n\n#TD_68 {\n    block-size: 116.4px;\n    border-block-end-color: rgb(204, 204, 204);\n    border-block-end-style: solid;\n    border-block-end-width: 1px;\n    border-block-start-color: rgb(204, 204, 204);\n    border-block-start-style: solid;\n    border-block-start-width: 1px;\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    height: 116.4px;\n    inline-size: 184.8px;\n    -webkit-padding-after: 8px;\n            padding-block-end: 8px;\n    -webkit-padding-before: 8px;\n            padding-block-start: 8px;\n    -webkit-padding-end: 8px;\n            padding-inline-end: 8px;\n    -webkit-padding-start: 8px;\n            padding-inline-start: 8px;\n    perspective-origin: 92.4px 58.2px;\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 92.4px 58.2px;\n    vertical-align: middle;\n    width: 184.8px;\n    border-top: 1px solid rgb(204, 204, 204);\n    border-right: 0px none rgb(33, 37, 41);\n    border-bottom: 1px solid rgb(204, 204, 204);\n    border-left: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n    padding: 8px;\n}\n\n/*#TD_68*/\n\n#TD_68:after {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#TD_68:after*/\n\n#TD_68:before {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#TD_68:before*/\n\n#TD_75 {\n    block-size: 116.8px;\n    border-block-end-color: rgb(204, 204, 204);\n    border-block-end-style: solid;\n    border-block-end-width: 1px;\n    border-block-start-color: rgb(204, 204, 204);\n    border-block-start-style: solid;\n    border-block-start-width: 1px;\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    height: 116.8px;\n    inline-size: 123.2px;\n    -webkit-padding-after: 8px;\n            padding-block-end: 8px;\n    -webkit-padding-before: 8px;\n            padding-block-start: 8px;\n    -webkit-padding-end: 8px;\n            padding-inline-end: 8px;\n    -webkit-padding-start: 8px;\n            padding-inline-start: 8px;\n    perspective-origin: 61.6px 58.4px;\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 61.6px 58.4px;\n    vertical-align: middle;\n    width: 123.2px;\n    border-top: 1px solid rgb(204, 204, 204);\n    border-right: 0px none rgb(33, 37, 41);\n    border-bottom: 1px solid rgb(204, 204, 204);\n    border-left: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n    padding: 8px;\n}\n\n/*#TD_75*/\n\n#TD_75:after {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#TD_75:after*/\n\n#TD_75:before {\n    border-block-end-color: rgb(33, 37, 41);\n    border-block-start-color: rgb(33, 37, 41);\n    border-collapse: collapse;\n    border-inline-end-color: rgb(33, 37, 41);\n    border-inline-start-color: rgb(33, 37, 41);\n    box-sizing: border-box;\n    caret-color: rgb(33, 37, 41);\n    color: rgb(33, 37, 41);\n    -moz-column-rule-color: rgb(33, 37, 41);\n         column-rule-color: rgb(33, 37, 41);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(33, 37, 41);\n            text-decoration: none solid rgb(33, 37, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(33, 37, 41);\n    border-spacing: 1.6px 1.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(33, 37, 41) none 0px;\n}\n\n/*#TD_75:before*/\n\n#DIV_77 {\n    block-size: 72px;\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    height: 72px;\n    inline-size: 1110px;\n    perspective-origin: 555px 36px;\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 555px 36px;\n    width: 1110px;\n    border: 0px none rgb(29, 33, 41);\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#DIV_77*/\n\n#DIV_77:after {\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(29, 33, 41);\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#DIV_77:after*/\n\n#DIV_77:before {\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(29, 33, 41);\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#DIV_77:before*/\n\n#P_78, #P_79 {\n    block-size: 24px;\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    height: 24px;\n    inline-size: 1110px;\n    -webkit-margin-after: 0px;\n            margin-block-end: 0px;\n    -webkit-margin-before: 0px;\n            margin-block-start: 0px;\n    perspective-origin: 555px 12px;\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 555px 12px;\n    width: 1110px;\n    border: 0px none rgb(29, 33, 41);\n    font: 16px / 24px Nunito-Regular;\n    margin: 0px;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#P_78, #P_79*/\n\n#P_78:after, #P_79:after {\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(29, 33, 41);\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#P_78:after, #P_79:after*/\n\n#P_78:before, #P_79:before {\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(29, 33, 41);\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#P_78:before, #P_79:before*/\n\n#P_80 {\n    block-size: 24px;\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    height: 24px;\n    inline-size: 1110px;\n    -webkit-margin-after: 0px;\n            margin-block-end: 0px;\n    -webkit-margin-before: 0px;\n            margin-block-start: 0px;\n    perspective-origin: 555px 12px;\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 555px 12px;\n    width: 1110px;\n    border: 0px none rgb(29, 33, 41);\n    font: 16px / 24px Nunito-Regular;\n    margin: 0px;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#P_80*/\n\n#P_80:after {\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(29, 33, 41);\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#P_80:after*/\n\n#P_80:before {\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(29, 33, 41);\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#P_80:before*/\n\n#DIV_81 {\n    block-size: 95.4px;\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    height: 95.4px;\n    inline-size: 1110px;\n    perspective-origin: 555px 47.7px;\n    text-align: right;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 555px 47.7px;\n    width: 1110px;\n    border: 0px none rgb(29, 33, 41);\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#DIV_81*/\n\n#DIV_81:after {\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    text-align: right;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(29, 33, 41);\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#DIV_81:after*/\n\n#DIV_81:before {\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    text-align: right;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(29, 33, 41);\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#DIV_81:before*/\n\n#DIV_82 {\n    block-size: 36px;\n    border-block-end-color: rgb(255, 176, 189);\n    border-block-start-color: rgb(255, 176, 189);\n    border-inline-end-color: rgb(255, 176, 189);\n    border-inline-start-color: rgb(255, 176, 189);\n    box-sizing: border-box;\n    caret-color: rgb(255, 176, 189);\n    color: rgb(255, 176, 189);\n    -moz-column-rule-color: rgb(255, 176, 189);\n         column-rule-color: rgb(255, 176, 189);\n    height: 36px;\n    inline-size: 1110px;\n    -webkit-margin-after: 15px;\n            margin-block-end: 15px;\n    -webkit-margin-before: 15px;\n            margin-block-start: 15px;\n    perspective-origin: 555px 18px;\n    text-align: right;\n    -webkit-text-decoration: none solid rgb(255, 176, 189);\n            text-decoration: none solid rgb(255, 176, 189);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 555px 18px;\n    width: 1110px;\n    border: 0px none rgb(255, 176, 189);\n    font: 24px / 36px Nunito-Black;\n    margin: 15px 0px;\n    outline: rgb(255, 176, 189) none 0px;\n}\n\n/*#DIV_82*/\n\n#DIV_82:after {\n    border-block-end-color: rgb(255, 176, 189);\n    border-block-start-color: rgb(255, 176, 189);\n    border-inline-end-color: rgb(255, 176, 189);\n    border-inline-start-color: rgb(255, 176, 189);\n    box-sizing: border-box;\n    caret-color: rgb(255, 176, 189);\n    color: rgb(255, 176, 189);\n    -moz-column-rule-color: rgb(255, 176, 189);\n         column-rule-color: rgb(255, 176, 189);\n    text-align: right;\n    -webkit-text-decoration: none solid rgb(255, 176, 189);\n            text-decoration: none solid rgb(255, 176, 189);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(255, 176, 189);\n    font: 24px / 36px Nunito-Black;\n    outline: rgb(255, 176, 189) none 0px;\n}\n\n/*#DIV_82:after*/\n\n#DIV_82:before {\n    border-block-end-color: rgb(255, 176, 189);\n    border-block-start-color: rgb(255, 176, 189);\n    border-inline-end-color: rgb(255, 176, 189);\n    border-inline-start-color: rgb(255, 176, 189);\n    box-sizing: border-box;\n    caret-color: rgb(255, 176, 189);\n    color: rgb(255, 176, 189);\n    -moz-column-rule-color: rgb(255, 176, 189);\n         column-rule-color: rgb(255, 176, 189);\n    text-align: right;\n    -webkit-text-decoration: none solid rgb(255, 176, 189);\n            text-decoration: none solid rgb(255, 176, 189);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(255, 176, 189);\n    font: 24px / 36px Nunito-Black;\n    outline: rgb(255, 176, 189) none 0px;\n}\n\n/*#DIV_82:before*/\n\n#SUB_83 {\n    border-block-end-color: rgb(255, 176, 189);\n    border-block-start-color: rgb(255, 176, 189);\n    border-inline-end-color: rgb(255, 176, 189);\n    border-inline-start-color: rgb(255, 176, 189);\n    bottom: 0.75px;\n    box-sizing: border-box;\n    caret-color: rgb(255, 176, 189);\n    color: rgb(255, 176, 189);\n    -moz-column-rule-color: rgb(255, 176, 189);\n         column-rule-color: rgb(255, 176, 189);\n    inset-block-end: 0.75px;\n    inset-block-start: -0.75px;\n    inset-inline-end: 0px;\n    inset-inline-start: 0px;\n    left: 0px;\n    -webkit-margin-start: 1px;\n            margin-inline-start: 1px;\n    perspective-origin: 0px 0px;\n    position: relative;\n    right: 0px;\n    text-align: right;\n    -webkit-text-decoration: none solid rgb(255, 176, 189);\n            text-decoration: none solid rgb(255, 176, 189);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    top: -0.75px;\n    transform-origin: 0px 0px;\n    vertical-align: baseline;\n    border: 0px none rgb(255, 176, 189);\n    font: 15px / 0px Nunito-Black;\n    margin: 0px 0px 0px 1px;\n    outline: rgb(255, 176, 189) none 0px;\n}\n\n/*#SUB_83*/\n\n#SUB_83:after {\n    border-block-end-color: rgb(255, 176, 189);\n    border-block-start-color: rgb(255, 176, 189);\n    border-inline-end-color: rgb(255, 176, 189);\n    border-inline-start-color: rgb(255, 176, 189);\n    box-sizing: border-box;\n    caret-color: rgb(255, 176, 189);\n    color: rgb(255, 176, 189);\n    -moz-column-rule-color: rgb(255, 176, 189);\n         column-rule-color: rgb(255, 176, 189);\n    text-align: right;\n    -webkit-text-decoration: none solid rgb(255, 176, 189);\n            text-decoration: none solid rgb(255, 176, 189);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(255, 176, 189);\n    font: 15px / 0px Nunito-Black;\n    outline: rgb(255, 176, 189) none 0px;\n}\n\n/*#SUB_83:after*/\n\n#SUB_83:before {\n    border-block-end-color: rgb(255, 176, 189);\n    border-block-start-color: rgb(255, 176, 189);\n    border-inline-end-color: rgb(255, 176, 189);\n    border-inline-start-color: rgb(255, 176, 189);\n    box-sizing: border-box;\n    caret-color: rgb(255, 176, 189);\n    color: rgb(255, 176, 189);\n    -moz-column-rule-color: rgb(255, 176, 189);\n         column-rule-color: rgb(255, 176, 189);\n    text-align: right;\n    -webkit-text-decoration: none solid rgb(255, 176, 189);\n            text-decoration: none solid rgb(255, 176, 189);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(255, 176, 189);\n    font: 15px / 0px Nunito-Black;\n    outline: rgb(255, 176, 189) none 0px;\n}\n\n/*#SUB_83:before*/\n\n#DIV_84 {\n    block-size: 0px;\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    height: 0px;\n    inline-size: 1110px;\n    perspective-origin: 555px 0px;\n    text-align: right;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 555px 0px;\n    width: 1110px;\n    border: 0px none rgb(29, 33, 41);\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#DIV_84*/\n\n#DIV_84:after {\n    block-size: 0px;\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    clear: both;\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    display: block;\n    height: 0px;\n    inline-size: 1110px;\n    perspective-origin: 555px 0px;\n    text-align: right;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 555px 0px;\n    width: 1110px;\n    border: 0px none rgb(29, 33, 41);\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#DIV_84:after*/\n\n#DIV_84:before {\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    text-align: right;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(29, 33, 41);\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n#A_85 {\n    block-size: 44.4px;\n    border-block-end-color: rgb(255, 176, 189);\n    border-block-end-style: solid;\n    border-block-end-width: 1px;\n    border-block-start-color: rgb(255, 176, 189);\n    border-block-start-style: solid;\n    border-block-start-width: 1px;\n    border-inline-end-color: rgb(255, 176, 189);\n    border-inline-end-style: solid;\n    border-inline-end-width: 1px;\n    border-inline-start-color: rgb(255, 176, 189);\n    border-inline-start-style: solid;\n    border-inline-start-width: 1px;\n    box-sizing: border-box;\n    caret-color: rgb(255, 255, 255);\n    color: rgb(255, 255, 255);\n    -moz-column-rule-color: rgb(255, 255, 255);\n         column-rule-color: rgb(255, 255, 255);\n    display: inline-block;\n    height: 44.4px;\n    inline-size: 189.012px;\n    -webkit-padding-after: 8px;\n            padding-block-end: 8px;\n    -webkit-padding-before: 8px;\n            padding-block-start: 8px;\n    -webkit-padding-end: 24px;\n            padding-inline-end: 24px;\n    -webkit-padding-start: 24px;\n            padding-inline-start: 24px;\n    perspective-origin: 94.5px 22.2px;\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(255, 255, 255);\n            text-decoration: none solid rgb(255, 255, 255);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 94.5062px 22.2px;\n    -webkit-user-select: none;\n       -moz-user-select: none;\n        -ms-user-select: none;\n            user-select: none;\n    vertical-align: middle;\n    width: 190.012px;\n    background: rgb(255, 176, 189) none repeat scroll 0% 0% / auto padding-box border-box;\n    border: 1px solid rgb(255, 176, 189);\n    border-radius: 50px;\n    font: 17.6px / 26.4px Nunito-Regular;\n    outline: rgb(255, 255, 255) none 0px;\n    padding: 8px 24px;\n    transition: color 0.15s ease-in-out 0s, background-color 0.15s ease-in-out 0s, border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;\n}\n\n/*#A_1*/\n\n#A_85:after {\n    border-block-end-color: rgb(255, 255, 255);\n    border-block-start-color: rgb(255, 255, 255);\n    border-inline-end-color: rgb(255, 255, 255);\n    border-inline-start-color: rgb(255, 255, 255);\n    box-sizing: border-box;\n    caret-color: rgb(255, 255, 255);\n    color: rgb(255, 255, 255);\n    -moz-column-rule-color: rgb(255, 255, 255);\n         column-rule-color: rgb(255, 255, 255);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(255, 255, 255);\n            text-decoration: none solid rgb(255, 255, 255);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    -webkit-user-select: none;\n       -moz-user-select: none;\n        -ms-user-select: none;\n            user-select: none;\n    border: 0px none rgb(255, 255, 255);\n    font: 17.6px / 26.4px Nunito-Regular;\n    outline: rgb(255, 255, 255) none 0px;\n}\n\n/*#A_1:after*/\n\n#A_85:before {\n    border-block-end-color: rgb(255, 255, 255);\n    border-block-start-color: rgb(255, 255, 255);\n    border-inline-end-color: rgb(255, 255, 255);\n    border-inline-start-color: rgb(255, 255, 255);\n    box-sizing: border-box;\n    caret-color: rgb(255, 255, 255);\n    color: rgb(255, 255, 255);\n    -moz-column-rule-color: rgb(255, 255, 255);\n         column-rule-color: rgb(255, 255, 255);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(255, 255, 255);\n            text-decoration: none solid rgb(255, 255, 255);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    -webkit-user-select: none;\n       -moz-user-select: none;\n        -ms-user-select: none;\n            user-select: none;\n    border: 0px none rgb(255, 255, 255);\n    font: 17.6px / 26.4px Nunito-Regular;\n    outline: rgb(255, 255, 255) none 0px;\n}\n\n#A_86 {\n    block-size: 44.4px;\n    border-block-end-color: rgb(255, 176, 189);\n    border-block-end-style: solid;\n    border-block-end-width: 1px;\n    border-block-start-color: rgb(255, 176, 189);\n    border-block-start-style: solid;\n    border-block-start-width: 1px;\n    border-inline-end-color: rgb(255, 176, 189);\n    border-inline-end-style: solid;\n    border-inline-end-width: 1px;\n    border-inline-start-color: rgb(255, 176, 189);\n    border-inline-start-style: solid;\n    border-inline-start-width: 1px;\n    box-sizing: border-box;\n    caret-color: rgb(255, 176, 189);\n    color: rgb(255, 176, 189);\n    -moz-column-rule-color: rgb(255, 176, 189);\n         column-rule-color: rgb(255, 176, 189);\n    display: inline-block;\n    height: 44.4px;\n    inline-size: 139.462px;\n    -webkit-padding-after: 8px;\n            padding-block-end: 8px;\n    -webkit-padding-before: 8px;\n            padding-block-start: 8px;\n    -webkit-padding-end: 24px;\n            padding-inline-end: 24px;\n    -webkit-padding-start: 24px;\n            padding-inline-start: 24px;\n    perspective-origin: 69.725px 22.2px;\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(255, 176, 189);\n            text-decoration: none solid rgb(255, 176, 189);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 69.7312px 22.2px;\n    -webkit-user-select: none;\n       -moz-user-select: none;\n        -ms-user-select: none;\n            user-select: none;\n    vertical-align: middle;\n    width: 140.462px;\n    border: 1px solid rgb(255, 176, 189);\n    border-radius: 50px;\n    font: 17.6px / 26.4px Nunito-Regular;\n    outline: rgb(255, 176, 189) none 0px;\n    padding: 8px 24px;\n    transition: color 0.15s ease-in-out 0s, background-color 0.15s ease-in-out 0s, border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;\n}\n\n/*#A_1*/\n\n#A_86:after {\n    border-block-end-color: rgb(255, 176, 189);\n    border-block-start-color: rgb(255, 176, 189);\n    border-inline-end-color: rgb(255, 176, 189);\n    border-inline-start-color: rgb(255, 176, 189);\n    box-sizing: border-box;\n    caret-color: rgb(255, 176, 189);\n    color: rgb(255, 176, 189);\n    -moz-column-rule-color: rgb(255, 176, 189);\n         column-rule-color: rgb(255, 176, 189);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(255, 176, 189);\n            text-decoration: none solid rgb(255, 176, 189);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    -webkit-user-select: none;\n       -moz-user-select: none;\n        -ms-user-select: none;\n            user-select: none;\n    border: 0px none rgb(255, 176, 189);\n    font: 17.6px / 26.4px Nunito-Regular;\n    outline: rgb(255, 176, 189) none 0px;\n}\n\n/*#A_1:after*/\n\n#A_86:before {\n    border-block-end-color: rgb(255, 176, 189);\n    border-block-start-color: rgb(255, 176, 189);\n    border-inline-end-color: rgb(255, 176, 189);\n    border-inline-start-color: rgb(255, 176, 189);\n    box-sizing: border-box;\n    caret-color: rgb(255, 176, 189);\n    color: rgb(255, 176, 189);\n    -moz-column-rule-color: rgb(255, 176, 189);\n         column-rule-color: rgb(255, 176, 189);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(255, 176, 189);\n            text-decoration: none solid rgb(255, 176, 189);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    -webkit-user-select: none;\n       -moz-user-select: none;\n        -ms-user-select: none;\n            user-select: none;\n    border: 0px none rgb(255, 176, 189);\n    font: 17.6px / 26.4px Nunito-Regular;\n    outline: rgb(255, 176, 189) none 0px;\n}\n\n/*#A_1:before*/\n\n", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/css/footer.css":
 /*!********************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/css/footer.css ***!
@@ -8959,7 +9439,7 @@ var ___CSS_LOADER_URL_REPLACEMENT_0___ = _node_modules_css_loader_dist_runtime_g
 var ___CSS_LOADER_URL_REPLACEMENT_1___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_fonts_Mightype_otf__WEBPACK_IMPORTED_MODULE_3__.default);
 var ___CSS_LOADER_URL_REPLACEMENT_2___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_fonts_Roboto_Regular_ttf__WEBPACK_IMPORTED_MODULE_4__.default);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "body {\n    background-color: white;\n    font-family: Roboto, sans-serif;\n    font-size: 15px;\n}\n\n#login_wrapper {\n    height: 125px;\n    background-color: #ffadbb;\n    padding-left: 0 !important;\n    padding-right: 0 !important;\n}\n\n#goTop {\n    display: none;\n    opacity: 0.8;\n    position: fixed;\n    bottom: 30px;\n    right: 30px;\n    z-index: 99;\n    outline: none;\n    background-color: rgba(0, 0, 0, .3);\n    color: white;\n    cursor: pointer;\n    padding: 18px 22px 5px 22px;\n    border-radius: 4px;\n}\n\n.fa-phone {\n    font-size: 16px;\n    line-height: 18px;\n}\n\n@font-face {\n    font-family: Crass;\n    src: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n}\n\n@font-face {\n    font-family: Mightype;\n    src: url(" + ___CSS_LOADER_URL_REPLACEMENT_1___ + ");\n}\n\n@font-face {\n    font-family: Roboto;\n    src: url(" + ___CSS_LOADER_URL_REPLACEMENT_2___ + ");\n}\n\n.title h1 {\n    padding-top: 10px;\n    color: black;\n    font-family: Crass, sans-serif;\n    padding-left: 90px;\n}\n\n.title p {\n    color: white;\n    padding-left: 90px;\n    font-size: 15px;\n}\n\n#contact {\n    position: absolute;\n    right: 50px;\n    padding-top: 25px;\n}\n\n#contact ul li {\n    padding-top: 3px;\n    line-height: 20px;\n    list-style: none;\n    color: black;\n    padding-left: 100px;\n}\n\n.input-group {\n    padding-left: 40px;\n    padding-right: 45px;\n    padding-top: 25px;\n}\n\nnav {\n    background-color: #ff9faf !important;\n    z-index: 999;\n}\n\n.header {\n    background-color: #fca2b1 !important;\n    color: white;\n    font-size: .95rem;\n}\n\n.slide {\n    padding-top: 10px;\n}\n\n.container-fluid {\n    padding-left: 0 !important;\n    padding-right: 0 !important;\n}\n\n.content {\n    background-color: white;\n    margin-top: 15px;\n    padding-top: 20px;\n    padding-left: 25px;\n}\n\n.list-group {\n    padding-top: 15px;\n    padding-left: 20px;\n    padding-right: 10px;\n}\n\n.text {\n    font-weight: bold;\n    color: white;\n    padding-top: 10px;\n}\n\n.promptTextBubble {\n    background-color: #f1f0f0;\n    border-radius: 1.3em;\n    display: inline-block;\n    font-size: 11pt;\n    padding: 8px 12px;\n}\n\n.mess {\n    padding-left: 5px;\n    width: 375px;\n    height: 202px;\n    background-color: #fff;\n    border-radius: 12px;\n    bottom: 0;\n    box-shadow: 0 1pt 12pt rgba(0, 0, 0, .25);\n    display: flex;\n    flex-direction: column;\n    position: fixed;\n    z-index: 1000;\n    cursor: pointer;\n}\n\n.subButtonText {\n    color: rgba(0, 0, 0, .45);\n    line-height: 20px;\n    padding-top: 4px;\n    text-align: center;\n    font-size: 12px;\n}\n\n.btn-mess {\n    padding-top: 12px;\n    padding-left: 35px;\n}\n\n.btn-mess a {\n    width: 89%;\n    border-radius: 12px;\n}\n\n.name {\n    color: rgba(0, 0, 0, .45);\n    font-size: 12px;\n    padding-left: 75px;\n}\n\n.card-title a:hover {\n    color: #ffb0bd;\n}\n\n.card-title a {\n    color: #ba1826;\n}\n\n.row {\n    margin-right: 0;\n}\n\n.list-group-item {\n    background-color: #ffd1d9;\n}\n\n.list-group-item-action {\n    color: #ae0000;\n    font-weight: bold;\n}\n\n.btn-pink {\n    width: 200px;\n    padding: 12px;\n    color: #fff;\n    background-color: #ffb0bd;\n    border-color: #ffb0bd;\n    border-radius: .35rem;\n    font-size: 16px;\n    text-decoration: none;\n}\n\n.btn-pink:hover {\n    color: white;\n    font-weight: bold;\n    text-decoration: none;\n}\n\n.productName, .price, .order {\n    text-align: center;\n}\n\n.productName {\n    padding-top: 10px;\n    min-height: 74px;\n}\n\n.link-detail {\n    font-size: 18px;\n    color: rgb(186, 24, 38);\n    text-decoration: none;\n    font-weight: bold;\n    z-index: 10000000;\n}\n\n.link-detail:hover {\n    text-decoration: none;\n    color: rgb(255 142 152);\n}\n\n.order {\n    padding-top: 10px;\n}\n\n.home span {\n    font-family: Mightype, sans-serif;\n    font-size: 40px;\n}\n\n.home {\n    padding: 30px;\n    text-align: center;\n}\n\n.imgProduct {\n    opacity: 1;\n    display: block;\n    width: 100%;\n    height: auto;\n    transition: .4s ease;\n    -webkit-backface-visibility: hidden;\n            backface-visibility: hidden;\n    padding-bottom: 10px;\n}\n\n.thumbnail {\n    position: relative;\n    text-align: center;\n    padding: 10px;\n}\n\n.img-order {\n    height: 230px;\n    overflow: hidden;\n}\n\n.img-order:hover .imgProduct {\n    opacity: 1;\n    transform: scale(1.1);\n}\n\n.img-order:hover .order {\n    opacity: 1;\n}\n\n.order {\n    transition: .4s ease;\n    opacity: 0;\n    position: absolute;\n    top: 62.3%;\n    left: 50%;\n    transform: translate(-50%, -50%);\n    -ms-transform: translate(-50%, -50%);\n    text-align: center;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "body {\n    background-color: white;\n    font-family: Roboto, sans-serif;\n    font-size: 15px;\n}\n\n#login_wrapper {\n    height: 125px;\n    background-color: #ffadbb;\n    padding-left: 0 !important;\n    padding-right: 0 !important;\n}\n\n#goTop {\n    display: none;\n    opacity: 0.8;\n    position: fixed;\n    bottom: 30px;\n    right: 30px;\n    z-index: 99;\n    outline: none;\n    background-color: rgba(0, 0, 0, .3);\n    color: white;\n    cursor: pointer;\n    padding: 18px 22px 5px 22px;\n    border-radius: 4px;\n}\n\n.fa-phone {\n    font-size: 16px;\n    line-height: 18px;\n}\n\n@font-face {\n    font-family: Crass;\n    src: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n}\n\n@font-face {\n    font-family: Mightype;\n    src: url(" + ___CSS_LOADER_URL_REPLACEMENT_1___ + ");\n}\n\n@font-face {\n    font-family: Roboto;\n    src: url(" + ___CSS_LOADER_URL_REPLACEMENT_2___ + ");\n}\n\n.title h1 {\n    padding-top: 10px;\n    color: black;\n    font-family: Crass, sans-serif;\n    padding-left: 90px;\n}\n\n.title p {\n    color: white;\n    padding-left: 90px;\n    font-size: 15px;\n}\n\n#contact {\n    position: absolute;\n    right: 50px;\n    padding-top: 20px;\n}\n\n#contact ul li {\n    padding-top: 3px;\n    line-height: 20px;\n    list-style: none;\n    color: black;\n    padding-left: 100px;\n}\n\n.input-group {\n    padding-left: 40px;\n    padding-right: 45px;\n    padding-top: 25px;\n}\n\nnav {\n    background-color: #ff9faf !important;\n    z-index: 999;\n}\n\n.header {\n    background-color: #fca2b1 !important;\n    color: white;\n    font-size: .95rem;\n}\n\n.slide {\n    padding-top: 10px;\n}\n\n.container-fluid {\n    padding-left: 0 !important;\n    padding-right: 0 !important;\n}\n\n.content {\n    background-color: white;\n    margin-top: 15px;\n    padding-top: 20px;\n    padding-left: 25px;\n}\n\n.list-group {\n    padding-top: 15px;\n    padding-left: 20px;\n    padding-right: 10px;\n}\n\n.text {\n    font-weight: bold;\n    color: white;\n    padding-top: 10px;\n}\n\n.promptTextBubble {\n    background-color: #f1f0f0;\n    border-radius: 1.3em;\n    display: inline-block;\n    font-size: 11pt;\n    padding: 8px 12px;\n}\n\n.mess {\n    padding-left: 5px;\n    width: 375px;\n    height: 202px;\n    background-color: #fff;\n    border-radius: 12px;\n    bottom: 0;\n    box-shadow: 0 1pt 12pt rgba(0, 0, 0, .25);\n    display: flex;\n    flex-direction: column;\n    position: fixed;\n    z-index: 1000;\n    cursor: pointer;\n}\n\n.subButtonText {\n    color: rgba(0, 0, 0, .45);\n    line-height: 20px;\n    padding-top: 4px;\n    text-align: center;\n    font-size: 12px;\n}\n\n.btn-mess {\n    padding-top: 12px;\n    padding-left: 35px;\n}\n\n.btn-mess a {\n    width: 89%;\n    border-radius: 12px;\n}\n\n.name {\n    color: rgba(0, 0, 0, .45);\n    font-size: 12px;\n    padding-left: 75px;\n}\n\n.card-title a:hover {\n    color: #ffb0bd;\n}\n\n.card-title a {\n    color: #ba1826;\n}\n\n.row {\n    margin-right: 0;\n}\n\n.list-group-item {\n    background-color: #ffd1d9;\n}\n\n.list-group-item-action {\n    color: #ae0000;\n    font-weight: bold;\n}\n\n.btn-pink {\n    width: 200px;\n    padding: 12px;\n    color: #fff;\n    background-color: #ffb0bd;\n    border-color: #ffb0bd;\n    border-radius: .35rem;\n    font-size: 16px;\n    text-decoration: none;\n}\n\n.btn-pink:hover {\n    color: white;\n    font-weight: bold;\n    text-decoration: none;\n}\n\n.productName, .price, .order {\n    text-align: center;\n}\n\n.productName {\n    padding-top: 10px;\n    min-height: 74px;\n}\n\n.link-detail {\n    font-size: 18px;\n    color: rgb(186, 24, 38);\n    text-decoration: none;\n    font-weight: bold;\n    z-index: 10000000;\n}\n\n.link-detail:hover {\n    text-decoration: none;\n    color: rgb(255 142 152);\n}\n\n.order {\n    padding-top: 10px;\n}\n\n.home span {\n    font-family: Mightype, sans-serif;\n    font-size: 40px;\n}\n\n.home {\n    padding: 30px;\n    text-align: center;\n}\n\n.imgProduct {\n    opacity: 1;\n    display: block;\n    width: 100%;\n    height: auto;\n    transition: .4s ease;\n    -webkit-backface-visibility: hidden;\n            backface-visibility: hidden;\n    padding-bottom: 10px;\n}\n\n.thumbnail {\n    position: relative;\n    text-align: center;\n    padding: 10px;\n}\n\n.img-order {\n    height: 230px;\n    overflow: hidden;\n}\n\n.img-order:hover .imgProduct {\n    opacity: 1;\n    transform: scale(1.1);\n}\n\n.img-order:hover .order {\n    opacity: 1;\n}\n\n.order {\n    transition: .4s ease;\n    opacity: 0;\n    position: absolute;\n    top: 62.3%;\n    left: 50%;\n    transform: translate(-50%, -50%);\n    -ms-transform: translate(-50%, -50%);\n    text-align: center;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -8989,7 +9469,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 var ___CSS_LOADER_URL_REPLACEMENT_0___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_fonts_Nunito_Regular_ttf__WEBPACK_IMPORTED_MODULE_2__.default);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "@font-face {\n    font-family: Nunito-Regular;\n    src: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n}\n\n#MAIN_1 {\n    block-size: 414.4px;\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    height: 414.4px;\n    inline-size: 1519.2px;\n    perspective-origin: 759.6px 207.2px;\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 759.6px 207.2px;\n    width: 1519.2px;\n    border: 0px none rgb(29, 33, 41);\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#MAIN_1*/\n\n#MAIN_1:after {\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(29, 33, 41);\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#MAIN_1:after*/\n\n#MAIN_1:before {\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(29, 33, 41);\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#MAIN_1:before*/\n\n#DIV_2 {\n    block-size: 414.4px;\n    border-block-end-color: rgb(245, 245, 245);\n    border-block-end-style: solid;\n    border-block-end-width: 1px;\n    border-block-start-color: rgb(245, 245, 245);\n    border-block-start-style: solid;\n    border-block-start-width: 1px;\n    border-inline-end-color: rgb(245, 245, 245);\n    border-inline-end-style: solid;\n    border-inline-end-width: 1px;\n    border-inline-start-color: rgb(245, 245, 245);\n    border-inline-start-style: solid;\n    border-inline-start-width: 1px;\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    height: 414.4px;\n    inline-size: 600px;\n    -webkit-margin-after: 35px;\n            margin-block-end: 35px;\n    -webkit-margin-before: 35px;\n            margin-block-start: 35px;\n    -webkit-margin-end: 459.6px;\n            margin-inline-end: 459.6px;\n    -webkit-margin-start: 459.6px;\n            margin-inline-start: 459.6px;\n    max-inline-size: 600px;\n    max-width: 600px;\n    perspective-origin: 300px 207.2px;\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 300px 207.2px;\n    width: 600px;\n    border: 1px solid rgb(245, 245, 245);\n    border-radius: 3px;\n    font: 16px / 24px Nunito-Regular;\n    margin: 35px 459.6px;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#DIV_2*/\n\n#DIV_2:after {\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(29, 33, 41);\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#DIV_2:after*/\n\n#DIV_2:before {\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(29, 33, 41);\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#DIV_2:before*/\n\n#DIV_3 {\n    block-size: 40.4px;\n    border-block-end-color: rgba(204, 204, 204, 0.39);\n    border-block-end-style: solid;\n    border-block-end-width: 2px;\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-shadow: rgba(146, 146, 146, 0.14) 0px 1px 3px 0px;\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    height: 40.4px;\n    inline-size: 598px;\n    perspective-origin: 299px 20.2px;\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 299px 20.2px;\n    width: 598px;\n    border-top: 0px none rgb(29, 33, 41);\n    border-right: 0px none rgb(29, 33, 41);\n    border-bottom: 2px solid rgba(204, 204, 204, 0.39);\n    border-left: 0px none rgb(29, 33, 41);\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(29, 33, 41) none 0px;\n    overflow: hidden;\n}\n\n/*#DIV_3*/\n\n#DIV_3:after {\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(29, 33, 41);\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#DIV_3:after*/\n\n#DIV_3:before {\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(29, 33, 41);\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#DIV_3:before*/\n\n#A_4 {\n    block-size: 38.4px;\n    border-block-end-color: rgb(255, 176, 189);\n    border-block-end-style: solid;\n    border-block-end-width: 2px;\n    border-block-start-color: rgb(255, 176, 189);\n    border-inline-end-color: rgb(255, 176, 189);\n    border-inline-start-color: rgb(255, 176, 189);\n    box-sizing: border-box;\n    caret-color: rgb(255, 176, 189);\n    color: rgb(255, 176, 189);\n    -moz-column-rule-color: rgb(255, 176, 189);\n         column-rule-color: rgb(255, 176, 189);\n    display: block;\n    float: left;\n    height: 38.4px;\n    inline-size: 299px;\n    -webkit-padding-after: 5px;\n            padding-block-end: 5px;\n    -webkit-padding-before: 5px;\n            padding-block-start: 5px;\n    -webkit-padding-end: 10px;\n            padding-inline-end: 10px;\n    -webkit-padding-start: 10px;\n            padding-inline-start: 10px;\n    perspective-origin: 149.5px 19.2px;\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(255, 176, 189);\n            text-decoration: none solid rgb(255, 176, 189);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    text-transform: uppercase;\n    transform-origin: 149.5px 19.2px;\n    width: 299px;\n    border-top: 0px none rgb(255, 176, 189);\n    border-right: 0px none rgb(255, 176, 189);\n    border-bottom: 2px solid rgb(255, 176, 189);\n    border-left: 0px none rgb(255, 176, 189);\n    font: 18px / 27px Nunito-Regular;\n    outline: rgb(255, 176, 189) none 0px;\n    padding: 5px 10px;\n}\n\n/*#A_4*/\n\n#A_4:after {\n    border-block-end-color: rgb(255, 176, 189);\n    border-block-start-color: rgb(255, 176, 189);\n    border-inline-end-color: rgb(255, 176, 189);\n    border-inline-start-color: rgb(255, 176, 189);\n    box-sizing: border-box;\n    caret-color: rgb(255, 176, 189);\n    color: rgb(255, 176, 189);\n    -moz-column-rule-color: rgb(255, 176, 189);\n         column-rule-color: rgb(255, 176, 189);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(255, 176, 189);\n            text-decoration: none solid rgb(255, 176, 189);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    text-transform: uppercase;\n    border: 0px none rgb(255, 176, 189);\n    font: 18px / 27px Nunito-Regular;\n    outline: rgb(255, 176, 189) none 0px;\n}\n\n/*#A_4:after*/\n\n#A_4:before {\n    border-block-end-color: rgb(255, 176, 189);\n    border-block-start-color: rgb(255, 176, 189);\n    border-inline-end-color: rgb(255, 176, 189);\n    border-inline-start-color: rgb(255, 176, 189);\n    box-sizing: border-box;\n    caret-color: rgb(255, 176, 189);\n    color: rgb(255, 176, 189);\n    -moz-column-rule-color: rgb(255, 176, 189);\n         column-rule-color: rgb(255, 176, 189);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(255, 176, 189);\n            text-decoration: none solid rgb(255, 176, 189);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    text-transform: uppercase;\n    border: 0px none rgb(255, 176, 189);\n    font: 18px / 27px Nunito-Regular;\n    outline: rgb(255, 176, 189) none 0px;\n}\n\n/*#A_4:before*/\n\n#A_5 {\n    block-size: 38.4px;\n    border-block-end-color: rgba(0, 0, 0, 0);\n    border-block-end-style: solid;\n    border-block-end-width: 2px;\n    border-block-start-color: rgb(255, 176, 189);\n    border-inline-end-color: rgb(255, 176, 189);\n    border-inline-start-color: rgb(255, 176, 189);\n    box-sizing: border-box;\n    caret-color: rgb(255, 176, 189);\n    color: rgb(255, 176, 189);\n    -moz-column-rule-color: rgb(255, 176, 189);\n         column-rule-color: rgb(255, 176, 189);\n    display: block;\n    float: left;\n    height: 38.4px;\n    inline-size: 299px;\n    -webkit-padding-after: 5px;\n            padding-block-end: 5px;\n    -webkit-padding-before: 5px;\n            padding-block-start: 5px;\n    -webkit-padding-end: 10px;\n            padding-inline-end: 10px;\n    -webkit-padding-start: 10px;\n            padding-inline-start: 10px;\n    perspective-origin: 149.5px 19.2px;\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(255, 176, 189);\n            text-decoration: none solid rgb(255, 176, 189);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    text-transform: uppercase;\n    transform-origin: 149.5px 19.2px;\n    width: 299px;\n    border-top: 0px none rgb(255, 176, 189);\n    border-right: 0px none rgb(255, 176, 189);\n    border-bottom: 2px solid rgba(0, 0, 0, 0);\n    border-left: 0px none rgb(255, 176, 189);\n    font: 18px / 27px Nunito-Regular;\n    outline: rgb(255, 176, 189) none 0px;\n    padding: 5px 10px;\n}\n\n/*#A_5*/\n\n#A_5:after {\n    border-block-end-color: rgb(255, 176, 189);\n    border-block-start-color: rgb(255, 176, 189);\n    border-inline-end-color: rgb(255, 176, 189);\n    border-inline-start-color: rgb(255, 176, 189);\n    box-sizing: border-box;\n    caret-color: rgb(255, 176, 189);\n    color: rgb(255, 176, 189);\n    -moz-column-rule-color: rgb(255, 176, 189);\n         column-rule-color: rgb(255, 176, 189);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(255, 176, 189);\n            text-decoration: none solid rgb(255, 176, 189);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    text-transform: uppercase;\n    border: 0px none rgb(255, 176, 189);\n    font: 18px / 27px Nunito-Regular;\n    outline: rgb(255, 176, 189) none 0px;\n}\n\n/*#A_5:after*/\n\n#A_5:before {\n    border-block-end-color: rgb(255, 176, 189);\n    border-block-start-color: rgb(255, 176, 189);\n    border-inline-end-color: rgb(255, 176, 189);\n    border-inline-start-color: rgb(255, 176, 189);\n    box-sizing: border-box;\n    caret-color: rgb(255, 176, 189);\n    color: rgb(255, 176, 189);\n    -moz-column-rule-color: rgb(255, 176, 189);\n         column-rule-color: rgb(255, 176, 189);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(255, 176, 189);\n            text-decoration: none solid rgb(255, 176, 189);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    text-transform: uppercase;\n    border: 0px none rgb(255, 176, 189);\n    font: 18px / 27px Nunito-Regular;\n    outline: rgb(255, 176, 189) none 0px;\n}\n\n/*#A_5:before*/\n\n#FORM_6 {\n    block-size: 372px;\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    height: 372px;\n    inline-size: 598px;\n    -webkit-margin-after: 0px;\n            margin-block-end: 0px;\n    -webkit-padding-after: 20px;\n            padding-block-end: 20px;\n    -webkit-padding-before: 20px;\n            padding-block-start: 20px;\n    -webkit-padding-end: 20px;\n            padding-inline-end: 20px;\n    -webkit-padding-start: 20px;\n            padding-inline-start: 20px;\n    perspective-origin: 299px 186px;\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 299px 186px;\n    width: 598px;\n    border: 0px none rgb(29, 33, 41);\n    font: 16px / 24px Nunito-Regular;\n    margin: 0px;\n    outline: rgb(29, 33, 41) none 0px;\n    padding: 20px;\n}\n\n/*#FORM_6*/\n\n#FORM_6:after {\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(29, 33, 41);\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#FORM_6:after*/\n\n#FORM_6:before {\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(29, 33, 41);\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#FORM_6:before*/\n\n#INPUT_7 {\n    -webkit-appearance: none;\n       -moz-appearance: none;\n            appearance: none;\n    border-block-end-color: rgb(204, 204, 204);\n    border-block-end-style: solid;\n    border-block-end-width: 1px;\n    border-block-start-color: rgb(204, 204, 204);\n    border-block-start-style: solid;\n    border-block-start-width: 1px;\n    border-inline-end-color: rgb(204, 204, 204);\n    border-inline-end-style: solid;\n    border-inline-end-width: 1px;\n    border-inline-start-color: rgb(204, 204, 204);\n    border-inline-start-style: solid;\n    border-inline-start-width: 1px;\n    clear: both;\n    cursor: default;\n    display: none;\n    inline-size: 100%;\n    -webkit-padding-after: 8px;\n            padding-block-end: 8px;\n    -webkit-padding-before: 8px;\n            padding-block-start: 8px;\n    -webkit-padding-end: 12px;\n            padding-inline-end: 12px;\n    -webkit-padding-start: 12px;\n            padding-inline-start: 12px;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    width: 100%;\n    background: rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box;\n    border: 1px solid rgb(204, 204, 204);\n    font: 15px / 22.5px Nunito-Regular;\n    padding: 8px 12px;\n}\n\n/*#INPUT_7*/\n\n#INPUT_7:after {\n    box-sizing: border-box;\n    cursor: default;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    font: 15px / 22.5px Nunito-Regular;\n}\n\n/*#INPUT_7:after*/\n\n#INPUT_7:before {\n    box-sizing: border-box;\n    cursor: default;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    font: 15px / 22.5px Nunito-Regular;\n}\n\n/*#INPUT_7:before*/\n\n#DIV_8, #DIV_10 {\n    block-size: 40.4px;\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    height: 40.4px;\n    inline-size: 558px;\n    -webkit-margin-after: 16px;\n            margin-block-end: 16px;\n    perspective-origin: 279px 20.2px;\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 279px 20.2px;\n    width: 558px;\n    border: 0px none rgb(29, 33, 41);\n    font: 16px / 24px Nunito-Regular;\n    margin: 0px 0px 16px;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#DIV_8, #DIV_10*/\n\n#DIV_8:after, #DIV_10:after {\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(29, 33, 41);\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#DIV_8:after, #DIV_10:after*/\n\n#DIV_8:before, #DIV_10:before {\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(29, 33, 41);\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#DIV_8:before, #DIV_10:before*/\n\n#INPUT_9, #INPUT_11 {\n    block-size: 40.4px;\n    border-block-end-color: rgb(204, 204, 204);\n    border-block-end-style: solid;\n    border-block-end-width: 1px;\n    border-block-start-color: rgb(204, 204, 204);\n    border-block-start-style: solid;\n    border-block-start-width: 1px;\n    border-inline-end-color: rgb(204, 204, 204);\n    border-inline-end-style: solid;\n    border-inline-end-width: 1px;\n    border-inline-start-color: rgb(204, 204, 204);\n    border-inline-start-style: solid;\n    border-inline-start-width: 1px;\n    clear: both;\n    height: 40.4px;\n    inline-size: 558px;\n    -webkit-padding-after: 8px;\n            padding-block-end: 8px;\n    -webkit-padding-before: 8px;\n            padding-block-start: 8px;\n    -webkit-padding-end: 12px;\n            padding-inline-end: 12px;\n    -webkit-padding-start: 12px;\n            padding-inline-start: 12px;\n    perspective-origin: 279px 20.2px;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 279px 20.2px;\n    width: 558px;\n    background: rgb(232, 240, 254) none repeat scroll 0% 0% / auto padding-box border-box;\n    border: 1px solid rgb(204, 204, 204);\n    font: 15px / 22.5px Nunito-Regular;\n    padding: 8px 12px;\n}\n\n/*#INPUT_9, #INPUT_11*/\n\n#INPUT_9:after, #INPUT_11:after {\n    box-sizing: border-box;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    font: 15px / 22.5px Nunito-Regular;\n}\n\n/*#INPUT_9:after, #INPUT_11:after*/\n\n#INPUT_9:before, #INPUT_11:before {\n    box-sizing: border-box;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    font: 15px / 22.5px Nunito-Regular;\n}\n\n/*#INPUT_9:before, #INPUT_11:before*/\n\n#DIV_12 {\n    block-size: 219.2px;\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    height: 219.2px;\n    inline-size: 558px;\n    perspective-origin: 279px 109.6px;\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 279px 109.6px;\n    width: 558px;\n    border: 0px none rgb(29, 33, 41);\n    font: 17px / 25.5px Nunito-Regular;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#DIV_12*/\n\n#DIV_12:after {\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(29, 33, 41);\n    font: 17px / 25.5px Nunito-Regular;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#DIV_12:after*/\n\n#DIV_12:before {\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(29, 33, 41);\n    font: 17px / 25.5px Nunito-Regular;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#DIV_12:before*/\n\n#BUTTON_13 {\n    -webkit-appearance: none;\n       -moz-appearance: none;\n            appearance: none;\n    block-size: 38px;\n    border-block-end-color: rgb(255, 176, 189);\n    border-block-end-style: solid;\n    border-block-end-width: 1px;\n    border-block-start-color: rgb(255, 176, 189);\n    border-block-start-style: solid;\n    border-block-start-width: 1px;\n    border-inline-end-color: rgb(255, 176, 189);\n    border-inline-end-style: solid;\n    border-inline-end-width: 1px;\n    border-inline-start-color: rgb(255, 176, 189);\n    border-inline-start-style: solid;\n    border-inline-start-width: 1px;\n    caret-color: rgb(255, 255, 255);\n    color: rgb(255, 255, 255);\n    -moz-column-rule-color: rgb(255, 255, 255);\n         column-rule-color: rgb(255, 255, 255);\n    cursor: pointer;\n    height: 38px;\n    inline-size: 558px;\n    -webkit-padding-after: 6px;\n            padding-block-end: 6px;\n    -webkit-padding-before: 6px;\n            padding-block-start: 6px;\n    -webkit-padding-end: 12px;\n            padding-inline-end: 12px;\n    -webkit-padding-start: 12px;\n            padding-inline-start: 12px;\n    perspective-origin: 279px 19px;\n    -webkit-text-decoration: none solid rgb(255, 255, 255);\n            text-decoration: none solid rgb(255, 255, 255);\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    text-transform: uppercase;\n    transform-origin: 279px 19px;\n    -webkit-user-select: none;\n       -moz-user-select: none;\n        -ms-user-select: none;\n            user-select: none;\n    vertical-align: middle;\n    width: 558px;\n    background: rgb(255, 176, 189) none repeat scroll 0% 0% / auto padding-box border-box;\n    border: 1px solid rgb(255, 176, 189);\n    border-radius: 5.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(255, 255, 255) none 0px;\n    padding: 6px 12px;\n    transition: color 0.15s ease-in-out 0s, background-color 0.15s ease-in-out 0s, border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;\n}\n\n/*#BUTTON_13*/\n\n#BUTTON_13:after {\n    border-block-end-color: rgb(255, 255, 255);\n    border-block-start-color: rgb(255, 255, 255);\n    border-inline-end-color: rgb(255, 255, 255);\n    border-inline-start-color: rgb(255, 255, 255);\n    box-sizing: border-box;\n    caret-color: rgb(255, 255, 255);\n    color: rgb(255, 255, 255);\n    -moz-column-rule-color: rgb(255, 255, 255);\n         column-rule-color: rgb(255, 255, 255);\n    cursor: pointer;\n    -webkit-text-decoration: none solid rgb(255, 255, 255);\n            text-decoration: none solid rgb(255, 255, 255);\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    text-transform: uppercase;\n    -webkit-user-select: none;\n       -moz-user-select: none;\n        -ms-user-select: none;\n            user-select: none;\n    border: 0px none rgb(255, 255, 255);\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(255, 255, 255) none 0px;\n}\n\n/*#BUTTON_13:after*/\n\n#BUTTON_13:before {\n    border-block-end-color: rgb(255, 255, 255);\n    border-block-start-color: rgb(255, 255, 255);\n    border-inline-end-color: rgb(255, 255, 255);\n    border-inline-start-color: rgb(255, 255, 255);\n    box-sizing: border-box;\n    caret-color: rgb(255, 255, 255);\n    color: rgb(255, 255, 255);\n    -moz-column-rule-color: rgb(255, 255, 255);\n         column-rule-color: rgb(255, 255, 255);\n    cursor: pointer;\n    -webkit-text-decoration: none solid rgb(255, 255, 255);\n            text-decoration: none solid rgb(255, 255, 255);\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    text-transform: uppercase;\n    -webkit-user-select: none;\n       -moz-user-select: none;\n        -ms-user-select: none;\n            user-select: none;\n    border: 0px none rgb(255, 255, 255);\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(255, 255, 255) none 0px;\n}\n\n/*#BUTTON_13:before*/\n\n#A_14 {\n    block-size: 36.8px;\n    border-block-end-color: rgb(51, 51, 51);\n    border-block-start-color: rgb(51, 51, 51);\n    border-inline-end-color: rgb(51, 51, 51);\n    border-inline-start-color: rgb(51, 51, 51);\n    box-sizing: border-box;\n    caret-color: rgb(51, 51, 51);\n    color: rgb(51, 51, 51);\n    -moz-column-rule-color: rgb(51, 51, 51);\n         column-rule-color: rgb(51, 51, 51);\n    display: block;\n    height: 36.8px;\n    inline-size: 558px;\n    -webkit-padding-after: 8px;\n            padding-block-end: 8px;\n    -webkit-padding-before: 8px;\n            padding-block-start: 8px;\n    perspective-origin: 279px 18.4px;\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(51, 51, 51);\n            text-decoration: none solid rgb(51, 51, 51);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 279px 18.4px;\n    width: 558px;\n    border: 0px none rgb(51, 51, 51);\n    font: 14px / 21px Nunito-Regular;\n    outline: rgb(51, 51, 51) none 0px;\n    padding: 8px 0px;\n}\n\n/*#A_14*/\n\n#A_14:after {\n    block-size: 0px;\n    border-block-end-color: rgb(51, 51, 51);\n    border-block-start-color: rgb(51, 51, 51);\n    border-inline-end-color: rgb(51, 51, 51);\n    border-inline-start-color: rgb(51, 51, 51);\n    box-sizing: border-box;\n    caret-color: rgb(51, 51, 51);\n    clear: both;\n    color: rgb(51, 51, 51);\n    -moz-column-rule-color: rgb(51, 51, 51);\n         column-rule-color: rgb(51, 51, 51);\n    display: block;\n    height: 0px;\n    inline-size: 558px;\n    perspective-origin: 279px 0px;\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(51, 51, 51);\n            text-decoration: none solid rgb(51, 51, 51);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 279px 0px;\n    width: 558px;\n    border: 0px none rgb(51, 51, 51);\n    font: 14px / 21px Nunito-Regular;\n    outline: rgb(51, 51, 51) none 0px;\n}\n\n/*#A_14:after*/\n\n#A_14:before {\n    border-block-end-color: rgb(51, 51, 51);\n    border-block-start-color: rgb(51, 51, 51);\n    border-inline-end-color: rgb(51, 51, 51);\n    border-inline-start-color: rgb(51, 51, 51);\n    box-sizing: border-box;\n    caret-color: rgb(51, 51, 51);\n    color: rgb(51, 51, 51);\n    -moz-column-rule-color: rgb(51, 51, 51);\n         column-rule-color: rgb(51, 51, 51);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(51, 51, 51);\n            text-decoration: none solid rgb(51, 51, 51);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(51, 51, 51);\n    font: 14px / 21px Nunito-Regular;\n    outline: rgb(51, 51, 51) none 0px;\n}\n\n/*#A_14:before*/\n\n#P_15 {\n    block-size: 24.8px;\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    height: 24.8px;\n    inline-size: 558px;\n    -webkit-margin-after: 16px;\n            margin-block-end: 16px;\n    -webkit-margin-before: 0px;\n            margin-block-start: 0px;\n    perspective-origin: 279px 12.4px;\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 279px 12.4px;\n    width: 558px;\n    border: 0px none rgb(29, 33, 41);\n    font: 17px / 25.5px Nunito-Regular;\n    margin: 0px 0px 16px;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#P_15*/\n\n#P_15:after {\n    block-size: 0px;\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    clear: both;\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    display: block;\n    height: 0px;\n    inline-size: 558px;\n    perspective-origin: 279px 0px;\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 279px 0px;\n    width: 558px;\n    border: 0px none rgb(29, 33, 41);\n    font: 17px / 25.5px Nunito-Regular;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#P_15:after*/\n\n#P_15:before {\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(29, 33, 41);\n    font: 17px / 25.5px Nunito-Regular;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#P_15:before*/\n\n#DIV_16 {\n    block-size: 36.8px;\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    display: inline-block;\n    height: 36.8px;\n    inline-size: 558px;\n    -webkit-margin-before: 20px;\n            margin-block-start: 20px;\n    perspective-origin: 279px 18.4px;\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 279px 18.4px;\n    width: 558px;\n    background: rgb(46, 75, 136) none repeat scroll 0% 0% / auto padding-box border-box;\n    border: 0px none rgb(29, 33, 41);\n    border-radius: 3px;\n    font: 17px / 25.5px Nunito-Regular;\n    margin: 20px 0px 0px;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#DIV_16*/\n\n#DIV_16:after {\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(29, 33, 41);\n    font: 17px / 25.5px Nunito-Regular;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#DIV_16:after*/\n\n#DIV_16:before {\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(29, 33, 41);\n    font: 17px / 25.5px Nunito-Regular;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#DIV_16:before*/\n\n#A_17, #A_20 {\n    block-size: 36.8px;\n    border-block-end-color: rgb(255, 255, 255);\n    border-block-start-color: rgb(255, 255, 255);\n    border-inline-end-color: rgb(255, 255, 255);\n    border-inline-start-color: rgb(255, 255, 255);\n    box-sizing: border-box;\n    caret-color: rgb(255, 255, 255);\n    color: rgb(255, 255, 255);\n    -moz-column-rule-color: rgb(255, 255, 255);\n         column-rule-color: rgb(255, 255, 255);\n    display: block;\n    height: 36.8px;\n    inline-size: 558px;\n    -webkit-padding-after: 8px;\n            padding-block-end: 8px;\n    -webkit-padding-before: 8px;\n            padding-block-start: 8px;\n    perspective-origin: 279px 18.4px;\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(255, 255, 255);\n            text-decoration: none solid rgb(255, 255, 255);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 279px 18.4px;\n    width: 558px;\n    border: 0px none rgb(255, 255, 255);\n    font: 14px / 21px Nunito-Regular;\n    outline: rgb(255, 255, 255) none 0px;\n    padding: 8px 0px;\n}\n\n/*#A_17, #A_20*/\n\n#A_17:after, #A_20:after {\n    border-block-end-color: rgb(255, 255, 255);\n    border-block-start-color: rgb(255, 255, 255);\n    border-inline-end-color: rgb(255, 255, 255);\n    border-inline-start-color: rgb(255, 255, 255);\n    box-sizing: border-box;\n    caret-color: rgb(255, 255, 255);\n    color: rgb(255, 255, 255);\n    -moz-column-rule-color: rgb(255, 255, 255);\n         column-rule-color: rgb(255, 255, 255);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(255, 255, 255);\n            text-decoration: none solid rgb(255, 255, 255);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(255, 255, 255);\n    font: 14px / 21px Nunito-Regular;\n    outline: rgb(255, 255, 255) none 0px;\n}\n\n/*#A_17:after, #A_20:after*/\n\n#A_17:before, #A_20:before {\n    border-block-end-color: rgb(255, 255, 255);\n    border-block-start-color: rgb(255, 255, 255);\n    border-inline-end-color: rgb(255, 255, 255);\n    border-inline-start-color: rgb(255, 255, 255);\n    box-sizing: border-box;\n    caret-color: rgb(255, 255, 255);\n    color: rgb(255, 255, 255);\n    -moz-column-rule-color: rgb(255, 255, 255);\n         column-rule-color: rgb(255, 255, 255);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(255, 255, 255);\n            text-decoration: none solid rgb(255, 255, 255);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(255, 255, 255);\n    font: 14px / 21px Nunito-Regular;\n    outline: rgb(255, 255, 255) none 0px;\n}\n\n/*#A_17:before, #A_20:before*/\n\n#DIV_19 {\n    block-size: 36.8px;\n    border-block-end-color: rgb(255, 255, 255);\n    border-block-start-color: rgb(255, 255, 255);\n    border-inline-end-color: rgb(255, 255, 255);\n    border-inline-start-color: rgb(255, 255, 255);\n    box-sizing: border-box;\n    caret-color: rgb(255, 255, 255);\n    color: rgb(255, 255, 255);\n    -moz-column-rule-color: rgb(255, 255, 255);\n         column-rule-color: rgb(255, 255, 255);\n    display: inline-block;\n    height: 36.8px;\n    inline-size: 558px;\n    -webkit-margin-before: 10px;\n            margin-block-start: 10px;\n    perspective-origin: 279px 18.4px;\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(255, 255, 255);\n            text-decoration: none solid rgb(255, 255, 255);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 279px 18.4px;\n    width: 558px;\n    background: rgb(234, 66, 53) none repeat scroll 0% 0% / auto padding-box border-box;\n    border: 0px none rgb(255, 255, 255);\n    border-radius: 3px;\n    font: 17px / 25.5px Nunito-Regular;\n    margin: 10px 0px 0px;\n    outline: rgb(255, 255, 255) none 0px;\n}\n\n/*#DIV_19*/\n\n#DIV_19:after {\n    border-block-end-color: rgb(255, 255, 255);\n    border-block-start-color: rgb(255, 255, 255);\n    border-inline-end-color: rgb(255, 255, 255);\n    border-inline-start-color: rgb(255, 255, 255);\n    box-sizing: border-box;\n    caret-color: rgb(255, 255, 255);\n    color: rgb(255, 255, 255);\n    -moz-column-rule-color: rgb(255, 255, 255);\n         column-rule-color: rgb(255, 255, 255);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(255, 255, 255);\n            text-decoration: none solid rgb(255, 255, 255);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(255, 255, 255);\n    font: 17px / 25.5px Nunito-Regular;\n    outline: rgb(255, 255, 255) none 0px;\n}\n\n/*#DIV_19:after*/\n\n#DIV_19:before {\n    border-block-end-color: rgb(255, 255, 255);\n    border-block-start-color: rgb(255, 255, 255);\n    border-inline-end-color: rgb(255, 255, 255);\n    border-inline-start-color: rgb(255, 255, 255);\n    box-sizing: border-box;\n    caret-color: rgb(255, 255, 255);\n    color: rgb(255, 255, 255);\n    -moz-column-rule-color: rgb(255, 255, 255);\n         column-rule-color: rgb(255, 255, 255);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(255, 255, 255);\n            text-decoration: none solid rgb(255, 255, 255);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(255, 255, 255);\n    font: 17px / 25.5px Nunito-Regular;\n    outline: rgb(255, 255, 255) none 0px;\n}\n\n/*#DIV_19:before*/\n\n\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "@font-face {\n    font-family: Nunito-Regular;\n    src: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n}\n\n#MAIN_login_10 {\n    block-size: 414.4px;\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    height: 414.4px;\n    inline-size: 1519.2px;\n    perspective-origin: 759.6px 207.2px;\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 759.6px 207.2px;\n    width: 1519.2px;\n    border: 0px none rgb(29, 33, 41);\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#MAIN_login_10*/\n\n#MAIN_login_10:after {\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(29, 33, 41);\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#MAIN_login_10:after*/\n\n#MAIN_login_10:before {\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(29, 33, 41);\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#MAIN_login_10:before*/\n\n#DIV_login_20 {\n    block-size: 414.4px;\n    border-block-end-color: rgb(245, 245, 245);\n    border-block-end-style: solid;\n    border-block-end-width: 1px;\n    border-block-start-color: rgb(245, 245, 245);\n    border-block-start-style: solid;\n    border-block-start-width: 1px;\n    border-inline-end-color: rgb(245, 245, 245);\n    border-inline-end-style: solid;\n    border-inline-end-width: 1px;\n    border-inline-start-color: rgb(245, 245, 245);\n    border-inline-start-style: solid;\n    border-inline-start-width: 1px;\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    height: 414.4px;\n    inline-size: 600px;\n    -webkit-margin-after: 35px;\n            margin-block-end: 35px;\n    -webkit-margin-before: 35px;\n            margin-block-start: 35px;\n    -webkit-margin-end: 459.6px;\n            margin-inline-end: 459.6px;\n    -webkit-margin-start: 459.6px;\n            margin-inline-start: 459.6px;\n    max-inline-size: 600px;\n    max-width: 600px;\n    perspective-origin: 300px 207.2px;\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 300px 207.2px;\n    width: 600px;\n    border: 1px solid rgb(245, 245, 245);\n    border-radius: 3px;\n    font: 16px / 24px Nunito-Regular;\n    margin: 35px 459.6px;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#DIV_login_20*/\n\n#DIV_login_20:after {\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(29, 33, 41);\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#DIV_login_20:after*/\n\n#DIV_login_20:before {\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(29, 33, 41);\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#DIV_login_20:before*/\n\n#DIV_login_30 {\n    block-size: 40.4px;\n    border-block-end-color: rgba(204, 204, 204, 0.39);\n    border-block-end-style: solid;\n    border-block-end-width: 2px;\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-shadow: rgba(146, 146, 146, 0.14) 0px 1px 3px 0px;\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    height: 40.4px;\n    inline-size: 598px;\n    perspective-origin: 299px 20.2px;\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 299px 20.2px;\n    width: 598px;\n    border-top: 0px none rgb(29, 33, 41);\n    border-right: 0px none rgb(29, 33, 41);\n    border-bottom: 2px solid rgba(204, 204, 204, 0.39);\n    border-left: 0px none rgb(29, 33, 41);\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(29, 33, 41) none 0px;\n    overflow: hidden;\n}\n\n/*#DIV_login_30*/\n\n#DIV_login_30:after {\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(29, 33, 41);\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#DIV_login_30:after*/\n\n#DIV_login_30:before {\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(29, 33, 41);\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#DIV_login_30:before*/\n\n#A_login_40 {\n    block-size: 38.4px;\n    border-block-end-color: rgb(255, 176, 189);\n    border-block-end-style: solid;\n    border-block-end-width: 2px;\n    border-block-start-color: rgb(255, 176, 189);\n    border-inline-end-color: rgb(255, 176, 189);\n    border-inline-start-color: rgb(255, 176, 189);\n    box-sizing: border-box;\n    caret-color: rgb(255, 176, 189);\n    color: rgb(255, 176, 189);\n    -moz-column-rule-color: rgb(255, 176, 189);\n         column-rule-color: rgb(255, 176, 189);\n    display: block;\n    float: left;\n    height: 38.4px;\n    inline-size: 299px;\n    -webkit-padding-after: 5px;\n            padding-block-end: 5px;\n    -webkit-padding-before: 5px;\n            padding-block-start: 5px;\n    -webkit-padding-end: 10px;\n            padding-inline-end: 10px;\n    -webkit-padding-start: 10px;\n            padding-inline-start: 10px;\n    perspective-origin: 149.5px 19.2px;\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(255, 176, 189);\n            text-decoration: none solid rgb(255, 176, 189);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    text-transform: uppercase;\n    transform-origin: 149.5px 19.2px;\n    width: 299px;\n    border-top: 0px none rgb(255, 176, 189);\n    border-right: 0px none rgb(255, 176, 189);\n    border-bottom: 2px solid rgb(255, 176, 189);\n    border-left: 0px none rgb(255, 176, 189);\n    font: 18px / 27px Nunito-Regular;\n    outline: rgb(255, 176, 189) none 0px;\n    padding: 5px 10px;\n}\n\n/*#A_login_40*/\n\n#A_login_40:after {\n    border-block-end-color: rgb(255, 176, 189);\n    border-block-start-color: rgb(255, 176, 189);\n    border-inline-end-color: rgb(255, 176, 189);\n    border-inline-start-color: rgb(255, 176, 189);\n    box-sizing: border-box;\n    caret-color: rgb(255, 176, 189);\n    color: rgb(255, 176, 189);\n    -moz-column-rule-color: rgb(255, 176, 189);\n         column-rule-color: rgb(255, 176, 189);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(255, 176, 189);\n            text-decoration: none solid rgb(255, 176, 189);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    text-transform: uppercase;\n    border: 0px none rgb(255, 176, 189);\n    font: 18px / 27px Nunito-Regular;\n    outline: rgb(255, 176, 189) none 0px;\n}\n\n/*#A_login_40:after*/\n\n#A_login_40:before {\n    border-block-end-color: rgb(255, 176, 189);\n    border-block-start-color: rgb(255, 176, 189);\n    border-inline-end-color: rgb(255, 176, 189);\n    border-inline-start-color: rgb(255, 176, 189);\n    box-sizing: border-box;\n    caret-color: rgb(255, 176, 189);\n    color: rgb(255, 176, 189);\n    -moz-column-rule-color: rgb(255, 176, 189);\n         column-rule-color: rgb(255, 176, 189);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(255, 176, 189);\n            text-decoration: none solid rgb(255, 176, 189);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    text-transform: uppercase;\n    border: 0px none rgb(255, 176, 189);\n    font: 18px / 27px Nunito-Regular;\n    outline: rgb(255, 176, 189) none 0px;\n}\n\n/*#A_login_40:before*/\n\n#A_login_50 {\n    block-size: 38.4px;\n    border-block-end-color: rgba(0, 0, 0, 0);\n    border-block-end-style: solid;\n    border-block-end-width: 2px;\n    border-block-start-color: rgb(255, 176, 189);\n    border-inline-end-color: rgb(255, 176, 189);\n    border-inline-start-color: rgb(255, 176, 189);\n    box-sizing: border-box;\n    caret-color: rgb(255, 176, 189);\n    color: rgb(255, 176, 189);\n    -moz-column-rule-color: rgb(255, 176, 189);\n         column-rule-color: rgb(255, 176, 189);\n    display: block;\n    float: left;\n    height: 38.4px;\n    inline-size: 299px;\n    -webkit-padding-after: 5px;\n            padding-block-end: 5px;\n    -webkit-padding-before: 5px;\n            padding-block-start: 5px;\n    -webkit-padding-end: 10px;\n            padding-inline-end: 10px;\n    -webkit-padding-start: 10px;\n            padding-inline-start: 10px;\n    perspective-origin: 149.5px 19.2px;\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(255, 176, 189);\n            text-decoration: none solid rgb(255, 176, 189);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    text-transform: uppercase;\n    transform-origin: 149.5px 19.2px;\n    width: 299px;\n    border-top: 0px none rgb(255, 176, 189);\n    border-right: 0px none rgb(255, 176, 189);\n    border-bottom: 2px solid rgba(0, 0, 0, 0);\n    border-left: 0px none rgb(255, 176, 189);\n    font: 18px / 27px Nunito-Regular;\n    outline: rgb(255, 176, 189) none 0px;\n    padding: 5px 10px;\n}\n\n/*#A_login_50*/\n\n#A_login_50:after {\n    border-block-end-color: rgb(255, 176, 189);\n    border-block-start-color: rgb(255, 176, 189);\n    border-inline-end-color: rgb(255, 176, 189);\n    border-inline-start-color: rgb(255, 176, 189);\n    box-sizing: border-box;\n    caret-color: rgb(255, 176, 189);\n    color: rgb(255, 176, 189);\n    -moz-column-rule-color: rgb(255, 176, 189);\n         column-rule-color: rgb(255, 176, 189);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(255, 176, 189);\n            text-decoration: none solid rgb(255, 176, 189);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    text-transform: uppercase;\n    border: 0px none rgb(255, 176, 189);\n    font: 18px / 27px Nunito-Regular;\n    outline: rgb(255, 176, 189) none 0px;\n}\n\n/*#A_login_50:after*/\n\n#A_login_50:before {\n    border-block-end-color: rgb(255, 176, 189);\n    border-block-start-color: rgb(255, 176, 189);\n    border-inline-end-color: rgb(255, 176, 189);\n    border-inline-start-color: rgb(255, 176, 189);\n    box-sizing: border-box;\n    caret-color: rgb(255, 176, 189);\n    color: rgb(255, 176, 189);\n    -moz-column-rule-color: rgb(255, 176, 189);\n         column-rule-color: rgb(255, 176, 189);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(255, 176, 189);\n            text-decoration: none solid rgb(255, 176, 189);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    text-transform: uppercase;\n    border: 0px none rgb(255, 176, 189);\n    font: 18px / 27px Nunito-Regular;\n    outline: rgb(255, 176, 189) none 0px;\n}\n\n/*#A_login_50:before*/\n\n#FORM_login_60 {\n    block-size: 372px;\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    height: 372px;\n    inline-size: 598px;\n    -webkit-margin-after: 0px;\n            margin-block-end: 0px;\n    -webkit-padding-after: 20px;\n            padding-block-end: 20px;\n    -webkit-padding-before: 20px;\n            padding-block-start: 20px;\n    -webkit-padding-end: 20px;\n            padding-inline-end: 20px;\n    -webkit-padding-start: 20px;\n            padding-inline-start: 20px;\n    perspective-origin: 299px 186px;\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 299px 186px;\n    width: 598px;\n    border: 0px none rgb(29, 33, 41);\n    font: 16px / 24px Nunito-Regular;\n    margin: 0px;\n    outline: rgb(29, 33, 41) none 0px;\n    padding: 20px;\n}\n\n/*#FORM_login_60*/\n\n#FORM_login_60:after {\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(29, 33, 41);\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#FORM_login_60:after*/\n\n#FORM_login_60:before {\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(29, 33, 41);\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#FORM_login_60:before*/\n\n#INPUT_login_70 {\n    -webkit-appearance: none;\n       -moz-appearance: none;\n            appearance: none;\n    border-block-end-color: rgb(204, 204, 204);\n    border-block-end-style: solid;\n    border-block-end-width: 1px;\n    border-block-start-color: rgb(204, 204, 204);\n    border-block-start-style: solid;\n    border-block-start-width: 1px;\n    border-inline-end-color: rgb(204, 204, 204);\n    border-inline-end-style: solid;\n    border-inline-end-width: 1px;\n    border-inline-start-color: rgb(204, 204, 204);\n    border-inline-start-style: solid;\n    border-inline-start-width: 1px;\n    clear: both;\n    cursor: default;\n    display: none;\n    inline-size: 100%;\n    -webkit-padding-after: 8px;\n            padding-block-end: 8px;\n    -webkit-padding-before: 8px;\n            padding-block-start: 8px;\n    -webkit-padding-end: 12px;\n            padding-inline-end: 12px;\n    -webkit-padding-start: 12px;\n            padding-inline-start: 12px;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    width: 100%;\n    background: rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box;\n    border: 1px solid rgb(204, 204, 204);\n    font: 15px / 22.5px Nunito-Regular;\n    padding: 8px 12px;\n}\n\n/*#INPUT_login_70*/\n\n#INPUT_login_70:after {\n    box-sizing: border-box;\n    cursor: default;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    font: 15px / 22.5px Nunito-Regular;\n}\n\n/*#INPUT_login_70:after*/\n\n#INPUT_login_70:before {\n    box-sizing: border-box;\n    cursor: default;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    font: 15px / 22.5px Nunito-Regular;\n}\n\n/*#INPUT_login_70:before*/\n\n#DIV_login_80, #DIV_login_100 {\n    block-size: 40.4px;\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    height: 40.4px;\n    inline-size: 558px;\n    -webkit-margin-after: 16px;\n            margin-block-end: 16px;\n    perspective-origin: 279px 20.2px;\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 279px 20.2px;\n    width: 558px;\n    border: 0px none rgb(29, 33, 41);\n    font: 16px / 24px Nunito-Regular;\n    margin: 0px 0px 16px;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#DIV_login_80, #DIV_login_100*/\n\n#DIV_login_80:after, #DIV_login_100:after {\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(29, 33, 41);\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#DIV_login_80:after, #DIV_login_100:after*/\n\n#DIV_login_80:before, #DIV_login_100:before {\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    text-align: left;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(29, 33, 41);\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#DIV_login_80:before, #DIV_login_100:before*/\n\n#INPUT_login_90, #INPUT_login_101 {\n    block-size: 40.4px;\n    border-block-end-color: rgb(204, 204, 204);\n    border-block-end-style: solid;\n    border-block-end-width: 1px;\n    border-block-start-color: rgb(204, 204, 204);\n    border-block-start-style: solid;\n    border-block-start-width: 1px;\n    border-inline-end-color: rgb(204, 204, 204);\n    border-inline-end-style: solid;\n    border-inline-end-width: 1px;\n    border-inline-start-color: rgb(204, 204, 204);\n    border-inline-start-style: solid;\n    border-inline-start-width: 1px;\n    clear: both;\n    height: 40.4px;\n    inline-size: 558px;\n    -webkit-padding-after: 8px;\n            padding-block-end: 8px;\n    -webkit-padding-before: 8px;\n            padding-block-start: 8px;\n    -webkit-padding-end: 12px;\n            padding-inline-end: 12px;\n    -webkit-padding-start: 12px;\n            padding-inline-start: 12px;\n    perspective-origin: 279px 20.2px;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 279px 20.2px;\n    width: 558px;\n    background: rgb(232, 240, 254) none repeat scroll 0% 0% / auto padding-box border-box;\n    border: 1px solid rgb(204, 204, 204);\n    font: 15px / 22.5px Nunito-Regular;\n    padding: 8px 12px;\n}\n\n/*#INPUT_login_90, #INPUT_login_101*/\n\n#INPUT_login_90:after, #INPUT_login_101:after {\n    box-sizing: border-box;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    font: 15px / 22.5px Nunito-Regular;\n}\n\n/*#INPUT_login_90:after, #INPUT_login_101:after*/\n\n#INPUT_login_90:before, #INPUT_login_101:before {\n    box-sizing: border-box;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    font: 15px / 22.5px Nunito-Regular;\n}\n\n/*#INPUT_login_90:before, #INPUT_login_101:before*/\n\n#DIV_login_102 {\n    block-size: 219.2px;\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    height: 219.2px;\n    inline-size: 558px;\n    perspective-origin: 279px 109.6px;\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 279px 109.6px;\n    width: 558px;\n    border: 0px none rgb(29, 33, 41);\n    font: 17px / 25.5px Nunito-Regular;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#DIV_login_102*/\n\n#DIV_login_102:after {\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(29, 33, 41);\n    font: 17px / 25.5px Nunito-Regular;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#DIV_login_102:after*/\n\n#DIV_login_102:before {\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(29, 33, 41);\n    font: 17px / 25.5px Nunito-Regular;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#DIV_login_102:before*/\n\n#BUTTON_login_103 {\n    -webkit-appearance: none;\n       -moz-appearance: none;\n            appearance: none;\n    block-size: 38px;\n    border-block-end-color: rgb(255, 176, 189);\n    border-block-end-style: solid;\n    border-block-end-width: 1px;\n    border-block-start-color: rgb(255, 176, 189);\n    border-block-start-style: solid;\n    border-block-start-width: 1px;\n    border-inline-end-color: rgb(255, 176, 189);\n    border-inline-end-style: solid;\n    border-inline-end-width: 1px;\n    border-inline-start-color: rgb(255, 176, 189);\n    border-inline-start-style: solid;\n    border-inline-start-width: 1px;\n    caret-color: rgb(255, 255, 255);\n    color: rgb(255, 255, 255);\n    -moz-column-rule-color: rgb(255, 255, 255);\n         column-rule-color: rgb(255, 255, 255);\n    cursor: pointer;\n    height: 38px;\n    inline-size: 558px;\n    -webkit-padding-after: 6px;\n            padding-block-end: 6px;\n    -webkit-padding-before: 6px;\n            padding-block-start: 6px;\n    -webkit-padding-end: 12px;\n            padding-inline-end: 12px;\n    -webkit-padding-start: 12px;\n            padding-inline-start: 12px;\n    perspective-origin: 279px 19px;\n    -webkit-text-decoration: none solid rgb(255, 255, 255);\n            text-decoration: none solid rgb(255, 255, 255);\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    text-transform: uppercase;\n    transform-origin: 279px 19px;\n    -webkit-user-select: none;\n       -moz-user-select: none;\n        -ms-user-select: none;\n            user-select: none;\n    vertical-align: middle;\n    width: 558px;\n    background: rgb(255, 176, 189) none repeat scroll 0% 0% / auto padding-box border-box;\n    border: 1px solid rgb(255, 176, 189);\n    border-radius: 5.6px;\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(255, 255, 255) none 0px;\n    padding: 6px 12px;\n    transition: color 0.15s ease-in-out 0s, background-color 0.15s ease-in-out 0s, border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;\n}\n\n/*#BUTTON_login_103*/\n\n#BUTTON_login_103:after {\n    border-block-end-color: rgb(255, 255, 255);\n    border-block-start-color: rgb(255, 255, 255);\n    border-inline-end-color: rgb(255, 255, 255);\n    border-inline-start-color: rgb(255, 255, 255);\n    box-sizing: border-box;\n    caret-color: rgb(255, 255, 255);\n    color: rgb(255, 255, 255);\n    -moz-column-rule-color: rgb(255, 255, 255);\n         column-rule-color: rgb(255, 255, 255);\n    cursor: pointer;\n    -webkit-text-decoration: none solid rgb(255, 255, 255);\n            text-decoration: none solid rgb(255, 255, 255);\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    text-transform: uppercase;\n    -webkit-user-select: none;\n       -moz-user-select: none;\n        -ms-user-select: none;\n            user-select: none;\n    border: 0px none rgb(255, 255, 255);\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(255, 255, 255) none 0px;\n}\n\n/*#BUTTON_login_103:after*/\n\n#BUTTON_login_103:before {\n    border-block-end-color: rgb(255, 255, 255);\n    border-block-start-color: rgb(255, 255, 255);\n    border-inline-end-color: rgb(255, 255, 255);\n    border-inline-start-color: rgb(255, 255, 255);\n    box-sizing: border-box;\n    caret-color: rgb(255, 255, 255);\n    color: rgb(255, 255, 255);\n    -moz-column-rule-color: rgb(255, 255, 255);\n         column-rule-color: rgb(255, 255, 255);\n    cursor: pointer;\n    -webkit-text-decoration: none solid rgb(255, 255, 255);\n            text-decoration: none solid rgb(255, 255, 255);\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    text-transform: uppercase;\n    -webkit-user-select: none;\n       -moz-user-select: none;\n        -ms-user-select: none;\n            user-select: none;\n    border: 0px none rgb(255, 255, 255);\n    font: 16px / 24px Nunito-Regular;\n    outline: rgb(255, 255, 255) none 0px;\n}\n\n/*#BUTTON_login_103:before*/\n\n#A_login_104 {\n    block-size: 36.8px;\n    border-block-end-color: rgb(51, 51, 51);\n    border-block-start-color: rgb(51, 51, 51);\n    border-inline-end-color: rgb(51, 51, 51);\n    border-inline-start-color: rgb(51, 51, 51);\n    box-sizing: border-box;\n    caret-color: rgb(51, 51, 51);\n    color: rgb(51, 51, 51);\n    -moz-column-rule-color: rgb(51, 51, 51);\n         column-rule-color: rgb(51, 51, 51);\n    display: block;\n    height: 36.8px;\n    inline-size: 558px;\n    -webkit-padding-after: 8px;\n            padding-block-end: 8px;\n    -webkit-padding-before: 8px;\n            padding-block-start: 8px;\n    perspective-origin: 279px 18.4px;\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(51, 51, 51);\n            text-decoration: none solid rgb(51, 51, 51);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 279px 18.4px;\n    width: 558px;\n    border: 0px none rgb(51, 51, 51);\n    font: 14px / 21px Nunito-Regular;\n    outline: rgb(51, 51, 51) none 0px;\n    padding: 8px 0px;\n}\n\n/*#A_login_104*/\n\n#A_login_104:after {\n    block-size: 0px;\n    border-block-end-color: rgb(51, 51, 51);\n    border-block-start-color: rgb(51, 51, 51);\n    border-inline-end-color: rgb(51, 51, 51);\n    border-inline-start-color: rgb(51, 51, 51);\n    box-sizing: border-box;\n    caret-color: rgb(51, 51, 51);\n    clear: both;\n    color: rgb(51, 51, 51);\n    -moz-column-rule-color: rgb(51, 51, 51);\n         column-rule-color: rgb(51, 51, 51);\n    display: block;\n    height: 0px;\n    inline-size: 558px;\n    perspective-origin: 279px 0px;\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(51, 51, 51);\n            text-decoration: none solid rgb(51, 51, 51);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 279px 0px;\n    width: 558px;\n    border: 0px none rgb(51, 51, 51);\n    font: 14px / 21px Nunito-Regular;\n    outline: rgb(51, 51, 51) none 0px;\n}\n\n/*#A_login_104:after*/\n\n#A_login_104:before {\n    border-block-end-color: rgb(51, 51, 51);\n    border-block-start-color: rgb(51, 51, 51);\n    border-inline-end-color: rgb(51, 51, 51);\n    border-inline-start-color: rgb(51, 51, 51);\n    box-sizing: border-box;\n    caret-color: rgb(51, 51, 51);\n    color: rgb(51, 51, 51);\n    -moz-column-rule-color: rgb(51, 51, 51);\n         column-rule-color: rgb(51, 51, 51);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(51, 51, 51);\n            text-decoration: none solid rgb(51, 51, 51);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(51, 51, 51);\n    font: 14px / 21px Nunito-Regular;\n    outline: rgb(51, 51, 51) none 0px;\n}\n\n/*#A_login_104:before*/\n\n#P_login_105 {\n    block-size: 24.8px;\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    height: 24.8px;\n    inline-size: 558px;\n    -webkit-margin-after: 16px;\n            margin-block-end: 16px;\n    -webkit-margin-before: 0px;\n            margin-block-start: 0px;\n    perspective-origin: 279px 12.4px;\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 279px 12.4px;\n    width: 558px;\n    border: 0px none rgb(29, 33, 41);\n    font: 17px / 25.5px Nunito-Regular;\n    margin: 0px 0px 16px;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#P_login_105*/\n\n#P_login_105:after {\n    block-size: 0px;\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    clear: both;\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    display: block;\n    height: 0px;\n    inline-size: 558px;\n    perspective-origin: 279px 0px;\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 279px 0px;\n    width: 558px;\n    border: 0px none rgb(29, 33, 41);\n    font: 17px / 25.5px Nunito-Regular;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#P_login_105:after*/\n\n#P_login_105:before {\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(29, 33, 41);\n    font: 17px / 25.5px Nunito-Regular;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#P_login_105:before*/\n\n#DIV_login_106 {\n    block-size: 36.8px;\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    display: inline-block;\n    height: 36.8px;\n    inline-size: 558px;\n    -webkit-margin-before: 20px;\n            margin-block-start: 20px;\n    perspective-origin: 279px 18.4px;\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 279px 18.4px;\n    width: 558px;\n    background: rgb(46, 75, 136) none repeat scroll 0% 0% / auto padding-box border-box;\n    border: 0px none rgb(29, 33, 41);\n    border-radius: 3px;\n    font: 17px / 25.5px Nunito-Regular;\n    margin: 20px 0px 0px;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#DIV_login_106*/\n\n#DIV_login_106:after {\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(29, 33, 41);\n    font: 17px / 25.5px Nunito-Regular;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#DIV_login_106:after*/\n\n#DIV_login_106:before {\n    border-block-end-color: rgb(29, 33, 41);\n    border-block-start-color: rgb(29, 33, 41);\n    border-inline-end-color: rgb(29, 33, 41);\n    border-inline-start-color: rgb(29, 33, 41);\n    box-sizing: border-box;\n    caret-color: rgb(29, 33, 41);\n    color: rgb(29, 33, 41);\n    -moz-column-rule-color: rgb(29, 33, 41);\n         column-rule-color: rgb(29, 33, 41);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(29, 33, 41);\n            text-decoration: none solid rgb(29, 33, 41);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(29, 33, 41);\n    font: 17px / 25.5px Nunito-Regular;\n    outline: rgb(29, 33, 41) none 0px;\n}\n\n/*#DIV_login_106:before*/\n\n#A_login_107, #A_login_200 {\n    block-size: 36.8px;\n    border-block-end-color: rgb(255, 255, 255);\n    border-block-start-color: rgb(255, 255, 255);\n    border-inline-end-color: rgb(255, 255, 255);\n    border-inline-start-color: rgb(255, 255, 255);\n    box-sizing: border-box;\n    caret-color: rgb(255, 255, 255);\n    color: rgb(255, 255, 255);\n    -moz-column-rule-color: rgb(255, 255, 255);\n         column-rule-color: rgb(255, 255, 255);\n    display: block;\n    height: 36.8px;\n    inline-size: 558px;\n    -webkit-padding-after: 8px;\n            padding-block-end: 8px;\n    -webkit-padding-before: 8px;\n            padding-block-start: 8px;\n    perspective-origin: 279px 18.4px;\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(255, 255, 255);\n            text-decoration: none solid rgb(255, 255, 255);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 279px 18.4px;\n    width: 558px;\n    border: 0px none rgb(255, 255, 255);\n    font: 14px / 21px Nunito-Regular;\n    outline: rgb(255, 255, 255) none 0px;\n    padding: 8px 0px;\n}\n\n/*#A_login_107, #A_login_200*/\n\n#A_login_107:after, #A_login_200:after {\n    border-block-end-color: rgb(255, 255, 255);\n    border-block-start-color: rgb(255, 255, 255);\n    border-inline-end-color: rgb(255, 255, 255);\n    border-inline-start-color: rgb(255, 255, 255);\n    box-sizing: border-box;\n    caret-color: rgb(255, 255, 255);\n    color: rgb(255, 255, 255);\n    -moz-column-rule-color: rgb(255, 255, 255);\n         column-rule-color: rgb(255, 255, 255);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(255, 255, 255);\n            text-decoration: none solid rgb(255, 255, 255);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(255, 255, 255);\n    font: 14px / 21px Nunito-Regular;\n    outline: rgb(255, 255, 255) none 0px;\n}\n\n/*#A_login_107:after, #A_login_200:after*/\n\n#A_login_107:before, #A_login_200:before {\n    border-block-end-color: rgb(255, 255, 255);\n    border-block-start-color: rgb(255, 255, 255);\n    border-inline-end-color: rgb(255, 255, 255);\n    border-inline-start-color: rgb(255, 255, 255);\n    box-sizing: border-box;\n    caret-color: rgb(255, 255, 255);\n    color: rgb(255, 255, 255);\n    -moz-column-rule-color: rgb(255, 255, 255);\n         column-rule-color: rgb(255, 255, 255);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(255, 255, 255);\n            text-decoration: none solid rgb(255, 255, 255);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(255, 255, 255);\n    font: 14px / 21px Nunito-Regular;\n    outline: rgb(255, 255, 255) none 0px;\n}\n\n/*#A_login_107:before, #A_login_200:before*/\n\n#DIV_login_109 {\n    block-size: 36.8px;\n    border-block-end-color: rgb(255, 255, 255);\n    border-block-start-color: rgb(255, 255, 255);\n    border-inline-end-color: rgb(255, 255, 255);\n    border-inline-start-color: rgb(255, 255, 255);\n    box-sizing: border-box;\n    caret-color: rgb(255, 255, 255);\n    color: rgb(255, 255, 255);\n    -moz-column-rule-color: rgb(255, 255, 255);\n         column-rule-color: rgb(255, 255, 255);\n    display: inline-block;\n    height: 36.8px;\n    inline-size: 558px;\n    -webkit-margin-before: 10px;\n            margin-block-start: 10px;\n    perspective-origin: 279px 18.4px;\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(255, 255, 255);\n            text-decoration: none solid rgb(255, 255, 255);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    transform-origin: 279px 18.4px;\n    width: 558px;\n    background: rgb(234, 66, 53) none repeat scroll 0% 0% / auto padding-box border-box;\n    border: 0px none rgb(255, 255, 255);\n    border-radius: 3px;\n    font: 17px / 25.5px Nunito-Regular;\n    margin: 10px 0px 0px;\n    outline: rgb(255, 255, 255) none 0px;\n}\n\n/*#DIV_login_109*/\n\n#DIV_login_109:after {\n    border-block-end-color: rgb(255, 255, 255);\n    border-block-start-color: rgb(255, 255, 255);\n    border-inline-end-color: rgb(255, 255, 255);\n    border-inline-start-color: rgb(255, 255, 255);\n    box-sizing: border-box;\n    caret-color: rgb(255, 255, 255);\n    color: rgb(255, 255, 255);\n    -moz-column-rule-color: rgb(255, 255, 255);\n         column-rule-color: rgb(255, 255, 255);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(255, 255, 255);\n            text-decoration: none solid rgb(255, 255, 255);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(255, 255, 255);\n    font: 17px / 25.5px Nunito-Regular;\n    outline: rgb(255, 255, 255) none 0px;\n}\n\n/*#DIV_login_109:after*/\n\n#DIV_login_109:before {\n    border-block-end-color: rgb(255, 255, 255);\n    border-block-start-color: rgb(255, 255, 255);\n    border-inline-end-color: rgb(255, 255, 255);\n    border-inline-start-color: rgb(255, 255, 255);\n    box-sizing: border-box;\n    caret-color: rgb(255, 255, 255);\n    color: rgb(255, 255, 255);\n    -moz-column-rule-color: rgb(255, 255, 255);\n         column-rule-color: rgb(255, 255, 255);\n    text-align: center;\n    -webkit-text-decoration: none solid rgb(255, 255, 255);\n            text-decoration: none solid rgb(255, 255, 255);\n    text-rendering: optimizelegibility;\n    -webkit-text-size-adjust: 100%;\n       -moz-text-size-adjust: 100%;\n            text-size-adjust: 100%;\n    border: 0px none rgb(255, 255, 255);\n    font: 17px / 25.5px Nunito-Regular;\n    outline: rgb(255, 255, 255) none 0px;\n}\n\n/*#DIV_login_109:before*/\n\n\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -9184,6 +9664,36 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/fonts/Nunito-Black.ttf":
+/*!******************************************!*\
+  !*** ./resources/fonts/Nunito-Black.ttf ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/fonts/Nunito-Black.ttf?a1c0bd6a53c9ade726cc505473eeeeb7");
+
+/***/ }),
+
+/***/ "./resources/fonts/Nunito-Bold.ttf":
+/*!*****************************************!*\
+  !*** ./resources/fonts/Nunito-Bold.ttf ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/fonts/Nunito-Bold.ttf?7ddd6722d49bf5270cf1018587bc1653");
+
+/***/ }),
+
 /***/ "./resources/fonts/Nunito-Regular.ttf":
 /*!********************************************!*\
   !*** ./resources/fonts/Nunito-Regular.ttf ***!
@@ -9211,6 +9721,951 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/fonts/Roboto-Regular.ttf?6bede58e856278b0f8f1ddf5aceb2e96");
+
+/***/ }),
+
+/***/ "./node_modules/history/esm/history.js":
+/*!*********************************************!*\
+  !*** ./node_modules/history/esm/history.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "createBrowserHistory": () => (/* binding */ createBrowserHistory),
+/* harmony export */   "createHashHistory": () => (/* binding */ createHashHistory),
+/* harmony export */   "createMemoryHistory": () => (/* binding */ createMemoryHistory),
+/* harmony export */   "createLocation": () => (/* binding */ createLocation),
+/* harmony export */   "locationsAreEqual": () => (/* binding */ locationsAreEqual),
+/* harmony export */   "parsePath": () => (/* binding */ parsePath),
+/* harmony export */   "createPath": () => (/* binding */ createPath)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var resolve_pathname__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! resolve-pathname */ "./node_modules/resolve-pathname/esm/resolve-pathname.js");
+/* harmony import */ var value_equal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! value-equal */ "./node_modules/value-equal/esm/value-equal.js");
+/* harmony import */ var tiny_warning__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tiny-warning */ "./node_modules/tiny-warning/dist/tiny-warning.esm.js");
+/* harmony import */ var tiny_invariant__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tiny-invariant */ "./node_modules/tiny-invariant/dist/tiny-invariant.esm.js");
+
+
+
+
+
+
+function addLeadingSlash(path) {
+  return path.charAt(0) === '/' ? path : '/' + path;
+}
+function stripLeadingSlash(path) {
+  return path.charAt(0) === '/' ? path.substr(1) : path;
+}
+function hasBasename(path, prefix) {
+  return path.toLowerCase().indexOf(prefix.toLowerCase()) === 0 && '/?#'.indexOf(path.charAt(prefix.length)) !== -1;
+}
+function stripBasename(path, prefix) {
+  return hasBasename(path, prefix) ? path.substr(prefix.length) : path;
+}
+function stripTrailingSlash(path) {
+  return path.charAt(path.length - 1) === '/' ? path.slice(0, -1) : path;
+}
+function parsePath(path) {
+  var pathname = path || '/';
+  var search = '';
+  var hash = '';
+  var hashIndex = pathname.indexOf('#');
+
+  if (hashIndex !== -1) {
+    hash = pathname.substr(hashIndex);
+    pathname = pathname.substr(0, hashIndex);
+  }
+
+  var searchIndex = pathname.indexOf('?');
+
+  if (searchIndex !== -1) {
+    search = pathname.substr(searchIndex);
+    pathname = pathname.substr(0, searchIndex);
+  }
+
+  return {
+    pathname: pathname,
+    search: search === '?' ? '' : search,
+    hash: hash === '#' ? '' : hash
+  };
+}
+function createPath(location) {
+  var pathname = location.pathname,
+      search = location.search,
+      hash = location.hash;
+  var path = pathname || '/';
+  if (search && search !== '?') path += search.charAt(0) === '?' ? search : "?" + search;
+  if (hash && hash !== '#') path += hash.charAt(0) === '#' ? hash : "#" + hash;
+  return path;
+}
+
+function createLocation(path, state, key, currentLocation) {
+  var location;
+
+  if (typeof path === 'string') {
+    // Two-arg form: push(path, state)
+    location = parsePath(path);
+    location.state = state;
+  } else {
+    // One-arg form: push(location)
+    location = (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)({}, path);
+    if (location.pathname === undefined) location.pathname = '';
+
+    if (location.search) {
+      if (location.search.charAt(0) !== '?') location.search = '?' + location.search;
+    } else {
+      location.search = '';
+    }
+
+    if (location.hash) {
+      if (location.hash.charAt(0) !== '#') location.hash = '#' + location.hash;
+    } else {
+      location.hash = '';
+    }
+
+    if (state !== undefined && location.state === undefined) location.state = state;
+  }
+
+  try {
+    location.pathname = decodeURI(location.pathname);
+  } catch (e) {
+    if (e instanceof URIError) {
+      throw new URIError('Pathname "' + location.pathname + '" could not be decoded. ' + 'This is likely caused by an invalid percent-encoding.');
+    } else {
+      throw e;
+    }
+  }
+
+  if (key) location.key = key;
+
+  if (currentLocation) {
+    // Resolve incomplete/relative pathname relative to current location.
+    if (!location.pathname) {
+      location.pathname = currentLocation.pathname;
+    } else if (location.pathname.charAt(0) !== '/') {
+      location.pathname = (0,resolve_pathname__WEBPACK_IMPORTED_MODULE_1__.default)(location.pathname, currentLocation.pathname);
+    }
+  } else {
+    // When there is no prior location and pathname is empty, set it to /
+    if (!location.pathname) {
+      location.pathname = '/';
+    }
+  }
+
+  return location;
+}
+function locationsAreEqual(a, b) {
+  return a.pathname === b.pathname && a.search === b.search && a.hash === b.hash && a.key === b.key && (0,value_equal__WEBPACK_IMPORTED_MODULE_2__.default)(a.state, b.state);
+}
+
+function createTransitionManager() {
+  var prompt = null;
+
+  function setPrompt(nextPrompt) {
+     true ? (0,tiny_warning__WEBPACK_IMPORTED_MODULE_3__.default)(prompt == null, 'A history supports only one prompt at a time') : 0;
+    prompt = nextPrompt;
+    return function () {
+      if (prompt === nextPrompt) prompt = null;
+    };
+  }
+
+  function confirmTransitionTo(location, action, getUserConfirmation, callback) {
+    // TODO: If another transition starts while we're still confirming
+    // the previous one, we may end up in a weird state. Figure out the
+    // best way to handle this.
+    if (prompt != null) {
+      var result = typeof prompt === 'function' ? prompt(location, action) : prompt;
+
+      if (typeof result === 'string') {
+        if (typeof getUserConfirmation === 'function') {
+          getUserConfirmation(result, callback);
+        } else {
+           true ? (0,tiny_warning__WEBPACK_IMPORTED_MODULE_3__.default)(false, 'A history needs a getUserConfirmation function in order to use a prompt message') : 0;
+          callback(true);
+        }
+      } else {
+        // Return false from a transition hook to cancel the transition.
+        callback(result !== false);
+      }
+    } else {
+      callback(true);
+    }
+  }
+
+  var listeners = [];
+
+  function appendListener(fn) {
+    var isActive = true;
+
+    function listener() {
+      if (isActive) fn.apply(void 0, arguments);
+    }
+
+    listeners.push(listener);
+    return function () {
+      isActive = false;
+      listeners = listeners.filter(function (item) {
+        return item !== listener;
+      });
+    };
+  }
+
+  function notifyListeners() {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    listeners.forEach(function (listener) {
+      return listener.apply(void 0, args);
+    });
+  }
+
+  return {
+    setPrompt: setPrompt,
+    confirmTransitionTo: confirmTransitionTo,
+    appendListener: appendListener,
+    notifyListeners: notifyListeners
+  };
+}
+
+var canUseDOM = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
+function getConfirmation(message, callback) {
+  callback(window.confirm(message)); // eslint-disable-line no-alert
+}
+/**
+ * Returns true if the HTML5 history API is supported. Taken from Modernizr.
+ *
+ * https://github.com/Modernizr/Modernizr/blob/master/LICENSE
+ * https://github.com/Modernizr/Modernizr/blob/master/feature-detects/history.js
+ * changed to avoid false negatives for Windows Phones: https://github.com/reactjs/react-router/issues/586
+ */
+
+function supportsHistory() {
+  var ua = window.navigator.userAgent;
+  if ((ua.indexOf('Android 2.') !== -1 || ua.indexOf('Android 4.0') !== -1) && ua.indexOf('Mobile Safari') !== -1 && ua.indexOf('Chrome') === -1 && ua.indexOf('Windows Phone') === -1) return false;
+  return window.history && 'pushState' in window.history;
+}
+/**
+ * Returns true if browser fires popstate on hash change.
+ * IE10 and IE11 do not.
+ */
+
+function supportsPopStateOnHashChange() {
+  return window.navigator.userAgent.indexOf('Trident') === -1;
+}
+/**
+ * Returns false if using go(n) with hash history causes a full page reload.
+ */
+
+function supportsGoWithoutReloadUsingHash() {
+  return window.navigator.userAgent.indexOf('Firefox') === -1;
+}
+/**
+ * Returns true if a given popstate event is an extraneous WebKit event.
+ * Accounts for the fact that Chrome on iOS fires real popstate events
+ * containing undefined state when pressing the back button.
+ */
+
+function isExtraneousPopstateEvent(event) {
+  return event.state === undefined && navigator.userAgent.indexOf('CriOS') === -1;
+}
+
+var PopStateEvent = 'popstate';
+var HashChangeEvent = 'hashchange';
+
+function getHistoryState() {
+  try {
+    return window.history.state || {};
+  } catch (e) {
+    // IE 11 sometimes throws when accessing window.history.state
+    // See https://github.com/ReactTraining/history/pull/289
+    return {};
+  }
+}
+/**
+ * Creates a history object that uses the HTML5 history API including
+ * pushState, replaceState, and the popstate event.
+ */
+
+
+function createBrowserHistory(props) {
+  if (props === void 0) {
+    props = {};
+  }
+
+  !canUseDOM ?  true ? (0,tiny_invariant__WEBPACK_IMPORTED_MODULE_4__.default)(false, 'Browser history needs a DOM') : 0 : void 0;
+  var globalHistory = window.history;
+  var canUseHistory = supportsHistory();
+  var needsHashChangeListener = !supportsPopStateOnHashChange();
+  var _props = props,
+      _props$forceRefresh = _props.forceRefresh,
+      forceRefresh = _props$forceRefresh === void 0 ? false : _props$forceRefresh,
+      _props$getUserConfirm = _props.getUserConfirmation,
+      getUserConfirmation = _props$getUserConfirm === void 0 ? getConfirmation : _props$getUserConfirm,
+      _props$keyLength = _props.keyLength,
+      keyLength = _props$keyLength === void 0 ? 6 : _props$keyLength;
+  var basename = props.basename ? stripTrailingSlash(addLeadingSlash(props.basename)) : '';
+
+  function getDOMLocation(historyState) {
+    var _ref = historyState || {},
+        key = _ref.key,
+        state = _ref.state;
+
+    var _window$location = window.location,
+        pathname = _window$location.pathname,
+        search = _window$location.search,
+        hash = _window$location.hash;
+    var path = pathname + search + hash;
+     true ? (0,tiny_warning__WEBPACK_IMPORTED_MODULE_3__.default)(!basename || hasBasename(path, basename), 'You are attempting to use a basename on a page whose URL path does not begin ' + 'with the basename. Expected path "' + path + '" to begin with "' + basename + '".') : 0;
+    if (basename) path = stripBasename(path, basename);
+    return createLocation(path, state, key);
+  }
+
+  function createKey() {
+    return Math.random().toString(36).substr(2, keyLength);
+  }
+
+  var transitionManager = createTransitionManager();
+
+  function setState(nextState) {
+    (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)(history, nextState);
+
+    history.length = globalHistory.length;
+    transitionManager.notifyListeners(history.location, history.action);
+  }
+
+  function handlePopState(event) {
+    // Ignore extraneous popstate events in WebKit.
+    if (isExtraneousPopstateEvent(event)) return;
+    handlePop(getDOMLocation(event.state));
+  }
+
+  function handleHashChange() {
+    handlePop(getDOMLocation(getHistoryState()));
+  }
+
+  var forceNextPop = false;
+
+  function handlePop(location) {
+    if (forceNextPop) {
+      forceNextPop = false;
+      setState();
+    } else {
+      var action = 'POP';
+      transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
+        if (ok) {
+          setState({
+            action: action,
+            location: location
+          });
+        } else {
+          revertPop(location);
+        }
+      });
+    }
+  }
+
+  function revertPop(fromLocation) {
+    var toLocation = history.location; // TODO: We could probably make this more reliable by
+    // keeping a list of keys we've seen in sessionStorage.
+    // Instead, we just default to 0 for keys we don't know.
+
+    var toIndex = allKeys.indexOf(toLocation.key);
+    if (toIndex === -1) toIndex = 0;
+    var fromIndex = allKeys.indexOf(fromLocation.key);
+    if (fromIndex === -1) fromIndex = 0;
+    var delta = toIndex - fromIndex;
+
+    if (delta) {
+      forceNextPop = true;
+      go(delta);
+    }
+  }
+
+  var initialLocation = getDOMLocation(getHistoryState());
+  var allKeys = [initialLocation.key]; // Public interface
+
+  function createHref(location) {
+    return basename + createPath(location);
+  }
+
+  function push(path, state) {
+     true ? (0,tiny_warning__WEBPACK_IMPORTED_MODULE_3__.default)(!(typeof path === 'object' && path.state !== undefined && state !== undefined), 'You should avoid providing a 2nd state argument to push when the 1st ' + 'argument is a location-like object that already has state; it is ignored') : 0;
+    var action = 'PUSH';
+    var location = createLocation(path, state, createKey(), history.location);
+    transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
+      if (!ok) return;
+      var href = createHref(location);
+      var key = location.key,
+          state = location.state;
+
+      if (canUseHistory) {
+        globalHistory.pushState({
+          key: key,
+          state: state
+        }, null, href);
+
+        if (forceRefresh) {
+          window.location.href = href;
+        } else {
+          var prevIndex = allKeys.indexOf(history.location.key);
+          var nextKeys = allKeys.slice(0, prevIndex + 1);
+          nextKeys.push(location.key);
+          allKeys = nextKeys;
+          setState({
+            action: action,
+            location: location
+          });
+        }
+      } else {
+         true ? (0,tiny_warning__WEBPACK_IMPORTED_MODULE_3__.default)(state === undefined, 'Browser history cannot push state in browsers that do not support HTML5 history') : 0;
+        window.location.href = href;
+      }
+    });
+  }
+
+  function replace(path, state) {
+     true ? (0,tiny_warning__WEBPACK_IMPORTED_MODULE_3__.default)(!(typeof path === 'object' && path.state !== undefined && state !== undefined), 'You should avoid providing a 2nd state argument to replace when the 1st ' + 'argument is a location-like object that already has state; it is ignored') : 0;
+    var action = 'REPLACE';
+    var location = createLocation(path, state, createKey(), history.location);
+    transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
+      if (!ok) return;
+      var href = createHref(location);
+      var key = location.key,
+          state = location.state;
+
+      if (canUseHistory) {
+        globalHistory.replaceState({
+          key: key,
+          state: state
+        }, null, href);
+
+        if (forceRefresh) {
+          window.location.replace(href);
+        } else {
+          var prevIndex = allKeys.indexOf(history.location.key);
+          if (prevIndex !== -1) allKeys[prevIndex] = location.key;
+          setState({
+            action: action,
+            location: location
+          });
+        }
+      } else {
+         true ? (0,tiny_warning__WEBPACK_IMPORTED_MODULE_3__.default)(state === undefined, 'Browser history cannot replace state in browsers that do not support HTML5 history') : 0;
+        window.location.replace(href);
+      }
+    });
+  }
+
+  function go(n) {
+    globalHistory.go(n);
+  }
+
+  function goBack() {
+    go(-1);
+  }
+
+  function goForward() {
+    go(1);
+  }
+
+  var listenerCount = 0;
+
+  function checkDOMListeners(delta) {
+    listenerCount += delta;
+
+    if (listenerCount === 1 && delta === 1) {
+      window.addEventListener(PopStateEvent, handlePopState);
+      if (needsHashChangeListener) window.addEventListener(HashChangeEvent, handleHashChange);
+    } else if (listenerCount === 0) {
+      window.removeEventListener(PopStateEvent, handlePopState);
+      if (needsHashChangeListener) window.removeEventListener(HashChangeEvent, handleHashChange);
+    }
+  }
+
+  var isBlocked = false;
+
+  function block(prompt) {
+    if (prompt === void 0) {
+      prompt = false;
+    }
+
+    var unblock = transitionManager.setPrompt(prompt);
+
+    if (!isBlocked) {
+      checkDOMListeners(1);
+      isBlocked = true;
+    }
+
+    return function () {
+      if (isBlocked) {
+        isBlocked = false;
+        checkDOMListeners(-1);
+      }
+
+      return unblock();
+    };
+  }
+
+  function listen(listener) {
+    var unlisten = transitionManager.appendListener(listener);
+    checkDOMListeners(1);
+    return function () {
+      checkDOMListeners(-1);
+      unlisten();
+    };
+  }
+
+  var history = {
+    length: globalHistory.length,
+    action: 'POP',
+    location: initialLocation,
+    createHref: createHref,
+    push: push,
+    replace: replace,
+    go: go,
+    goBack: goBack,
+    goForward: goForward,
+    block: block,
+    listen: listen
+  };
+  return history;
+}
+
+var HashChangeEvent$1 = 'hashchange';
+var HashPathCoders = {
+  hashbang: {
+    encodePath: function encodePath(path) {
+      return path.charAt(0) === '!' ? path : '!/' + stripLeadingSlash(path);
+    },
+    decodePath: function decodePath(path) {
+      return path.charAt(0) === '!' ? path.substr(1) : path;
+    }
+  },
+  noslash: {
+    encodePath: stripLeadingSlash,
+    decodePath: addLeadingSlash
+  },
+  slash: {
+    encodePath: addLeadingSlash,
+    decodePath: addLeadingSlash
+  }
+};
+
+function stripHash(url) {
+  var hashIndex = url.indexOf('#');
+  return hashIndex === -1 ? url : url.slice(0, hashIndex);
+}
+
+function getHashPath() {
+  // We can't use window.location.hash here because it's not
+  // consistent across browsers - Firefox will pre-decode it!
+  var href = window.location.href;
+  var hashIndex = href.indexOf('#');
+  return hashIndex === -1 ? '' : href.substring(hashIndex + 1);
+}
+
+function pushHashPath(path) {
+  window.location.hash = path;
+}
+
+function replaceHashPath(path) {
+  window.location.replace(stripHash(window.location.href) + '#' + path);
+}
+
+function createHashHistory(props) {
+  if (props === void 0) {
+    props = {};
+  }
+
+  !canUseDOM ?  true ? (0,tiny_invariant__WEBPACK_IMPORTED_MODULE_4__.default)(false, 'Hash history needs a DOM') : 0 : void 0;
+  var globalHistory = window.history;
+  var canGoWithoutReload = supportsGoWithoutReloadUsingHash();
+  var _props = props,
+      _props$getUserConfirm = _props.getUserConfirmation,
+      getUserConfirmation = _props$getUserConfirm === void 0 ? getConfirmation : _props$getUserConfirm,
+      _props$hashType = _props.hashType,
+      hashType = _props$hashType === void 0 ? 'slash' : _props$hashType;
+  var basename = props.basename ? stripTrailingSlash(addLeadingSlash(props.basename)) : '';
+  var _HashPathCoders$hashT = HashPathCoders[hashType],
+      encodePath = _HashPathCoders$hashT.encodePath,
+      decodePath = _HashPathCoders$hashT.decodePath;
+
+  function getDOMLocation() {
+    var path = decodePath(getHashPath());
+     true ? (0,tiny_warning__WEBPACK_IMPORTED_MODULE_3__.default)(!basename || hasBasename(path, basename), 'You are attempting to use a basename on a page whose URL path does not begin ' + 'with the basename. Expected path "' + path + '" to begin with "' + basename + '".') : 0;
+    if (basename) path = stripBasename(path, basename);
+    return createLocation(path);
+  }
+
+  var transitionManager = createTransitionManager();
+
+  function setState(nextState) {
+    (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)(history, nextState);
+
+    history.length = globalHistory.length;
+    transitionManager.notifyListeners(history.location, history.action);
+  }
+
+  var forceNextPop = false;
+  var ignorePath = null;
+
+  function locationsAreEqual$$1(a, b) {
+    return a.pathname === b.pathname && a.search === b.search && a.hash === b.hash;
+  }
+
+  function handleHashChange() {
+    var path = getHashPath();
+    var encodedPath = encodePath(path);
+
+    if (path !== encodedPath) {
+      // Ensure we always have a properly-encoded hash.
+      replaceHashPath(encodedPath);
+    } else {
+      var location = getDOMLocation();
+      var prevLocation = history.location;
+      if (!forceNextPop && locationsAreEqual$$1(prevLocation, location)) return; // A hashchange doesn't always == location change.
+
+      if (ignorePath === createPath(location)) return; // Ignore this change; we already setState in push/replace.
+
+      ignorePath = null;
+      handlePop(location);
+    }
+  }
+
+  function handlePop(location) {
+    if (forceNextPop) {
+      forceNextPop = false;
+      setState();
+    } else {
+      var action = 'POP';
+      transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
+        if (ok) {
+          setState({
+            action: action,
+            location: location
+          });
+        } else {
+          revertPop(location);
+        }
+      });
+    }
+  }
+
+  function revertPop(fromLocation) {
+    var toLocation = history.location; // TODO: We could probably make this more reliable by
+    // keeping a list of paths we've seen in sessionStorage.
+    // Instead, we just default to 0 for paths we don't know.
+
+    var toIndex = allPaths.lastIndexOf(createPath(toLocation));
+    if (toIndex === -1) toIndex = 0;
+    var fromIndex = allPaths.lastIndexOf(createPath(fromLocation));
+    if (fromIndex === -1) fromIndex = 0;
+    var delta = toIndex - fromIndex;
+
+    if (delta) {
+      forceNextPop = true;
+      go(delta);
+    }
+  } // Ensure the hash is encoded properly before doing anything else.
+
+
+  var path = getHashPath();
+  var encodedPath = encodePath(path);
+  if (path !== encodedPath) replaceHashPath(encodedPath);
+  var initialLocation = getDOMLocation();
+  var allPaths = [createPath(initialLocation)]; // Public interface
+
+  function createHref(location) {
+    var baseTag = document.querySelector('base');
+    var href = '';
+
+    if (baseTag && baseTag.getAttribute('href')) {
+      href = stripHash(window.location.href);
+    }
+
+    return href + '#' + encodePath(basename + createPath(location));
+  }
+
+  function push(path, state) {
+     true ? (0,tiny_warning__WEBPACK_IMPORTED_MODULE_3__.default)(state === undefined, 'Hash history cannot push state; it is ignored') : 0;
+    var action = 'PUSH';
+    var location = createLocation(path, undefined, undefined, history.location);
+    transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
+      if (!ok) return;
+      var path = createPath(location);
+      var encodedPath = encodePath(basename + path);
+      var hashChanged = getHashPath() !== encodedPath;
+
+      if (hashChanged) {
+        // We cannot tell if a hashchange was caused by a PUSH, so we'd
+        // rather setState here and ignore the hashchange. The caveat here
+        // is that other hash histories in the page will consider it a POP.
+        ignorePath = path;
+        pushHashPath(encodedPath);
+        var prevIndex = allPaths.lastIndexOf(createPath(history.location));
+        var nextPaths = allPaths.slice(0, prevIndex + 1);
+        nextPaths.push(path);
+        allPaths = nextPaths;
+        setState({
+          action: action,
+          location: location
+        });
+      } else {
+         true ? (0,tiny_warning__WEBPACK_IMPORTED_MODULE_3__.default)(false, 'Hash history cannot PUSH the same path; a new entry will not be added to the history stack') : 0;
+        setState();
+      }
+    });
+  }
+
+  function replace(path, state) {
+     true ? (0,tiny_warning__WEBPACK_IMPORTED_MODULE_3__.default)(state === undefined, 'Hash history cannot replace state; it is ignored') : 0;
+    var action = 'REPLACE';
+    var location = createLocation(path, undefined, undefined, history.location);
+    transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
+      if (!ok) return;
+      var path = createPath(location);
+      var encodedPath = encodePath(basename + path);
+      var hashChanged = getHashPath() !== encodedPath;
+
+      if (hashChanged) {
+        // We cannot tell if a hashchange was caused by a REPLACE, so we'd
+        // rather setState here and ignore the hashchange. The caveat here
+        // is that other hash histories in the page will consider it a POP.
+        ignorePath = path;
+        replaceHashPath(encodedPath);
+      }
+
+      var prevIndex = allPaths.indexOf(createPath(history.location));
+      if (prevIndex !== -1) allPaths[prevIndex] = path;
+      setState({
+        action: action,
+        location: location
+      });
+    });
+  }
+
+  function go(n) {
+     true ? (0,tiny_warning__WEBPACK_IMPORTED_MODULE_3__.default)(canGoWithoutReload, 'Hash history go(n) causes a full page reload in this browser') : 0;
+    globalHistory.go(n);
+  }
+
+  function goBack() {
+    go(-1);
+  }
+
+  function goForward() {
+    go(1);
+  }
+
+  var listenerCount = 0;
+
+  function checkDOMListeners(delta) {
+    listenerCount += delta;
+
+    if (listenerCount === 1 && delta === 1) {
+      window.addEventListener(HashChangeEvent$1, handleHashChange);
+    } else if (listenerCount === 0) {
+      window.removeEventListener(HashChangeEvent$1, handleHashChange);
+    }
+  }
+
+  var isBlocked = false;
+
+  function block(prompt) {
+    if (prompt === void 0) {
+      prompt = false;
+    }
+
+    var unblock = transitionManager.setPrompt(prompt);
+
+    if (!isBlocked) {
+      checkDOMListeners(1);
+      isBlocked = true;
+    }
+
+    return function () {
+      if (isBlocked) {
+        isBlocked = false;
+        checkDOMListeners(-1);
+      }
+
+      return unblock();
+    };
+  }
+
+  function listen(listener) {
+    var unlisten = transitionManager.appendListener(listener);
+    checkDOMListeners(1);
+    return function () {
+      checkDOMListeners(-1);
+      unlisten();
+    };
+  }
+
+  var history = {
+    length: globalHistory.length,
+    action: 'POP',
+    location: initialLocation,
+    createHref: createHref,
+    push: push,
+    replace: replace,
+    go: go,
+    goBack: goBack,
+    goForward: goForward,
+    block: block,
+    listen: listen
+  };
+  return history;
+}
+
+function clamp(n, lowerBound, upperBound) {
+  return Math.min(Math.max(n, lowerBound), upperBound);
+}
+/**
+ * Creates a history object that stores locations in memory.
+ */
+
+
+function createMemoryHistory(props) {
+  if (props === void 0) {
+    props = {};
+  }
+
+  var _props = props,
+      getUserConfirmation = _props.getUserConfirmation,
+      _props$initialEntries = _props.initialEntries,
+      initialEntries = _props$initialEntries === void 0 ? ['/'] : _props$initialEntries,
+      _props$initialIndex = _props.initialIndex,
+      initialIndex = _props$initialIndex === void 0 ? 0 : _props$initialIndex,
+      _props$keyLength = _props.keyLength,
+      keyLength = _props$keyLength === void 0 ? 6 : _props$keyLength;
+  var transitionManager = createTransitionManager();
+
+  function setState(nextState) {
+    (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)(history, nextState);
+
+    history.length = history.entries.length;
+    transitionManager.notifyListeners(history.location, history.action);
+  }
+
+  function createKey() {
+    return Math.random().toString(36).substr(2, keyLength);
+  }
+
+  var index = clamp(initialIndex, 0, initialEntries.length - 1);
+  var entries = initialEntries.map(function (entry) {
+    return typeof entry === 'string' ? createLocation(entry, undefined, createKey()) : createLocation(entry, undefined, entry.key || createKey());
+  }); // Public interface
+
+  var createHref = createPath;
+
+  function push(path, state) {
+     true ? (0,tiny_warning__WEBPACK_IMPORTED_MODULE_3__.default)(!(typeof path === 'object' && path.state !== undefined && state !== undefined), 'You should avoid providing a 2nd state argument to push when the 1st ' + 'argument is a location-like object that already has state; it is ignored') : 0;
+    var action = 'PUSH';
+    var location = createLocation(path, state, createKey(), history.location);
+    transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
+      if (!ok) return;
+      var prevIndex = history.index;
+      var nextIndex = prevIndex + 1;
+      var nextEntries = history.entries.slice(0);
+
+      if (nextEntries.length > nextIndex) {
+        nextEntries.splice(nextIndex, nextEntries.length - nextIndex, location);
+      } else {
+        nextEntries.push(location);
+      }
+
+      setState({
+        action: action,
+        location: location,
+        index: nextIndex,
+        entries: nextEntries
+      });
+    });
+  }
+
+  function replace(path, state) {
+     true ? (0,tiny_warning__WEBPACK_IMPORTED_MODULE_3__.default)(!(typeof path === 'object' && path.state !== undefined && state !== undefined), 'You should avoid providing a 2nd state argument to replace when the 1st ' + 'argument is a location-like object that already has state; it is ignored') : 0;
+    var action = 'REPLACE';
+    var location = createLocation(path, state, createKey(), history.location);
+    transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
+      if (!ok) return;
+      history.entries[history.index] = location;
+      setState({
+        action: action,
+        location: location
+      });
+    });
+  }
+
+  function go(n) {
+    var nextIndex = clamp(history.index + n, 0, history.entries.length - 1);
+    var action = 'POP';
+    var location = history.entries[nextIndex];
+    transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
+      if (ok) {
+        setState({
+          action: action,
+          location: location,
+          index: nextIndex
+        });
+      } else {
+        // Mimic the behavior of DOM histories by
+        // causing a render after a cancelled POP.
+        setState();
+      }
+    });
+  }
+
+  function goBack() {
+    go(-1);
+  }
+
+  function goForward() {
+    go(1);
+  }
+
+  function canGo(n) {
+    var nextIndex = history.index + n;
+    return nextIndex >= 0 && nextIndex < history.entries.length;
+  }
+
+  function block(prompt) {
+    if (prompt === void 0) {
+      prompt = false;
+    }
+
+    return transitionManager.setPrompt(prompt);
+  }
+
+  function listen(listener) {
+    return transitionManager.appendListener(listener);
+  }
+
+  var history = {
+    length: entries.length,
+    action: 'POP',
+    location: entries[index],
+    index: index,
+    entries: entries,
+    createHref: createHref,
+    push: push,
+    replace: replace,
+    go: go,
+    goBack: goBack,
+    goForward: goForward,
+    canGo: canGo,
+    block: block,
+    listen: listen
+  };
+  return history;
+}
+
+
+
 
 /***/ }),
 
@@ -41438,6 +42893,57 @@ module.exports = ReactPropTypesSecret;
 
 /***/ }),
 
+/***/ "./node_modules/react-bootstrap-icons/dist/icons/bag-check-fill.js":
+/*!*************************************************************************!*\
+  !*** ./node_modules/react-bootstrap-icons/dist/icons/bag-check-fill.js ***!
+  \*************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+
+
+var BagCheckFill = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.forwardRef)(function (_ref, ref) {
+  var color = _ref.color,
+      size = _ref.size,
+      rest = _objectWithoutProperties(_ref, ["color", "size"]);
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", _extends({
+    ref: ref,
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 16 16",
+    width: size,
+    height: size,
+    fill: color
+  }, rest), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
+    fillRule: "evenodd",
+    d: "M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5v-.5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0zm-.646 5.354a.5.5 0 0 0-.708-.708L7.5 10.793 6.354 9.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"
+  }));
+});
+BagCheckFill.propTypes = {
+  color: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string),
+  size: prop_types__WEBPACK_IMPORTED_MODULE_1___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_1___default().string), (prop_types__WEBPACK_IMPORTED_MODULE_1___default().number)])
+};
+BagCheckFill.defaultProps = {
+  color: 'currentColor',
+  size: '1em'
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (BagCheckFill);
+
+/***/ }),
+
 /***/ "./node_modules/react-bootstrap-icons/dist/icons/caret-right-fill.js":
 /*!***************************************************************************!*\
   !*** ./node_modules/react-bootstrap-icons/dist/icons/caret-right-fill.js ***!
@@ -69475,7 +70981,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/inheritsLoose */ "./node_modules/@babel/runtime/helpers/esm/inheritsLoose.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var history__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! history */ "./node_modules/react-router-dom/node_modules/history/esm/history.js");
+/* harmony import */ var history__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! history */ "./node_modules/history/esm/history.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var tiny_warning__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! tiny-warning */ "./node_modules/tiny-warning/dist/tiny-warning.esm.js");
@@ -69803,951 +71309,6 @@ if (true) {
 
 /***/ }),
 
-/***/ "./node_modules/react-router-dom/node_modules/history/esm/history.js":
-/*!***************************************************************************!*\
-  !*** ./node_modules/react-router-dom/node_modules/history/esm/history.js ***!
-  \***************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "createBrowserHistory": () => (/* binding */ createBrowserHistory),
-/* harmony export */   "createHashHistory": () => (/* binding */ createHashHistory),
-/* harmony export */   "createMemoryHistory": () => (/* binding */ createMemoryHistory),
-/* harmony export */   "createLocation": () => (/* binding */ createLocation),
-/* harmony export */   "locationsAreEqual": () => (/* binding */ locationsAreEqual),
-/* harmony export */   "parsePath": () => (/* binding */ parsePath),
-/* harmony export */   "createPath": () => (/* binding */ createPath)
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
-/* harmony import */ var resolve_pathname__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! resolve-pathname */ "./node_modules/resolve-pathname/esm/resolve-pathname.js");
-/* harmony import */ var value_equal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! value-equal */ "./node_modules/value-equal/esm/value-equal.js");
-/* harmony import */ var tiny_warning__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tiny-warning */ "./node_modules/tiny-warning/dist/tiny-warning.esm.js");
-/* harmony import */ var tiny_invariant__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tiny-invariant */ "./node_modules/tiny-invariant/dist/tiny-invariant.esm.js");
-
-
-
-
-
-
-function addLeadingSlash(path) {
-  return path.charAt(0) === '/' ? path : '/' + path;
-}
-function stripLeadingSlash(path) {
-  return path.charAt(0) === '/' ? path.substr(1) : path;
-}
-function hasBasename(path, prefix) {
-  return path.toLowerCase().indexOf(prefix.toLowerCase()) === 0 && '/?#'.indexOf(path.charAt(prefix.length)) !== -1;
-}
-function stripBasename(path, prefix) {
-  return hasBasename(path, prefix) ? path.substr(prefix.length) : path;
-}
-function stripTrailingSlash(path) {
-  return path.charAt(path.length - 1) === '/' ? path.slice(0, -1) : path;
-}
-function parsePath(path) {
-  var pathname = path || '/';
-  var search = '';
-  var hash = '';
-  var hashIndex = pathname.indexOf('#');
-
-  if (hashIndex !== -1) {
-    hash = pathname.substr(hashIndex);
-    pathname = pathname.substr(0, hashIndex);
-  }
-
-  var searchIndex = pathname.indexOf('?');
-
-  if (searchIndex !== -1) {
-    search = pathname.substr(searchIndex);
-    pathname = pathname.substr(0, searchIndex);
-  }
-
-  return {
-    pathname: pathname,
-    search: search === '?' ? '' : search,
-    hash: hash === '#' ? '' : hash
-  };
-}
-function createPath(location) {
-  var pathname = location.pathname,
-      search = location.search,
-      hash = location.hash;
-  var path = pathname || '/';
-  if (search && search !== '?') path += search.charAt(0) === '?' ? search : "?" + search;
-  if (hash && hash !== '#') path += hash.charAt(0) === '#' ? hash : "#" + hash;
-  return path;
-}
-
-function createLocation(path, state, key, currentLocation) {
-  var location;
-
-  if (typeof path === 'string') {
-    // Two-arg form: push(path, state)
-    location = parsePath(path);
-    location.state = state;
-  } else {
-    // One-arg form: push(location)
-    location = (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)({}, path);
-    if (location.pathname === undefined) location.pathname = '';
-
-    if (location.search) {
-      if (location.search.charAt(0) !== '?') location.search = '?' + location.search;
-    } else {
-      location.search = '';
-    }
-
-    if (location.hash) {
-      if (location.hash.charAt(0) !== '#') location.hash = '#' + location.hash;
-    } else {
-      location.hash = '';
-    }
-
-    if (state !== undefined && location.state === undefined) location.state = state;
-  }
-
-  try {
-    location.pathname = decodeURI(location.pathname);
-  } catch (e) {
-    if (e instanceof URIError) {
-      throw new URIError('Pathname "' + location.pathname + '" could not be decoded. ' + 'This is likely caused by an invalid percent-encoding.');
-    } else {
-      throw e;
-    }
-  }
-
-  if (key) location.key = key;
-
-  if (currentLocation) {
-    // Resolve incomplete/relative pathname relative to current location.
-    if (!location.pathname) {
-      location.pathname = currentLocation.pathname;
-    } else if (location.pathname.charAt(0) !== '/') {
-      location.pathname = (0,resolve_pathname__WEBPACK_IMPORTED_MODULE_1__.default)(location.pathname, currentLocation.pathname);
-    }
-  } else {
-    // When there is no prior location and pathname is empty, set it to /
-    if (!location.pathname) {
-      location.pathname = '/';
-    }
-  }
-
-  return location;
-}
-function locationsAreEqual(a, b) {
-  return a.pathname === b.pathname && a.search === b.search && a.hash === b.hash && a.key === b.key && (0,value_equal__WEBPACK_IMPORTED_MODULE_2__.default)(a.state, b.state);
-}
-
-function createTransitionManager() {
-  var prompt = null;
-
-  function setPrompt(nextPrompt) {
-     true ? (0,tiny_warning__WEBPACK_IMPORTED_MODULE_3__.default)(prompt == null, 'A history supports only one prompt at a time') : 0;
-    prompt = nextPrompt;
-    return function () {
-      if (prompt === nextPrompt) prompt = null;
-    };
-  }
-
-  function confirmTransitionTo(location, action, getUserConfirmation, callback) {
-    // TODO: If another transition starts while we're still confirming
-    // the previous one, we may end up in a weird state. Figure out the
-    // best way to handle this.
-    if (prompt != null) {
-      var result = typeof prompt === 'function' ? prompt(location, action) : prompt;
-
-      if (typeof result === 'string') {
-        if (typeof getUserConfirmation === 'function') {
-          getUserConfirmation(result, callback);
-        } else {
-           true ? (0,tiny_warning__WEBPACK_IMPORTED_MODULE_3__.default)(false, 'A history needs a getUserConfirmation function in order to use a prompt message') : 0;
-          callback(true);
-        }
-      } else {
-        // Return false from a transition hook to cancel the transition.
-        callback(result !== false);
-      }
-    } else {
-      callback(true);
-    }
-  }
-
-  var listeners = [];
-
-  function appendListener(fn) {
-    var isActive = true;
-
-    function listener() {
-      if (isActive) fn.apply(void 0, arguments);
-    }
-
-    listeners.push(listener);
-    return function () {
-      isActive = false;
-      listeners = listeners.filter(function (item) {
-        return item !== listener;
-      });
-    };
-  }
-
-  function notifyListeners() {
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    listeners.forEach(function (listener) {
-      return listener.apply(void 0, args);
-    });
-  }
-
-  return {
-    setPrompt: setPrompt,
-    confirmTransitionTo: confirmTransitionTo,
-    appendListener: appendListener,
-    notifyListeners: notifyListeners
-  };
-}
-
-var canUseDOM = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
-function getConfirmation(message, callback) {
-  callback(window.confirm(message)); // eslint-disable-line no-alert
-}
-/**
- * Returns true if the HTML5 history API is supported. Taken from Modernizr.
- *
- * https://github.com/Modernizr/Modernizr/blob/master/LICENSE
- * https://github.com/Modernizr/Modernizr/blob/master/feature-detects/history.js
- * changed to avoid false negatives for Windows Phones: https://github.com/reactjs/react-router/issues/586
- */
-
-function supportsHistory() {
-  var ua = window.navigator.userAgent;
-  if ((ua.indexOf('Android 2.') !== -1 || ua.indexOf('Android 4.0') !== -1) && ua.indexOf('Mobile Safari') !== -1 && ua.indexOf('Chrome') === -1 && ua.indexOf('Windows Phone') === -1) return false;
-  return window.history && 'pushState' in window.history;
-}
-/**
- * Returns true if browser fires popstate on hash change.
- * IE10 and IE11 do not.
- */
-
-function supportsPopStateOnHashChange() {
-  return window.navigator.userAgent.indexOf('Trident') === -1;
-}
-/**
- * Returns false if using go(n) with hash history causes a full page reload.
- */
-
-function supportsGoWithoutReloadUsingHash() {
-  return window.navigator.userAgent.indexOf('Firefox') === -1;
-}
-/**
- * Returns true if a given popstate event is an extraneous WebKit event.
- * Accounts for the fact that Chrome on iOS fires real popstate events
- * containing undefined state when pressing the back button.
- */
-
-function isExtraneousPopstateEvent(event) {
-  return event.state === undefined && navigator.userAgent.indexOf('CriOS') === -1;
-}
-
-var PopStateEvent = 'popstate';
-var HashChangeEvent = 'hashchange';
-
-function getHistoryState() {
-  try {
-    return window.history.state || {};
-  } catch (e) {
-    // IE 11 sometimes throws when accessing window.history.state
-    // See https://github.com/ReactTraining/history/pull/289
-    return {};
-  }
-}
-/**
- * Creates a history object that uses the HTML5 history API including
- * pushState, replaceState, and the popstate event.
- */
-
-
-function createBrowserHistory(props) {
-  if (props === void 0) {
-    props = {};
-  }
-
-  !canUseDOM ?  true ? (0,tiny_invariant__WEBPACK_IMPORTED_MODULE_4__.default)(false, 'Browser history needs a DOM') : 0 : void 0;
-  var globalHistory = window.history;
-  var canUseHistory = supportsHistory();
-  var needsHashChangeListener = !supportsPopStateOnHashChange();
-  var _props = props,
-      _props$forceRefresh = _props.forceRefresh,
-      forceRefresh = _props$forceRefresh === void 0 ? false : _props$forceRefresh,
-      _props$getUserConfirm = _props.getUserConfirmation,
-      getUserConfirmation = _props$getUserConfirm === void 0 ? getConfirmation : _props$getUserConfirm,
-      _props$keyLength = _props.keyLength,
-      keyLength = _props$keyLength === void 0 ? 6 : _props$keyLength;
-  var basename = props.basename ? stripTrailingSlash(addLeadingSlash(props.basename)) : '';
-
-  function getDOMLocation(historyState) {
-    var _ref = historyState || {},
-        key = _ref.key,
-        state = _ref.state;
-
-    var _window$location = window.location,
-        pathname = _window$location.pathname,
-        search = _window$location.search,
-        hash = _window$location.hash;
-    var path = pathname + search + hash;
-     true ? (0,tiny_warning__WEBPACK_IMPORTED_MODULE_3__.default)(!basename || hasBasename(path, basename), 'You are attempting to use a basename on a page whose URL path does not begin ' + 'with the basename. Expected path "' + path + '" to begin with "' + basename + '".') : 0;
-    if (basename) path = stripBasename(path, basename);
-    return createLocation(path, state, key);
-  }
-
-  function createKey() {
-    return Math.random().toString(36).substr(2, keyLength);
-  }
-
-  var transitionManager = createTransitionManager();
-
-  function setState(nextState) {
-    (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)(history, nextState);
-
-    history.length = globalHistory.length;
-    transitionManager.notifyListeners(history.location, history.action);
-  }
-
-  function handlePopState(event) {
-    // Ignore extraneous popstate events in WebKit.
-    if (isExtraneousPopstateEvent(event)) return;
-    handlePop(getDOMLocation(event.state));
-  }
-
-  function handleHashChange() {
-    handlePop(getDOMLocation(getHistoryState()));
-  }
-
-  var forceNextPop = false;
-
-  function handlePop(location) {
-    if (forceNextPop) {
-      forceNextPop = false;
-      setState();
-    } else {
-      var action = 'POP';
-      transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
-        if (ok) {
-          setState({
-            action: action,
-            location: location
-          });
-        } else {
-          revertPop(location);
-        }
-      });
-    }
-  }
-
-  function revertPop(fromLocation) {
-    var toLocation = history.location; // TODO: We could probably make this more reliable by
-    // keeping a list of keys we've seen in sessionStorage.
-    // Instead, we just default to 0 for keys we don't know.
-
-    var toIndex = allKeys.indexOf(toLocation.key);
-    if (toIndex === -1) toIndex = 0;
-    var fromIndex = allKeys.indexOf(fromLocation.key);
-    if (fromIndex === -1) fromIndex = 0;
-    var delta = toIndex - fromIndex;
-
-    if (delta) {
-      forceNextPop = true;
-      go(delta);
-    }
-  }
-
-  var initialLocation = getDOMLocation(getHistoryState());
-  var allKeys = [initialLocation.key]; // Public interface
-
-  function createHref(location) {
-    return basename + createPath(location);
-  }
-
-  function push(path, state) {
-     true ? (0,tiny_warning__WEBPACK_IMPORTED_MODULE_3__.default)(!(typeof path === 'object' && path.state !== undefined && state !== undefined), 'You should avoid providing a 2nd state argument to push when the 1st ' + 'argument is a location-like object that already has state; it is ignored') : 0;
-    var action = 'PUSH';
-    var location = createLocation(path, state, createKey(), history.location);
-    transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
-      if (!ok) return;
-      var href = createHref(location);
-      var key = location.key,
-          state = location.state;
-
-      if (canUseHistory) {
-        globalHistory.pushState({
-          key: key,
-          state: state
-        }, null, href);
-
-        if (forceRefresh) {
-          window.location.href = href;
-        } else {
-          var prevIndex = allKeys.indexOf(history.location.key);
-          var nextKeys = allKeys.slice(0, prevIndex + 1);
-          nextKeys.push(location.key);
-          allKeys = nextKeys;
-          setState({
-            action: action,
-            location: location
-          });
-        }
-      } else {
-         true ? (0,tiny_warning__WEBPACK_IMPORTED_MODULE_3__.default)(state === undefined, 'Browser history cannot push state in browsers that do not support HTML5 history') : 0;
-        window.location.href = href;
-      }
-    });
-  }
-
-  function replace(path, state) {
-     true ? (0,tiny_warning__WEBPACK_IMPORTED_MODULE_3__.default)(!(typeof path === 'object' && path.state !== undefined && state !== undefined), 'You should avoid providing a 2nd state argument to replace when the 1st ' + 'argument is a location-like object that already has state; it is ignored') : 0;
-    var action = 'REPLACE';
-    var location = createLocation(path, state, createKey(), history.location);
-    transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
-      if (!ok) return;
-      var href = createHref(location);
-      var key = location.key,
-          state = location.state;
-
-      if (canUseHistory) {
-        globalHistory.replaceState({
-          key: key,
-          state: state
-        }, null, href);
-
-        if (forceRefresh) {
-          window.location.replace(href);
-        } else {
-          var prevIndex = allKeys.indexOf(history.location.key);
-          if (prevIndex !== -1) allKeys[prevIndex] = location.key;
-          setState({
-            action: action,
-            location: location
-          });
-        }
-      } else {
-         true ? (0,tiny_warning__WEBPACK_IMPORTED_MODULE_3__.default)(state === undefined, 'Browser history cannot replace state in browsers that do not support HTML5 history') : 0;
-        window.location.replace(href);
-      }
-    });
-  }
-
-  function go(n) {
-    globalHistory.go(n);
-  }
-
-  function goBack() {
-    go(-1);
-  }
-
-  function goForward() {
-    go(1);
-  }
-
-  var listenerCount = 0;
-
-  function checkDOMListeners(delta) {
-    listenerCount += delta;
-
-    if (listenerCount === 1 && delta === 1) {
-      window.addEventListener(PopStateEvent, handlePopState);
-      if (needsHashChangeListener) window.addEventListener(HashChangeEvent, handleHashChange);
-    } else if (listenerCount === 0) {
-      window.removeEventListener(PopStateEvent, handlePopState);
-      if (needsHashChangeListener) window.removeEventListener(HashChangeEvent, handleHashChange);
-    }
-  }
-
-  var isBlocked = false;
-
-  function block(prompt) {
-    if (prompt === void 0) {
-      prompt = false;
-    }
-
-    var unblock = transitionManager.setPrompt(prompt);
-
-    if (!isBlocked) {
-      checkDOMListeners(1);
-      isBlocked = true;
-    }
-
-    return function () {
-      if (isBlocked) {
-        isBlocked = false;
-        checkDOMListeners(-1);
-      }
-
-      return unblock();
-    };
-  }
-
-  function listen(listener) {
-    var unlisten = transitionManager.appendListener(listener);
-    checkDOMListeners(1);
-    return function () {
-      checkDOMListeners(-1);
-      unlisten();
-    };
-  }
-
-  var history = {
-    length: globalHistory.length,
-    action: 'POP',
-    location: initialLocation,
-    createHref: createHref,
-    push: push,
-    replace: replace,
-    go: go,
-    goBack: goBack,
-    goForward: goForward,
-    block: block,
-    listen: listen
-  };
-  return history;
-}
-
-var HashChangeEvent$1 = 'hashchange';
-var HashPathCoders = {
-  hashbang: {
-    encodePath: function encodePath(path) {
-      return path.charAt(0) === '!' ? path : '!/' + stripLeadingSlash(path);
-    },
-    decodePath: function decodePath(path) {
-      return path.charAt(0) === '!' ? path.substr(1) : path;
-    }
-  },
-  noslash: {
-    encodePath: stripLeadingSlash,
-    decodePath: addLeadingSlash
-  },
-  slash: {
-    encodePath: addLeadingSlash,
-    decodePath: addLeadingSlash
-  }
-};
-
-function stripHash(url) {
-  var hashIndex = url.indexOf('#');
-  return hashIndex === -1 ? url : url.slice(0, hashIndex);
-}
-
-function getHashPath() {
-  // We can't use window.location.hash here because it's not
-  // consistent across browsers - Firefox will pre-decode it!
-  var href = window.location.href;
-  var hashIndex = href.indexOf('#');
-  return hashIndex === -1 ? '' : href.substring(hashIndex + 1);
-}
-
-function pushHashPath(path) {
-  window.location.hash = path;
-}
-
-function replaceHashPath(path) {
-  window.location.replace(stripHash(window.location.href) + '#' + path);
-}
-
-function createHashHistory(props) {
-  if (props === void 0) {
-    props = {};
-  }
-
-  !canUseDOM ?  true ? (0,tiny_invariant__WEBPACK_IMPORTED_MODULE_4__.default)(false, 'Hash history needs a DOM') : 0 : void 0;
-  var globalHistory = window.history;
-  var canGoWithoutReload = supportsGoWithoutReloadUsingHash();
-  var _props = props,
-      _props$getUserConfirm = _props.getUserConfirmation,
-      getUserConfirmation = _props$getUserConfirm === void 0 ? getConfirmation : _props$getUserConfirm,
-      _props$hashType = _props.hashType,
-      hashType = _props$hashType === void 0 ? 'slash' : _props$hashType;
-  var basename = props.basename ? stripTrailingSlash(addLeadingSlash(props.basename)) : '';
-  var _HashPathCoders$hashT = HashPathCoders[hashType],
-      encodePath = _HashPathCoders$hashT.encodePath,
-      decodePath = _HashPathCoders$hashT.decodePath;
-
-  function getDOMLocation() {
-    var path = decodePath(getHashPath());
-     true ? (0,tiny_warning__WEBPACK_IMPORTED_MODULE_3__.default)(!basename || hasBasename(path, basename), 'You are attempting to use a basename on a page whose URL path does not begin ' + 'with the basename. Expected path "' + path + '" to begin with "' + basename + '".') : 0;
-    if (basename) path = stripBasename(path, basename);
-    return createLocation(path);
-  }
-
-  var transitionManager = createTransitionManager();
-
-  function setState(nextState) {
-    (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)(history, nextState);
-
-    history.length = globalHistory.length;
-    transitionManager.notifyListeners(history.location, history.action);
-  }
-
-  var forceNextPop = false;
-  var ignorePath = null;
-
-  function locationsAreEqual$$1(a, b) {
-    return a.pathname === b.pathname && a.search === b.search && a.hash === b.hash;
-  }
-
-  function handleHashChange() {
-    var path = getHashPath();
-    var encodedPath = encodePath(path);
-
-    if (path !== encodedPath) {
-      // Ensure we always have a properly-encoded hash.
-      replaceHashPath(encodedPath);
-    } else {
-      var location = getDOMLocation();
-      var prevLocation = history.location;
-      if (!forceNextPop && locationsAreEqual$$1(prevLocation, location)) return; // A hashchange doesn't always == location change.
-
-      if (ignorePath === createPath(location)) return; // Ignore this change; we already setState in push/replace.
-
-      ignorePath = null;
-      handlePop(location);
-    }
-  }
-
-  function handlePop(location) {
-    if (forceNextPop) {
-      forceNextPop = false;
-      setState();
-    } else {
-      var action = 'POP';
-      transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
-        if (ok) {
-          setState({
-            action: action,
-            location: location
-          });
-        } else {
-          revertPop(location);
-        }
-      });
-    }
-  }
-
-  function revertPop(fromLocation) {
-    var toLocation = history.location; // TODO: We could probably make this more reliable by
-    // keeping a list of paths we've seen in sessionStorage.
-    // Instead, we just default to 0 for paths we don't know.
-
-    var toIndex = allPaths.lastIndexOf(createPath(toLocation));
-    if (toIndex === -1) toIndex = 0;
-    var fromIndex = allPaths.lastIndexOf(createPath(fromLocation));
-    if (fromIndex === -1) fromIndex = 0;
-    var delta = toIndex - fromIndex;
-
-    if (delta) {
-      forceNextPop = true;
-      go(delta);
-    }
-  } // Ensure the hash is encoded properly before doing anything else.
-
-
-  var path = getHashPath();
-  var encodedPath = encodePath(path);
-  if (path !== encodedPath) replaceHashPath(encodedPath);
-  var initialLocation = getDOMLocation();
-  var allPaths = [createPath(initialLocation)]; // Public interface
-
-  function createHref(location) {
-    var baseTag = document.querySelector('base');
-    var href = '';
-
-    if (baseTag && baseTag.getAttribute('href')) {
-      href = stripHash(window.location.href);
-    }
-
-    return href + '#' + encodePath(basename + createPath(location));
-  }
-
-  function push(path, state) {
-     true ? (0,tiny_warning__WEBPACK_IMPORTED_MODULE_3__.default)(state === undefined, 'Hash history cannot push state; it is ignored') : 0;
-    var action = 'PUSH';
-    var location = createLocation(path, undefined, undefined, history.location);
-    transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
-      if (!ok) return;
-      var path = createPath(location);
-      var encodedPath = encodePath(basename + path);
-      var hashChanged = getHashPath() !== encodedPath;
-
-      if (hashChanged) {
-        // We cannot tell if a hashchange was caused by a PUSH, so we'd
-        // rather setState here and ignore the hashchange. The caveat here
-        // is that other hash histories in the page will consider it a POP.
-        ignorePath = path;
-        pushHashPath(encodedPath);
-        var prevIndex = allPaths.lastIndexOf(createPath(history.location));
-        var nextPaths = allPaths.slice(0, prevIndex + 1);
-        nextPaths.push(path);
-        allPaths = nextPaths;
-        setState({
-          action: action,
-          location: location
-        });
-      } else {
-         true ? (0,tiny_warning__WEBPACK_IMPORTED_MODULE_3__.default)(false, 'Hash history cannot PUSH the same path; a new entry will not be added to the history stack') : 0;
-        setState();
-      }
-    });
-  }
-
-  function replace(path, state) {
-     true ? (0,tiny_warning__WEBPACK_IMPORTED_MODULE_3__.default)(state === undefined, 'Hash history cannot replace state; it is ignored') : 0;
-    var action = 'REPLACE';
-    var location = createLocation(path, undefined, undefined, history.location);
-    transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
-      if (!ok) return;
-      var path = createPath(location);
-      var encodedPath = encodePath(basename + path);
-      var hashChanged = getHashPath() !== encodedPath;
-
-      if (hashChanged) {
-        // We cannot tell if a hashchange was caused by a REPLACE, so we'd
-        // rather setState here and ignore the hashchange. The caveat here
-        // is that other hash histories in the page will consider it a POP.
-        ignorePath = path;
-        replaceHashPath(encodedPath);
-      }
-
-      var prevIndex = allPaths.indexOf(createPath(history.location));
-      if (prevIndex !== -1) allPaths[prevIndex] = path;
-      setState({
-        action: action,
-        location: location
-      });
-    });
-  }
-
-  function go(n) {
-     true ? (0,tiny_warning__WEBPACK_IMPORTED_MODULE_3__.default)(canGoWithoutReload, 'Hash history go(n) causes a full page reload in this browser') : 0;
-    globalHistory.go(n);
-  }
-
-  function goBack() {
-    go(-1);
-  }
-
-  function goForward() {
-    go(1);
-  }
-
-  var listenerCount = 0;
-
-  function checkDOMListeners(delta) {
-    listenerCount += delta;
-
-    if (listenerCount === 1 && delta === 1) {
-      window.addEventListener(HashChangeEvent$1, handleHashChange);
-    } else if (listenerCount === 0) {
-      window.removeEventListener(HashChangeEvent$1, handleHashChange);
-    }
-  }
-
-  var isBlocked = false;
-
-  function block(prompt) {
-    if (prompt === void 0) {
-      prompt = false;
-    }
-
-    var unblock = transitionManager.setPrompt(prompt);
-
-    if (!isBlocked) {
-      checkDOMListeners(1);
-      isBlocked = true;
-    }
-
-    return function () {
-      if (isBlocked) {
-        isBlocked = false;
-        checkDOMListeners(-1);
-      }
-
-      return unblock();
-    };
-  }
-
-  function listen(listener) {
-    var unlisten = transitionManager.appendListener(listener);
-    checkDOMListeners(1);
-    return function () {
-      checkDOMListeners(-1);
-      unlisten();
-    };
-  }
-
-  var history = {
-    length: globalHistory.length,
-    action: 'POP',
-    location: initialLocation,
-    createHref: createHref,
-    push: push,
-    replace: replace,
-    go: go,
-    goBack: goBack,
-    goForward: goForward,
-    block: block,
-    listen: listen
-  };
-  return history;
-}
-
-function clamp(n, lowerBound, upperBound) {
-  return Math.min(Math.max(n, lowerBound), upperBound);
-}
-/**
- * Creates a history object that stores locations in memory.
- */
-
-
-function createMemoryHistory(props) {
-  if (props === void 0) {
-    props = {};
-  }
-
-  var _props = props,
-      getUserConfirmation = _props.getUserConfirmation,
-      _props$initialEntries = _props.initialEntries,
-      initialEntries = _props$initialEntries === void 0 ? ['/'] : _props$initialEntries,
-      _props$initialIndex = _props.initialIndex,
-      initialIndex = _props$initialIndex === void 0 ? 0 : _props$initialIndex,
-      _props$keyLength = _props.keyLength,
-      keyLength = _props$keyLength === void 0 ? 6 : _props$keyLength;
-  var transitionManager = createTransitionManager();
-
-  function setState(nextState) {
-    (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)(history, nextState);
-
-    history.length = history.entries.length;
-    transitionManager.notifyListeners(history.location, history.action);
-  }
-
-  function createKey() {
-    return Math.random().toString(36).substr(2, keyLength);
-  }
-
-  var index = clamp(initialIndex, 0, initialEntries.length - 1);
-  var entries = initialEntries.map(function (entry) {
-    return typeof entry === 'string' ? createLocation(entry, undefined, createKey()) : createLocation(entry, undefined, entry.key || createKey());
-  }); // Public interface
-
-  var createHref = createPath;
-
-  function push(path, state) {
-     true ? (0,tiny_warning__WEBPACK_IMPORTED_MODULE_3__.default)(!(typeof path === 'object' && path.state !== undefined && state !== undefined), 'You should avoid providing a 2nd state argument to push when the 1st ' + 'argument is a location-like object that already has state; it is ignored') : 0;
-    var action = 'PUSH';
-    var location = createLocation(path, state, createKey(), history.location);
-    transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
-      if (!ok) return;
-      var prevIndex = history.index;
-      var nextIndex = prevIndex + 1;
-      var nextEntries = history.entries.slice(0);
-
-      if (nextEntries.length > nextIndex) {
-        nextEntries.splice(nextIndex, nextEntries.length - nextIndex, location);
-      } else {
-        nextEntries.push(location);
-      }
-
-      setState({
-        action: action,
-        location: location,
-        index: nextIndex,
-        entries: nextEntries
-      });
-    });
-  }
-
-  function replace(path, state) {
-     true ? (0,tiny_warning__WEBPACK_IMPORTED_MODULE_3__.default)(!(typeof path === 'object' && path.state !== undefined && state !== undefined), 'You should avoid providing a 2nd state argument to replace when the 1st ' + 'argument is a location-like object that already has state; it is ignored') : 0;
-    var action = 'REPLACE';
-    var location = createLocation(path, state, createKey(), history.location);
-    transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
-      if (!ok) return;
-      history.entries[history.index] = location;
-      setState({
-        action: action,
-        location: location
-      });
-    });
-  }
-
-  function go(n) {
-    var nextIndex = clamp(history.index + n, 0, history.entries.length - 1);
-    var action = 'POP';
-    var location = history.entries[nextIndex];
-    transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
-      if (ok) {
-        setState({
-          action: action,
-          location: location,
-          index: nextIndex
-        });
-      } else {
-        // Mimic the behavior of DOM histories by
-        // causing a render after a cancelled POP.
-        setState();
-      }
-    });
-  }
-
-  function goBack() {
-    go(-1);
-  }
-
-  function goForward() {
-    go(1);
-  }
-
-  function canGo(n) {
-    var nextIndex = history.index + n;
-    return nextIndex >= 0 && nextIndex < history.entries.length;
-  }
-
-  function block(prompt) {
-    if (prompt === void 0) {
-      prompt = false;
-    }
-
-    return transitionManager.setPrompt(prompt);
-  }
-
-  function listen(listener) {
-    return transitionManager.appendListener(listener);
-  }
-
-  var history = {
-    length: entries.length,
-    action: 'POP',
-    location: entries[index],
-    index: index,
-    entries: entries,
-    createHref: createHref,
-    push: push,
-    replace: replace,
-    go: go,
-    goBack: goBack,
-    goForward: goForward,
-    canGo: canGo,
-    block: block,
-    listen: listen
-  };
-  return history;
-}
-
-
-
-
-/***/ }),
-
 /***/ "./node_modules/react-router/esm/react-router.js":
 /*!*******************************************************!*\
   !*** ./node_modules/react-router/esm/react-router.js ***!
@@ -70778,7 +71339,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var history__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! history */ "./node_modules/react-router/node_modules/history/esm/history.js");
+/* harmony import */ var history__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! history */ "./node_modules/history/esm/history.js");
 /* harmony import */ var tiny_warning__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! tiny-warning */ "./node_modules/tiny-warning/dist/tiny-warning.esm.js");
 /* harmony import */ var mini_create_react_context__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! mini-create-react-context */ "./node_modules/mini-create-react-context/dist/esm/index.js");
 /* harmony import */ var tiny_invariant__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! tiny-invariant */ "./node_modules/tiny-invariant/dist/tiny-invariant.esm.js");
@@ -71559,951 +72120,6 @@ if (true) {
 
 
 //# sourceMappingURL=react-router.js.map
-
-
-/***/ }),
-
-/***/ "./node_modules/react-router/node_modules/history/esm/history.js":
-/*!***********************************************************************!*\
-  !*** ./node_modules/react-router/node_modules/history/esm/history.js ***!
-  \***********************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "createBrowserHistory": () => (/* binding */ createBrowserHistory),
-/* harmony export */   "createHashHistory": () => (/* binding */ createHashHistory),
-/* harmony export */   "createMemoryHistory": () => (/* binding */ createMemoryHistory),
-/* harmony export */   "createLocation": () => (/* binding */ createLocation),
-/* harmony export */   "locationsAreEqual": () => (/* binding */ locationsAreEqual),
-/* harmony export */   "parsePath": () => (/* binding */ parsePath),
-/* harmony export */   "createPath": () => (/* binding */ createPath)
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
-/* harmony import */ var resolve_pathname__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! resolve-pathname */ "./node_modules/resolve-pathname/esm/resolve-pathname.js");
-/* harmony import */ var value_equal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! value-equal */ "./node_modules/value-equal/esm/value-equal.js");
-/* harmony import */ var tiny_warning__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tiny-warning */ "./node_modules/tiny-warning/dist/tiny-warning.esm.js");
-/* harmony import */ var tiny_invariant__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tiny-invariant */ "./node_modules/tiny-invariant/dist/tiny-invariant.esm.js");
-
-
-
-
-
-
-function addLeadingSlash(path) {
-  return path.charAt(0) === '/' ? path : '/' + path;
-}
-function stripLeadingSlash(path) {
-  return path.charAt(0) === '/' ? path.substr(1) : path;
-}
-function hasBasename(path, prefix) {
-  return path.toLowerCase().indexOf(prefix.toLowerCase()) === 0 && '/?#'.indexOf(path.charAt(prefix.length)) !== -1;
-}
-function stripBasename(path, prefix) {
-  return hasBasename(path, prefix) ? path.substr(prefix.length) : path;
-}
-function stripTrailingSlash(path) {
-  return path.charAt(path.length - 1) === '/' ? path.slice(0, -1) : path;
-}
-function parsePath(path) {
-  var pathname = path || '/';
-  var search = '';
-  var hash = '';
-  var hashIndex = pathname.indexOf('#');
-
-  if (hashIndex !== -1) {
-    hash = pathname.substr(hashIndex);
-    pathname = pathname.substr(0, hashIndex);
-  }
-
-  var searchIndex = pathname.indexOf('?');
-
-  if (searchIndex !== -1) {
-    search = pathname.substr(searchIndex);
-    pathname = pathname.substr(0, searchIndex);
-  }
-
-  return {
-    pathname: pathname,
-    search: search === '?' ? '' : search,
-    hash: hash === '#' ? '' : hash
-  };
-}
-function createPath(location) {
-  var pathname = location.pathname,
-      search = location.search,
-      hash = location.hash;
-  var path = pathname || '/';
-  if (search && search !== '?') path += search.charAt(0) === '?' ? search : "?" + search;
-  if (hash && hash !== '#') path += hash.charAt(0) === '#' ? hash : "#" + hash;
-  return path;
-}
-
-function createLocation(path, state, key, currentLocation) {
-  var location;
-
-  if (typeof path === 'string') {
-    // Two-arg form: push(path, state)
-    location = parsePath(path);
-    location.state = state;
-  } else {
-    // One-arg form: push(location)
-    location = (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)({}, path);
-    if (location.pathname === undefined) location.pathname = '';
-
-    if (location.search) {
-      if (location.search.charAt(0) !== '?') location.search = '?' + location.search;
-    } else {
-      location.search = '';
-    }
-
-    if (location.hash) {
-      if (location.hash.charAt(0) !== '#') location.hash = '#' + location.hash;
-    } else {
-      location.hash = '';
-    }
-
-    if (state !== undefined && location.state === undefined) location.state = state;
-  }
-
-  try {
-    location.pathname = decodeURI(location.pathname);
-  } catch (e) {
-    if (e instanceof URIError) {
-      throw new URIError('Pathname "' + location.pathname + '" could not be decoded. ' + 'This is likely caused by an invalid percent-encoding.');
-    } else {
-      throw e;
-    }
-  }
-
-  if (key) location.key = key;
-
-  if (currentLocation) {
-    // Resolve incomplete/relative pathname relative to current location.
-    if (!location.pathname) {
-      location.pathname = currentLocation.pathname;
-    } else if (location.pathname.charAt(0) !== '/') {
-      location.pathname = (0,resolve_pathname__WEBPACK_IMPORTED_MODULE_1__.default)(location.pathname, currentLocation.pathname);
-    }
-  } else {
-    // When there is no prior location and pathname is empty, set it to /
-    if (!location.pathname) {
-      location.pathname = '/';
-    }
-  }
-
-  return location;
-}
-function locationsAreEqual(a, b) {
-  return a.pathname === b.pathname && a.search === b.search && a.hash === b.hash && a.key === b.key && (0,value_equal__WEBPACK_IMPORTED_MODULE_2__.default)(a.state, b.state);
-}
-
-function createTransitionManager() {
-  var prompt = null;
-
-  function setPrompt(nextPrompt) {
-     true ? (0,tiny_warning__WEBPACK_IMPORTED_MODULE_3__.default)(prompt == null, 'A history supports only one prompt at a time') : 0;
-    prompt = nextPrompt;
-    return function () {
-      if (prompt === nextPrompt) prompt = null;
-    };
-  }
-
-  function confirmTransitionTo(location, action, getUserConfirmation, callback) {
-    // TODO: If another transition starts while we're still confirming
-    // the previous one, we may end up in a weird state. Figure out the
-    // best way to handle this.
-    if (prompt != null) {
-      var result = typeof prompt === 'function' ? prompt(location, action) : prompt;
-
-      if (typeof result === 'string') {
-        if (typeof getUserConfirmation === 'function') {
-          getUserConfirmation(result, callback);
-        } else {
-           true ? (0,tiny_warning__WEBPACK_IMPORTED_MODULE_3__.default)(false, 'A history needs a getUserConfirmation function in order to use a prompt message') : 0;
-          callback(true);
-        }
-      } else {
-        // Return false from a transition hook to cancel the transition.
-        callback(result !== false);
-      }
-    } else {
-      callback(true);
-    }
-  }
-
-  var listeners = [];
-
-  function appendListener(fn) {
-    var isActive = true;
-
-    function listener() {
-      if (isActive) fn.apply(void 0, arguments);
-    }
-
-    listeners.push(listener);
-    return function () {
-      isActive = false;
-      listeners = listeners.filter(function (item) {
-        return item !== listener;
-      });
-    };
-  }
-
-  function notifyListeners() {
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    listeners.forEach(function (listener) {
-      return listener.apply(void 0, args);
-    });
-  }
-
-  return {
-    setPrompt: setPrompt,
-    confirmTransitionTo: confirmTransitionTo,
-    appendListener: appendListener,
-    notifyListeners: notifyListeners
-  };
-}
-
-var canUseDOM = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
-function getConfirmation(message, callback) {
-  callback(window.confirm(message)); // eslint-disable-line no-alert
-}
-/**
- * Returns true if the HTML5 history API is supported. Taken from Modernizr.
- *
- * https://github.com/Modernizr/Modernizr/blob/master/LICENSE
- * https://github.com/Modernizr/Modernizr/blob/master/feature-detects/history.js
- * changed to avoid false negatives for Windows Phones: https://github.com/reactjs/react-router/issues/586
- */
-
-function supportsHistory() {
-  var ua = window.navigator.userAgent;
-  if ((ua.indexOf('Android 2.') !== -1 || ua.indexOf('Android 4.0') !== -1) && ua.indexOf('Mobile Safari') !== -1 && ua.indexOf('Chrome') === -1 && ua.indexOf('Windows Phone') === -1) return false;
-  return window.history && 'pushState' in window.history;
-}
-/**
- * Returns true if browser fires popstate on hash change.
- * IE10 and IE11 do not.
- */
-
-function supportsPopStateOnHashChange() {
-  return window.navigator.userAgent.indexOf('Trident') === -1;
-}
-/**
- * Returns false if using go(n) with hash history causes a full page reload.
- */
-
-function supportsGoWithoutReloadUsingHash() {
-  return window.navigator.userAgent.indexOf('Firefox') === -1;
-}
-/**
- * Returns true if a given popstate event is an extraneous WebKit event.
- * Accounts for the fact that Chrome on iOS fires real popstate events
- * containing undefined state when pressing the back button.
- */
-
-function isExtraneousPopstateEvent(event) {
-  return event.state === undefined && navigator.userAgent.indexOf('CriOS') === -1;
-}
-
-var PopStateEvent = 'popstate';
-var HashChangeEvent = 'hashchange';
-
-function getHistoryState() {
-  try {
-    return window.history.state || {};
-  } catch (e) {
-    // IE 11 sometimes throws when accessing window.history.state
-    // See https://github.com/ReactTraining/history/pull/289
-    return {};
-  }
-}
-/**
- * Creates a history object that uses the HTML5 history API including
- * pushState, replaceState, and the popstate event.
- */
-
-
-function createBrowserHistory(props) {
-  if (props === void 0) {
-    props = {};
-  }
-
-  !canUseDOM ?  true ? (0,tiny_invariant__WEBPACK_IMPORTED_MODULE_4__.default)(false, 'Browser history needs a DOM') : 0 : void 0;
-  var globalHistory = window.history;
-  var canUseHistory = supportsHistory();
-  var needsHashChangeListener = !supportsPopStateOnHashChange();
-  var _props = props,
-      _props$forceRefresh = _props.forceRefresh,
-      forceRefresh = _props$forceRefresh === void 0 ? false : _props$forceRefresh,
-      _props$getUserConfirm = _props.getUserConfirmation,
-      getUserConfirmation = _props$getUserConfirm === void 0 ? getConfirmation : _props$getUserConfirm,
-      _props$keyLength = _props.keyLength,
-      keyLength = _props$keyLength === void 0 ? 6 : _props$keyLength;
-  var basename = props.basename ? stripTrailingSlash(addLeadingSlash(props.basename)) : '';
-
-  function getDOMLocation(historyState) {
-    var _ref = historyState || {},
-        key = _ref.key,
-        state = _ref.state;
-
-    var _window$location = window.location,
-        pathname = _window$location.pathname,
-        search = _window$location.search,
-        hash = _window$location.hash;
-    var path = pathname + search + hash;
-     true ? (0,tiny_warning__WEBPACK_IMPORTED_MODULE_3__.default)(!basename || hasBasename(path, basename), 'You are attempting to use a basename on a page whose URL path does not begin ' + 'with the basename. Expected path "' + path + '" to begin with "' + basename + '".') : 0;
-    if (basename) path = stripBasename(path, basename);
-    return createLocation(path, state, key);
-  }
-
-  function createKey() {
-    return Math.random().toString(36).substr(2, keyLength);
-  }
-
-  var transitionManager = createTransitionManager();
-
-  function setState(nextState) {
-    (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)(history, nextState);
-
-    history.length = globalHistory.length;
-    transitionManager.notifyListeners(history.location, history.action);
-  }
-
-  function handlePopState(event) {
-    // Ignore extraneous popstate events in WebKit.
-    if (isExtraneousPopstateEvent(event)) return;
-    handlePop(getDOMLocation(event.state));
-  }
-
-  function handleHashChange() {
-    handlePop(getDOMLocation(getHistoryState()));
-  }
-
-  var forceNextPop = false;
-
-  function handlePop(location) {
-    if (forceNextPop) {
-      forceNextPop = false;
-      setState();
-    } else {
-      var action = 'POP';
-      transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
-        if (ok) {
-          setState({
-            action: action,
-            location: location
-          });
-        } else {
-          revertPop(location);
-        }
-      });
-    }
-  }
-
-  function revertPop(fromLocation) {
-    var toLocation = history.location; // TODO: We could probably make this more reliable by
-    // keeping a list of keys we've seen in sessionStorage.
-    // Instead, we just default to 0 for keys we don't know.
-
-    var toIndex = allKeys.indexOf(toLocation.key);
-    if (toIndex === -1) toIndex = 0;
-    var fromIndex = allKeys.indexOf(fromLocation.key);
-    if (fromIndex === -1) fromIndex = 0;
-    var delta = toIndex - fromIndex;
-
-    if (delta) {
-      forceNextPop = true;
-      go(delta);
-    }
-  }
-
-  var initialLocation = getDOMLocation(getHistoryState());
-  var allKeys = [initialLocation.key]; // Public interface
-
-  function createHref(location) {
-    return basename + createPath(location);
-  }
-
-  function push(path, state) {
-     true ? (0,tiny_warning__WEBPACK_IMPORTED_MODULE_3__.default)(!(typeof path === 'object' && path.state !== undefined && state !== undefined), 'You should avoid providing a 2nd state argument to push when the 1st ' + 'argument is a location-like object that already has state; it is ignored') : 0;
-    var action = 'PUSH';
-    var location = createLocation(path, state, createKey(), history.location);
-    transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
-      if (!ok) return;
-      var href = createHref(location);
-      var key = location.key,
-          state = location.state;
-
-      if (canUseHistory) {
-        globalHistory.pushState({
-          key: key,
-          state: state
-        }, null, href);
-
-        if (forceRefresh) {
-          window.location.href = href;
-        } else {
-          var prevIndex = allKeys.indexOf(history.location.key);
-          var nextKeys = allKeys.slice(0, prevIndex + 1);
-          nextKeys.push(location.key);
-          allKeys = nextKeys;
-          setState({
-            action: action,
-            location: location
-          });
-        }
-      } else {
-         true ? (0,tiny_warning__WEBPACK_IMPORTED_MODULE_3__.default)(state === undefined, 'Browser history cannot push state in browsers that do not support HTML5 history') : 0;
-        window.location.href = href;
-      }
-    });
-  }
-
-  function replace(path, state) {
-     true ? (0,tiny_warning__WEBPACK_IMPORTED_MODULE_3__.default)(!(typeof path === 'object' && path.state !== undefined && state !== undefined), 'You should avoid providing a 2nd state argument to replace when the 1st ' + 'argument is a location-like object that already has state; it is ignored') : 0;
-    var action = 'REPLACE';
-    var location = createLocation(path, state, createKey(), history.location);
-    transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
-      if (!ok) return;
-      var href = createHref(location);
-      var key = location.key,
-          state = location.state;
-
-      if (canUseHistory) {
-        globalHistory.replaceState({
-          key: key,
-          state: state
-        }, null, href);
-
-        if (forceRefresh) {
-          window.location.replace(href);
-        } else {
-          var prevIndex = allKeys.indexOf(history.location.key);
-          if (prevIndex !== -1) allKeys[prevIndex] = location.key;
-          setState({
-            action: action,
-            location: location
-          });
-        }
-      } else {
-         true ? (0,tiny_warning__WEBPACK_IMPORTED_MODULE_3__.default)(state === undefined, 'Browser history cannot replace state in browsers that do not support HTML5 history') : 0;
-        window.location.replace(href);
-      }
-    });
-  }
-
-  function go(n) {
-    globalHistory.go(n);
-  }
-
-  function goBack() {
-    go(-1);
-  }
-
-  function goForward() {
-    go(1);
-  }
-
-  var listenerCount = 0;
-
-  function checkDOMListeners(delta) {
-    listenerCount += delta;
-
-    if (listenerCount === 1 && delta === 1) {
-      window.addEventListener(PopStateEvent, handlePopState);
-      if (needsHashChangeListener) window.addEventListener(HashChangeEvent, handleHashChange);
-    } else if (listenerCount === 0) {
-      window.removeEventListener(PopStateEvent, handlePopState);
-      if (needsHashChangeListener) window.removeEventListener(HashChangeEvent, handleHashChange);
-    }
-  }
-
-  var isBlocked = false;
-
-  function block(prompt) {
-    if (prompt === void 0) {
-      prompt = false;
-    }
-
-    var unblock = transitionManager.setPrompt(prompt);
-
-    if (!isBlocked) {
-      checkDOMListeners(1);
-      isBlocked = true;
-    }
-
-    return function () {
-      if (isBlocked) {
-        isBlocked = false;
-        checkDOMListeners(-1);
-      }
-
-      return unblock();
-    };
-  }
-
-  function listen(listener) {
-    var unlisten = transitionManager.appendListener(listener);
-    checkDOMListeners(1);
-    return function () {
-      checkDOMListeners(-1);
-      unlisten();
-    };
-  }
-
-  var history = {
-    length: globalHistory.length,
-    action: 'POP',
-    location: initialLocation,
-    createHref: createHref,
-    push: push,
-    replace: replace,
-    go: go,
-    goBack: goBack,
-    goForward: goForward,
-    block: block,
-    listen: listen
-  };
-  return history;
-}
-
-var HashChangeEvent$1 = 'hashchange';
-var HashPathCoders = {
-  hashbang: {
-    encodePath: function encodePath(path) {
-      return path.charAt(0) === '!' ? path : '!/' + stripLeadingSlash(path);
-    },
-    decodePath: function decodePath(path) {
-      return path.charAt(0) === '!' ? path.substr(1) : path;
-    }
-  },
-  noslash: {
-    encodePath: stripLeadingSlash,
-    decodePath: addLeadingSlash
-  },
-  slash: {
-    encodePath: addLeadingSlash,
-    decodePath: addLeadingSlash
-  }
-};
-
-function stripHash(url) {
-  var hashIndex = url.indexOf('#');
-  return hashIndex === -1 ? url : url.slice(0, hashIndex);
-}
-
-function getHashPath() {
-  // We can't use window.location.hash here because it's not
-  // consistent across browsers - Firefox will pre-decode it!
-  var href = window.location.href;
-  var hashIndex = href.indexOf('#');
-  return hashIndex === -1 ? '' : href.substring(hashIndex + 1);
-}
-
-function pushHashPath(path) {
-  window.location.hash = path;
-}
-
-function replaceHashPath(path) {
-  window.location.replace(stripHash(window.location.href) + '#' + path);
-}
-
-function createHashHistory(props) {
-  if (props === void 0) {
-    props = {};
-  }
-
-  !canUseDOM ?  true ? (0,tiny_invariant__WEBPACK_IMPORTED_MODULE_4__.default)(false, 'Hash history needs a DOM') : 0 : void 0;
-  var globalHistory = window.history;
-  var canGoWithoutReload = supportsGoWithoutReloadUsingHash();
-  var _props = props,
-      _props$getUserConfirm = _props.getUserConfirmation,
-      getUserConfirmation = _props$getUserConfirm === void 0 ? getConfirmation : _props$getUserConfirm,
-      _props$hashType = _props.hashType,
-      hashType = _props$hashType === void 0 ? 'slash' : _props$hashType;
-  var basename = props.basename ? stripTrailingSlash(addLeadingSlash(props.basename)) : '';
-  var _HashPathCoders$hashT = HashPathCoders[hashType],
-      encodePath = _HashPathCoders$hashT.encodePath,
-      decodePath = _HashPathCoders$hashT.decodePath;
-
-  function getDOMLocation() {
-    var path = decodePath(getHashPath());
-     true ? (0,tiny_warning__WEBPACK_IMPORTED_MODULE_3__.default)(!basename || hasBasename(path, basename), 'You are attempting to use a basename on a page whose URL path does not begin ' + 'with the basename. Expected path "' + path + '" to begin with "' + basename + '".') : 0;
-    if (basename) path = stripBasename(path, basename);
-    return createLocation(path);
-  }
-
-  var transitionManager = createTransitionManager();
-
-  function setState(nextState) {
-    (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)(history, nextState);
-
-    history.length = globalHistory.length;
-    transitionManager.notifyListeners(history.location, history.action);
-  }
-
-  var forceNextPop = false;
-  var ignorePath = null;
-
-  function locationsAreEqual$$1(a, b) {
-    return a.pathname === b.pathname && a.search === b.search && a.hash === b.hash;
-  }
-
-  function handleHashChange() {
-    var path = getHashPath();
-    var encodedPath = encodePath(path);
-
-    if (path !== encodedPath) {
-      // Ensure we always have a properly-encoded hash.
-      replaceHashPath(encodedPath);
-    } else {
-      var location = getDOMLocation();
-      var prevLocation = history.location;
-      if (!forceNextPop && locationsAreEqual$$1(prevLocation, location)) return; // A hashchange doesn't always == location change.
-
-      if (ignorePath === createPath(location)) return; // Ignore this change; we already setState in push/replace.
-
-      ignorePath = null;
-      handlePop(location);
-    }
-  }
-
-  function handlePop(location) {
-    if (forceNextPop) {
-      forceNextPop = false;
-      setState();
-    } else {
-      var action = 'POP';
-      transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
-        if (ok) {
-          setState({
-            action: action,
-            location: location
-          });
-        } else {
-          revertPop(location);
-        }
-      });
-    }
-  }
-
-  function revertPop(fromLocation) {
-    var toLocation = history.location; // TODO: We could probably make this more reliable by
-    // keeping a list of paths we've seen in sessionStorage.
-    // Instead, we just default to 0 for paths we don't know.
-
-    var toIndex = allPaths.lastIndexOf(createPath(toLocation));
-    if (toIndex === -1) toIndex = 0;
-    var fromIndex = allPaths.lastIndexOf(createPath(fromLocation));
-    if (fromIndex === -1) fromIndex = 0;
-    var delta = toIndex - fromIndex;
-
-    if (delta) {
-      forceNextPop = true;
-      go(delta);
-    }
-  } // Ensure the hash is encoded properly before doing anything else.
-
-
-  var path = getHashPath();
-  var encodedPath = encodePath(path);
-  if (path !== encodedPath) replaceHashPath(encodedPath);
-  var initialLocation = getDOMLocation();
-  var allPaths = [createPath(initialLocation)]; // Public interface
-
-  function createHref(location) {
-    var baseTag = document.querySelector('base');
-    var href = '';
-
-    if (baseTag && baseTag.getAttribute('href')) {
-      href = stripHash(window.location.href);
-    }
-
-    return href + '#' + encodePath(basename + createPath(location));
-  }
-
-  function push(path, state) {
-     true ? (0,tiny_warning__WEBPACK_IMPORTED_MODULE_3__.default)(state === undefined, 'Hash history cannot push state; it is ignored') : 0;
-    var action = 'PUSH';
-    var location = createLocation(path, undefined, undefined, history.location);
-    transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
-      if (!ok) return;
-      var path = createPath(location);
-      var encodedPath = encodePath(basename + path);
-      var hashChanged = getHashPath() !== encodedPath;
-
-      if (hashChanged) {
-        // We cannot tell if a hashchange was caused by a PUSH, so we'd
-        // rather setState here and ignore the hashchange. The caveat here
-        // is that other hash histories in the page will consider it a POP.
-        ignorePath = path;
-        pushHashPath(encodedPath);
-        var prevIndex = allPaths.lastIndexOf(createPath(history.location));
-        var nextPaths = allPaths.slice(0, prevIndex + 1);
-        nextPaths.push(path);
-        allPaths = nextPaths;
-        setState({
-          action: action,
-          location: location
-        });
-      } else {
-         true ? (0,tiny_warning__WEBPACK_IMPORTED_MODULE_3__.default)(false, 'Hash history cannot PUSH the same path; a new entry will not be added to the history stack') : 0;
-        setState();
-      }
-    });
-  }
-
-  function replace(path, state) {
-     true ? (0,tiny_warning__WEBPACK_IMPORTED_MODULE_3__.default)(state === undefined, 'Hash history cannot replace state; it is ignored') : 0;
-    var action = 'REPLACE';
-    var location = createLocation(path, undefined, undefined, history.location);
-    transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
-      if (!ok) return;
-      var path = createPath(location);
-      var encodedPath = encodePath(basename + path);
-      var hashChanged = getHashPath() !== encodedPath;
-
-      if (hashChanged) {
-        // We cannot tell if a hashchange was caused by a REPLACE, so we'd
-        // rather setState here and ignore the hashchange. The caveat here
-        // is that other hash histories in the page will consider it a POP.
-        ignorePath = path;
-        replaceHashPath(encodedPath);
-      }
-
-      var prevIndex = allPaths.indexOf(createPath(history.location));
-      if (prevIndex !== -1) allPaths[prevIndex] = path;
-      setState({
-        action: action,
-        location: location
-      });
-    });
-  }
-
-  function go(n) {
-     true ? (0,tiny_warning__WEBPACK_IMPORTED_MODULE_3__.default)(canGoWithoutReload, 'Hash history go(n) causes a full page reload in this browser') : 0;
-    globalHistory.go(n);
-  }
-
-  function goBack() {
-    go(-1);
-  }
-
-  function goForward() {
-    go(1);
-  }
-
-  var listenerCount = 0;
-
-  function checkDOMListeners(delta) {
-    listenerCount += delta;
-
-    if (listenerCount === 1 && delta === 1) {
-      window.addEventListener(HashChangeEvent$1, handleHashChange);
-    } else if (listenerCount === 0) {
-      window.removeEventListener(HashChangeEvent$1, handleHashChange);
-    }
-  }
-
-  var isBlocked = false;
-
-  function block(prompt) {
-    if (prompt === void 0) {
-      prompt = false;
-    }
-
-    var unblock = transitionManager.setPrompt(prompt);
-
-    if (!isBlocked) {
-      checkDOMListeners(1);
-      isBlocked = true;
-    }
-
-    return function () {
-      if (isBlocked) {
-        isBlocked = false;
-        checkDOMListeners(-1);
-      }
-
-      return unblock();
-    };
-  }
-
-  function listen(listener) {
-    var unlisten = transitionManager.appendListener(listener);
-    checkDOMListeners(1);
-    return function () {
-      checkDOMListeners(-1);
-      unlisten();
-    };
-  }
-
-  var history = {
-    length: globalHistory.length,
-    action: 'POP',
-    location: initialLocation,
-    createHref: createHref,
-    push: push,
-    replace: replace,
-    go: go,
-    goBack: goBack,
-    goForward: goForward,
-    block: block,
-    listen: listen
-  };
-  return history;
-}
-
-function clamp(n, lowerBound, upperBound) {
-  return Math.min(Math.max(n, lowerBound), upperBound);
-}
-/**
- * Creates a history object that stores locations in memory.
- */
-
-
-function createMemoryHistory(props) {
-  if (props === void 0) {
-    props = {};
-  }
-
-  var _props = props,
-      getUserConfirmation = _props.getUserConfirmation,
-      _props$initialEntries = _props.initialEntries,
-      initialEntries = _props$initialEntries === void 0 ? ['/'] : _props$initialEntries,
-      _props$initialIndex = _props.initialIndex,
-      initialIndex = _props$initialIndex === void 0 ? 0 : _props$initialIndex,
-      _props$keyLength = _props.keyLength,
-      keyLength = _props$keyLength === void 0 ? 6 : _props$keyLength;
-  var transitionManager = createTransitionManager();
-
-  function setState(nextState) {
-    (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)(history, nextState);
-
-    history.length = history.entries.length;
-    transitionManager.notifyListeners(history.location, history.action);
-  }
-
-  function createKey() {
-    return Math.random().toString(36).substr(2, keyLength);
-  }
-
-  var index = clamp(initialIndex, 0, initialEntries.length - 1);
-  var entries = initialEntries.map(function (entry) {
-    return typeof entry === 'string' ? createLocation(entry, undefined, createKey()) : createLocation(entry, undefined, entry.key || createKey());
-  }); // Public interface
-
-  var createHref = createPath;
-
-  function push(path, state) {
-     true ? (0,tiny_warning__WEBPACK_IMPORTED_MODULE_3__.default)(!(typeof path === 'object' && path.state !== undefined && state !== undefined), 'You should avoid providing a 2nd state argument to push when the 1st ' + 'argument is a location-like object that already has state; it is ignored') : 0;
-    var action = 'PUSH';
-    var location = createLocation(path, state, createKey(), history.location);
-    transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
-      if (!ok) return;
-      var prevIndex = history.index;
-      var nextIndex = prevIndex + 1;
-      var nextEntries = history.entries.slice(0);
-
-      if (nextEntries.length > nextIndex) {
-        nextEntries.splice(nextIndex, nextEntries.length - nextIndex, location);
-      } else {
-        nextEntries.push(location);
-      }
-
-      setState({
-        action: action,
-        location: location,
-        index: nextIndex,
-        entries: nextEntries
-      });
-    });
-  }
-
-  function replace(path, state) {
-     true ? (0,tiny_warning__WEBPACK_IMPORTED_MODULE_3__.default)(!(typeof path === 'object' && path.state !== undefined && state !== undefined), 'You should avoid providing a 2nd state argument to replace when the 1st ' + 'argument is a location-like object that already has state; it is ignored') : 0;
-    var action = 'REPLACE';
-    var location = createLocation(path, state, createKey(), history.location);
-    transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
-      if (!ok) return;
-      history.entries[history.index] = location;
-      setState({
-        action: action,
-        location: location
-      });
-    });
-  }
-
-  function go(n) {
-    var nextIndex = clamp(history.index + n, 0, history.entries.length - 1);
-    var action = 'POP';
-    var location = history.entries[nextIndex];
-    transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
-      if (ok) {
-        setState({
-          action: action,
-          location: location,
-          index: nextIndex
-        });
-      } else {
-        // Mimic the behavior of DOM histories by
-        // causing a render after a cancelled POP.
-        setState();
-      }
-    });
-  }
-
-  function goBack() {
-    go(-1);
-  }
-
-  function goForward() {
-    go(1);
-  }
-
-  function canGo(n) {
-    var nextIndex = history.index + n;
-    return nextIndex >= 0 && nextIndex < history.entries.length;
-  }
-
-  function block(prompt) {
-    if (prompt === void 0) {
-      prompt = false;
-    }
-
-    return transitionManager.setPrompt(prompt);
-  }
-
-  function listen(listener) {
-    return transitionManager.appendListener(listener);
-  }
-
-  var history = {
-    length: entries.length,
-    action: 'POP',
-    location: entries[index],
-    index: index,
-    entries: entries,
-    createHref: createHref,
-    push: push,
-    replace: replace,
-    go: go,
-    goBack: goBack,
-    goForward: goForward,
-    canGo: canGo,
-    block: block,
-    listen: listen
-  };
-  return history;
-}
-
-
 
 
 /***/ }),
@@ -77182,6 +76798,36 @@ if (false) {} else {
   module.exports = __webpack_require__(/*! ./cjs/scheduler-tracing.development.js */ "./node_modules/scheduler/cjs/scheduler-tracing.development.js");
 }
 
+
+/***/ }),
+
+/***/ "./resources/css/cart.css":
+/*!********************************!*\
+  !*** ./resources/css/cart.css ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_cart_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./cart.css */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].oneOf[1].use[2]!./resources/css/cart.css");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_cart_css__WEBPACK_IMPORTED_MODULE_1__.default, options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_6_oneOf_1_use_2_cart_css__WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
 
 /***/ }),
 

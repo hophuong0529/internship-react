@@ -2,6 +2,7 @@ import {Component} from "react";
 import {Col, Container, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import axios from "axios";
+import {CartContext} from "./contexts/CartContext";
 
 class AllProducts extends Component {
     constructor(props) {
@@ -48,18 +49,23 @@ class AllProducts extends Component {
                 }}>
                     <div className="thumbnail">
                         <div className="img-order">
-                            <Link to={'/' + this.convertToSlug(product.name)}>
+                            <Link to={'/product/' + this.convertToSlug(product.name)}>
                                 <img src={"../../../" + product.images[0].path}
                                      className="imgProduct" alt=""/>
                             </Link>
                             <div className="order">
-                                <a href="#" className="btn btn-outline-danger"
-                                   style={{width: '100px'}}>Đặt mua</a>
+                                <CartContext.Consumer>
+                                    {({addToCart}) => (
+                                        <button onClick={() => addToCart(product)} className="btn btn-outline-danger"
+                                                style={{marginTop: '20px', marginBottom: '30px', width: '200px'}}>Đặt mua ngay
+                                        </button>
+                                    )}
+                                </CartContext.Consumer>
                             </div>
                         </div>
                         <div style={{zIndex: 2, position: 'inherit'}}>
                             <div className="productName">
-                                <Link to={'/' + this.convertToSlug(product.name)} href="#"
+                                <Link to={'/product/' + this.convertToSlug(product.name)} href="#"
                                       className="link-detail">{product.name}</Link>
                             </div>
                             <div className="price">

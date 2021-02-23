@@ -3,6 +3,7 @@ import axios from "axios";
 import {CaretRightFill} from "react-bootstrap-icons";
 import {Col, Container, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
+import {CartContext} from "../contexts/CartContext";
 
 class Detail extends Component {
     constructor(props) {
@@ -65,8 +66,13 @@ class Detail extends Component {
                                      className="imgProduct" alt=""/>
                             </Link>
                             <div className="order">
-                                <a href="#" className="btn btn-outline-danger"
-                                   style={{width: '100px'}}>Đặt mua</a>
+                                <CartContext.Consumer>
+                                    {({addToCart}) => (
+                                        <button onClick={() => addToCart(product)} className="btn btn-outline-danger"
+                                                style={{marginTop: '20px', marginBottom: '30px', width: '200px'}}>Đặt mua ngay
+                                        </button>
+                                    )}
+                                </CartContext.Consumer>
                             </div>
                         </div>
                         <div style={{zIndex: 2, position: 'inherit'}}>
@@ -131,9 +137,13 @@ class Detail extends Component {
                             <div style={{color: 'red'}}>
                                 * Chỉ còn {product.quantity} sản phẩm
                             </div>
-                            <button className="btn btn-outline-danger"
-                                    style={{marginTop: '20px', marginBottom: '30px', width: '200px'}}>Đặt mua ngay
-                            </button>
+                            <CartContext.Consumer>
+                                {({addToCart}) => (
+                                    <button onClick={() => addToCart(product)} className="btn btn-outline-danger"
+                                          style={{marginTop: '20px', marginBottom: '30px', width: '200px'}}>Đặt mua ngay
+                                    </button>
+                                )}
+                            </CartContext.Consumer>
                             <div>
                                 <label style={{fontWeight: "bold"}}>Mô tả:</label>
                                 <p>{product.description}</p>
