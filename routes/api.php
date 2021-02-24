@@ -33,4 +33,6 @@ Route::get('categories', [HomeController::class, 'categories']);
 
 Route::get('product/{name}', [HomeController::class, 'detailProduct']);
 
+Route::get('category/{name}', [HomeController::class, 'categoryProduct']);
+
 Route::post('login', [HomeController::class, 'login']);

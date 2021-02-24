@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useContext, useState} from "react";
 import '../../css/login.css'
 import axios from "axios";
 import {AccountContext} from "./contexts/AccountContext";

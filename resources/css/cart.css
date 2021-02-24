@@ -151,102 +151,12 @@
 
 /*#DIV_2:before*/
 
-#DIV_3 {
-    block-size: 490.4px;
-    border-block-end-color: rgb(29, 33, 41);
-    border-block-start-color: rgb(29, 33, 41);
-    border-inline-end-color: rgb(29, 33, 41);
-    border-inline-start-color: rgb(29, 33, 41);
-    bottom: 0px;
-    box-sizing: border-box;
-    caret-color: rgb(29, 33, 41);
-    color: rgb(29, 33, 41);
-    column-rule-color: rgb(29, 33, 41);
-    height: 490.4px;
-    inline-size: 1140px;
-    inset-block-end: 0px;
-    inset-block-start: 0px;
-    inset-inline-end: 0px;
-    inset-inline-start: 0px;
-    left: 0px;
-    margin-block-end: 35px;
-    margin-block-start: 25px;
-    max-inline-size: 100%;
-    max-width: 100%;
-    min-block-size: auto;
-    min-height: auto;
-    min-inline-size: auto;
-    min-width: auto;
-    padding-inline-end: 15px;
-    padding-inline-start: 15px;
-    perspective-origin: 570px 245.2px;
-    position: relative;
-    right: 0px;
-    text-align: left;
-    text-decoration: none solid rgb(29, 33, 41);
-    text-rendering: optimizelegibility;
-    text-size-adjust: 100%;
-    top: 0px;
-    transform-origin: 570px 245.2px;
-    width: 1140px;
-    border: 0px none rgb(29, 33, 41);
-    flex: 0 0 100%;
-    font: 16px / 24px Nunito-Regular;
-    margin: 25px 0px 35px;
-    outline: rgb(29, 33, 41) none 0px;
-    padding: 0px 15px;
-}
-
-/*#DIV_3*/
-
-#DIV_3:after {
-    border-block-end-color: rgb(29, 33, 41);
-    border-block-start-color: rgb(29, 33, 41);
-    border-inline-end-color: rgb(29, 33, 41);
-    border-inline-start-color: rgb(29, 33, 41);
-    box-sizing: border-box;
-    caret-color: rgb(29, 33, 41);
-    color: rgb(29, 33, 41);
-    column-rule-color: rgb(29, 33, 41);
-    text-align: left;
-    text-decoration: none solid rgb(29, 33, 41);
-    text-rendering: optimizelegibility;
-    text-size-adjust: 100%;
-    border: 0px none rgb(29, 33, 41);
-    font: 16px / 24px Nunito-Regular;
-    outline: rgb(29, 33, 41) none 0px;
-}
-
-/*#DIV_3:after*/
-
-#DIV_3:before {
-    border-block-end-color: rgb(29, 33, 41);
-    border-block-start-color: rgb(29, 33, 41);
-    border-inline-end-color: rgb(29, 33, 41);
-    border-inline-start-color: rgb(29, 33, 41);
-    box-sizing: border-box;
-    caret-color: rgb(29, 33, 41);
-    color: rgb(29, 33, 41);
-    column-rule-color: rgb(29, 33, 41);
-    text-align: left;
-    text-decoration: none solid rgb(29, 33, 41);
-    text-rendering: optimizelegibility;
-    text-size-adjust: 100%;
-    border: 0px none rgb(29, 33, 41);
-    font: 16px / 24px Nunito-Regular;
-    outline: rgb(29, 33, 41) none 0px;
-}
-
-/*#DIV_3:before*/
-
 #TABLE_4 {
-    block-size: 292px;
     border-collapse: collapse;
     bottom: 0px;
     caret-color: rgb(33, 37, 41);
     color: rgb(33, 37, 41);
     column-rule-color: rgb(33, 37, 41);
-    height: 292px;
     inline-size: 1109.6px;
     inset-block-end: 0px;
     inset-block-start: 0px;
@@ -313,7 +223,7 @@
 
 /*#TABLE_4:before*/
 
-#THEAD_5 {
+#THEAD_1 {
     block-size: 40.8px;
     border-block-end-color: rgb(128, 128, 128);
     border-block-start-color: rgb(128, 128, 128);
@@ -340,9 +250,9 @@
     outline: rgb(33, 37, 41) none 0px;
 }
 
-/*#THEAD_5*/
+/*#THEAD_1*/
 
-#THEAD_5:after {
+#THEAD_1:after {
     border-block-end-color: rgb(33, 37, 41);
     border-block-start-color: rgb(33, 37, 41);
     border-collapse: collapse;
@@ -362,9 +272,9 @@
     outline: rgb(33, 37, 41) none 0px;
 }
 
-/*#THEAD_5:after*/
+/*#THEAD_1:after*/
 
-#THEAD_5:before {
+#THEAD_1:before {
     border-block-end-color: rgb(33, 37, 41);
     border-block-start-color: rgb(33, 37, 41);
     border-collapse: collapse;
@@ -384,9 +294,9 @@
     outline: rgb(33, 37, 41) none 0px;
 }
 
-/*#THEAD_5:before*/
+/*#THEAD_1:before*/
 
-#TR_6 {
+#TR_1 {
     block-size: 40.8px;
     border-block-end-color: rgb(128, 128, 128);
     border-block-start-color: rgb(128, 128, 128);
@@ -404,7 +314,7 @@
     height: 40.8px;
     inline-size: 1108.8px;
     perspective-origin: 554.4px 20.4px;
-    text-align: left;
+    text-align: center;
     text-decoration: none solid rgb(33, 37, 41);
     text-rendering: optimizelegibility;
     text-size-adjust: 100%;
@@ -420,9 +330,9 @@
     outline: rgb(33, 37, 41) none 0px;
 }
 
-/*#TR_6*/
+/*#TR_1*/
 
-#TR_6:after {
+#TR_1:after {
     border-block-end-color: rgb(33, 37, 41);
     border-block-start-color: rgb(33, 37, 41);
     border-collapse: collapse;
@@ -442,9 +352,9 @@
     outline: rgb(33, 37, 41) none 0px;
 }
 
-/*#TR_6:after*/
+/*#TR_1:after*/
 
-#TR_6:before {
+#TR_1:before {
     border-block-end-color: rgb(33, 37, 41);
     border-block-start-color: rgb(33, 37, 41);
     border-collapse: collapse;
@@ -464,9 +374,9 @@
     outline: rgb(33, 37, 41) none 0px;
 }
 
-/*#TR_6:before*/
+/*#TR_1:before*/
 
-#TH_7 {
+#TH_2 {
     block-size: 40.8px;
     border-block-end-color: rgb(222, 226, 230);
     border-block-end-style: solid;
@@ -488,7 +398,7 @@
     padding-inline-end: 8px;
     padding-inline-start: 8px;
     perspective-origin: 61.2px 20.4px;
-    text-align: left;
+    text-align: center;
     text-decoration: none solid rgb(33, 37, 41);
     text-rendering: optimizelegibility;
     text-size-adjust: 100%;
@@ -505,9 +415,9 @@
     padding: 8px;
 }
 
-/*#TH_7*/
+/*#TH_2*/
 
-#TH_7:after {
+#TH_2:after {
     border-block-end-color: rgb(33, 37, 41);
     border-block-start-color: rgb(33, 37, 41);
     border-collapse: collapse;
@@ -527,9 +437,9 @@
     outline: rgb(33, 37, 41) none 0px;
 }
 
-/*#TH_7:after*/
+/*#TH_2:after*/
 
-#TH_7:before {
+#TH_2:before {
     border-block-end-color: rgb(33, 37, 41);
     border-block-start-color: rgb(33, 37, 41);
     border-collapse: collapse;
@@ -549,9 +459,9 @@
     outline: rgb(33, 37, 41) none 0px;
 }
 
-/*#TH_7:before*/
+/*#TH_2:before*/
 
-#I_8, #I_18, #I_49 {
+#I_3 {
     border-block-end-color: rgb(255, 176, 189);
     border-block-start-color: rgb(255, 176, 189);
     border-collapse: collapse;
@@ -571,9 +481,9 @@
     outline: rgb(255, 176, 189) none 0px;
 }
 
-/*#I_8, #I_18, #I_49*/
+/*#I_3*/
 
-#I_8:after, #I_18:after, #I_49:after {
+#I_3:after {
     border-block-end-color: rgb(255, 176, 189);
     border-block-start-color: rgb(255, 176, 189);
     border-collapse: collapse;
@@ -592,9 +502,9 @@
     outline: rgb(255, 176, 189) none 0px;
 }
 
-/*#I_8:after, #I_18:after, #I_49:after*/
+/*#I_3:after*/
 
-#I_8:before, #I_18:before, #I_49:before {
+#I_3:before {
     border-block-end-color: rgb(255, 176, 189);
     border-block-start-color: rgb(255, 176, 189);
     border-collapse: collapse;
@@ -604,6 +514,7 @@
     caret-color: rgb(255, 176, 189);
     color: rgb(255, 176, 189);
     column-rule-color: rgb(255, 176, 189);
+    content: '""';
     text-align: left;
     text-decoration: none solid rgb(255, 176, 189);
     text-size-adjust: 100%;
@@ -613,9 +524,9 @@
     outline: rgb(255, 176, 189) none 0px;
 }
 
-/*#I_8:before, #I_18:before, #I_49:before*/
+/*#I_3:before*/
 
-#TH_9 {
+#TH_4 {
     block-size: 40.8px;
     border-block-end-color: rgb(222, 226, 230);
     border-block-end-style: solid;
@@ -653,9 +564,9 @@
     padding: 8px;
 }
 
-/*#TH_9*/
+/*#TH_4*/
 
-#TH_9:after {
+#TH_4:after {
     border-block-end-color: rgb(33, 37, 41);
     border-block-start-color: rgb(33, 37, 41);
     border-collapse: collapse;
@@ -674,9 +585,9 @@
     outline: rgb(33, 37, 41) none 0px;
 }
 
-/*#TH_9:after*/
+/*#TH_4:after*/
 
-#TH_9:before {
+#TH_4:before {
     border-block-end-color: rgb(33, 37, 41);
     border-block-start-color: rgb(33, 37, 41);
     border-collapse: collapse;
@@ -695,9 +606,9 @@
     outline: rgb(33, 37, 41) none 0px;
 }
 
-/*#TH_9:before*/
+/*#TH_4:before*/
 
-#TH_10, #TH_11 {
+#TH_5, #TH_6 {
     block-size: 40.8px;
     border-block-end-color: rgb(222, 226, 230);
     border-block-end-style: solid;
@@ -735,9 +646,9 @@
     padding: 8px;
 }
 
-/*#TH_10, #TH_11*/
+/*#TH_5, #TH_6*/
 
-#TH_10:after, #TH_11:after {
+#TH_5:after, #TH_6:after {
     border-block-end-color: rgb(33, 37, 41);
     border-block-start-color: rgb(33, 37, 41);
     border-collapse: collapse;
@@ -756,9 +667,9 @@
     outline: rgb(33, 37, 41) none 0px;
 }
 
-/*#TH_10:after, #TH_11:after*/
+/*#TH_5:after, #TH_6:after*/
 
-#TH_10:before, #TH_11:before {
+#TH_5:before, #TH_6:before {
     border-block-end-color: rgb(33, 37, 41);
     border-block-start-color: rgb(33, 37, 41);
     border-collapse: collapse;
@@ -777,9 +688,9 @@
     outline: rgb(33, 37, 41) none 0px;
 }
 
-/*#TH_10:before, #TH_11:before*/
+/*#TH_5:before, #TH_6:before*/
 
-#TH_12 {
+#TH_7 {
     block-size: 40.8px;
     border-block-end-color: rgb(222, 226, 230);
     border-block-end-style: solid;
@@ -817,9 +728,9 @@
     padding: 8px;
 }
 
-/*#TH_12*/
+/*#TH_7*/
 
-#TH_12:after {
+#TH_7:after {
     border-block-end-color: rgb(33, 37, 41);
     border-block-start-color: rgb(33, 37, 41);
     border-collapse: collapse;
@@ -838,9 +749,9 @@
     outline: rgb(33, 37, 41) none 0px;
 }
 
-/*#TH_12:after*/
+/*#TH_7:after*/
 
-#TH_12:before {
+#TH_7:before {
     border-block-end-color: rgb(33, 37, 41);
     border-block-start-color: rgb(33, 37, 41);
     border-collapse: collapse;
@@ -859,9 +770,9 @@
     outline: rgb(33, 37, 41) none 0px;
 }
 
-/*#TH_12:before*/
+/*#TH_7:before*/
 
-#TH_13 {
+#TH_8 {
     block-size: 40.8px;
     border-block-end-color: rgb(222, 226, 230);
     border-block-end-style: solid;
@@ -899,9 +810,9 @@
     padding: 8px;
 }
 
-/*#TH_13*/
+/*#TH_8*/
 
-#TH_13:after {
+#TH_8:after {
     border-block-end-color: rgb(33, 37, 41);
     border-block-start-color: rgb(33, 37, 41);
     border-collapse: collapse;
@@ -920,9 +831,9 @@
     outline: rgb(33, 37, 41) none 0px;
 }
 
-/*#TH_13:after*/
+/*#TH_8:after*/
 
-#TH_13:before {
+#TH_8:before {
     border-block-end-color: rgb(33, 37, 41);
     border-block-start-color: rgb(33, 37, 41);
     border-collapse: collapse;
@@ -941,7 +852,7 @@
     outline: rgb(33, 37, 41) none 0px;
 }
 
-/*#TH_13:before*/
+/*#TH_8:before*/
 
 #TBODY_14 {
     block-size: 250.4px;
@@ -1061,16 +972,16 @@
     width: 1108.8px;
     border-top: 0px none rgb(128, 128, 128);
     border-right: 1px solid rgb(204, 204, 204);
-    border-bottom: 0px none rgb(128, 128, 128);
+    border-bottom: 1px solid rgb(204, 204, 204);
     border-left: 1px solid rgb(204, 204, 204);
-    border-radius: 10px 10px 0px 0px;
+    border-radius: 0px 0px 10px 10px;
     border-spacing: 1.6px 1.6px;
     font: 16px / 24px Nunito-Regular;
     outline: rgb(33, 37, 41) none 0px;
     overflow: hidden;
 }
 
-/*#TR_15*/
+/*#TR_1*/
 
 #TR_15:after {
     border-block-end-color: rgb(33, 37, 41);
@@ -1092,7 +1003,7 @@
     outline: rgb(33, 37, 41) none 0px;
 }
 
-/*#TR_15:after*/
+/*#TR_1:after*/
 
 #TR_15:before {
     border-block-end-color: rgb(33, 37, 41);
@@ -1114,7 +1025,7 @@
     outline: rgb(33, 37, 41) none 0px;
 }
 
-/*#TR_15:before*/
+/*#TR_15*/
 
 #TD_16 {
     block-size: 116.8px;
@@ -1353,7 +1264,6 @@
 /*#A_19:before, #A_50:before*/
 
 #IMG_20, #IMG_51 {
-    block-size: 100px;
     border-block-end-color: rgb(47, 47, 47);
     border-block-start-color: rgb(47, 47, 47);
     border-collapse: collapse;
@@ -1364,7 +1274,6 @@
     color: rgb(47, 47, 47);
     column-rule-color: rgb(47, 47, 47);
     cursor: pointer;
-    height: 100px;
     inline-size: 105.6px;
     margin-inline-start: 5px;
     max-inline-size: 100%;
@@ -1517,6 +1426,7 @@
 /*#TD_21:before*/
 
 #A_22, #A_45, #A_53, #A_76 {
+    background: white;
     border-block-end-color: rgb(47, 47, 47);
     border-block-start-color: rgb(47, 47, 47);
     border-collapse: collapse;
@@ -1524,7 +1434,7 @@
     border-inline-start-color: rgb(47, 47, 47);
     box-sizing: border-box;
     caret-color: rgb(47, 47, 47);
-    color: rgb(47, 47, 47);
+    color: rgb(255 164 164);;
     column-rule-color: rgb(47, 47, 47);
     perspective-origin: 0px 0px;
     text-align: center;
@@ -1536,6 +1446,7 @@
     border-spacing: 1.6px 1.6px;
     font: 16px / 24px Nunito-Regular;
     outline: rgb(47, 47, 47) none 0px;
+    font-weight: bold;
 }
 
 /*#A_22, #A_45, #A_53, #A_76*/
@@ -2522,6 +2433,7 @@
 /*#DIV_38:before, #DIV_69:before*/
 
 #DIV_39, #DIV_41, #DIV_70, #DIV_72 {
+    background: white;
     align-items: center;
     block-size: 30px;
     border-block-end-color: rgb(208, 208, 208);

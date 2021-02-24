@@ -3,7 +3,7 @@ import {Col, Container, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import {CartContext} from "../contexts/CartContext";
 
-class LatestProduct extends Component {
+class LatestProducts extends Component {
     constructor(props) {
 
         super(props);
@@ -57,16 +57,16 @@ class LatestProduct extends Component {
                             <div className="order">
                                 <CartContext.Consumer>
                                     {({addToCart}) => (
-                                        <button onClick={() => addToCart(product)} className="btn btn-outline-danger"
+                                        <Link to="cart" onClick={() => addToCart(product)} className="btn btn-outline-danger"
                                                 style={{marginTop: '20px', marginBottom: '30px', width: '200px'}}>Đặt mua
-                                        </button>
+                                        </Link>
                                     )}
                                 </CartContext.Consumer>
                             </div>
                         </div>
                         <div style={{zIndex: 2, position: 'inherit'}}>
                             <div className="productName">
-                                <Link to={'/product/' + this.convertToSlug(product.name)} href="#"
+                                <Link to={'/product/' + this.convertToSlug(product.name)}
                                       className="link-detail">{product.name}</Link>
                             </div>
                             <div className="price">
@@ -103,4 +103,4 @@ class LatestProduct extends Component {
     }
 }
 
-export default LatestProduct
+export default LatestProducts

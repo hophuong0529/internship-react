@@ -1,10 +1,9 @@
 import {Component} from "react";
 import {Col, Container, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
-import axios from "axios";
-import {CartContext} from "./contexts/CartContext";
+import {CartContext} from "../contexts/CartContext";
 
-class AllProducts extends Component {
+class TopProducts extends Component {
     constructor(props) {
 
         super(props);
@@ -33,11 +32,13 @@ class AllProducts extends Component {
     }
 
     componentDidMount() {
-        axios.get('/api/products').then(response => {
-            this.setState({
-                products: response.data,
+        fetch('/api/top-product')
+            .then(response => {
+                return response.json();
             })
-        })
+            .then(products => {
+                this.setState({products});
+            });
     }
 
     renderProducts() {
@@ -81,21 +82,28 @@ class AllProducts extends Component {
     render() {
         return (
             <div>
-                <h1 style={{
-                    textAlign: 'center',
-                    fontWeight: 'bold',
-                    paddingTop: '30px',
-                    color: '#c20000'
-                }}>Tất cả sản phẩm</h1>
+                <div style={{height: '60px', backgroundColor: '#eb9b9b'}}>
+                    <h3 style={{
+                        lineHeight: '2.45',
+                        fontWeight: 'bold',
+                        paddingLeft: '10%',
+                        marginBottom: '20px',
+                        marginTop: '15px',
+                        color: 'brown'
+                    }}>Sản phẩm bán chạy</h3>
+                </div>
                 <Container>
                     <Row>
                         {this.renderProducts()}
                     </Row>
                 </Container>
+                <div style={{textAlign: "center", padding: '20px'}}>
+                    <a href="" className="btn-pink">Xem thêm</a>
+                </div>
             </div>
 
         );
     }
 }
 
-export default AllProducts
+export default TopProducts

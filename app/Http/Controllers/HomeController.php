@@ -35,6 +35,7 @@ class HomeController extends Controller
         foreach ($names as $name => $id) {
             if (Str::slug($name) == $slug) {
                 $product_id = $id;
+
                 $product = Product::find($product_id);
                 $products = Product::with('images')->where('category_id', $product->category_id)->limit(4)->get();
                 return $products->toJson();
@@ -54,6 +55,7 @@ class HomeController extends Controller
         foreach ($names as $name => $id) {
             if (Str::slug($name) == $slug) {
                 $product_id = $id;
+
                 $product = Product::with('images')->find($product_id);
                 return $product->toJson();
             }
@@ -76,5 +78,22 @@ class HomeController extends Controller
     {
         $products = Product::with('images')->where('name', 'like', '%' . $keyword . '%')->get();
         return $products->toJson();
+    }
+
+    public function categoryProduct($slug)
+    {
+        $names = Category::pluck('id', 'name');
+        foreach ($names as $name => $id) {
+            if (Str::slug($name) == $slug) {
+                $category_id = $id;
+
+                $category = Category::find($category_id);
+                $products = Product::with('images')->where('category_id', $category_id)->get();
+                return response()->json([
+                    'products' => $products,
+                    'category' => $category
+                ]);
+            }
+        }
     }
 }

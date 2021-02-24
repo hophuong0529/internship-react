@@ -2,8 +2,8 @@ import React, {Component} from "react";
 import {Col, Container, Row} from "react-bootstrap";
 import Categories from "../Categories";
 import Carousel from "./Carousel";
-import LatestProduct from "./LatestProduct";
-import TopProduct from "./TopProduct";
+import LatestProducts from "./LatestProducts";
+import TopProducts from "./TopProducts";
 
 class Home extends Component {
     render() {
@@ -19,8 +19,8 @@ class Home extends Component {
                         </Col>
                     </Row>
                 </Container>
-                <LatestProduct/>
-                <TopProduct/>
+                <LatestProducts/>
+                <TopProducts/>
             </div>
         )
     }

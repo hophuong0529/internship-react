@@ -12,6 +12,7 @@ import SearchItem from "./SearchItem";
 import Cart from "./Cart";
 import {AccountProvider} from "./contexts/AccountContext";
 import {CartProvider} from "./contexts/CartContext";
+import CategoryProducts from "./CategoryProducts";
 
 function App() {
     return (
@@ -26,6 +27,7 @@ function App() {
                     <Route path='/product/:name' component={Detail}/>
                     <Route path='/search' component={SearchItem}/>
                     <Route path='/cart' component={Cart}/>
+                    <Route path='/category/:name' component={CategoryProducts}/>
                     <Footer/>
                 </BrowserRouter>
             </CartProvider>

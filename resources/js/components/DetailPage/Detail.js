@@ -61,23 +61,23 @@ class Detail extends Component {
                 }}>
                     <div className="thumbnail">
                         <div className="img-order">
-                            <Link to={'/' + this.convertToSlug(product.name)}>
+                            <Link to={'/product/' + this.convertToSlug(product.name)}>
                                 <img src={"../../../" + product.images[0].path}
                                      className="imgProduct" alt=""/>
                             </Link>
                             <div className="order">
                                 <CartContext.Consumer>
                                     {({addToCart}) => (
-                                        <button onClick={() => addToCart(product)} className="btn btn-outline-danger"
+                                        <Link to="cart" onClick={() => addToCart(product)} className="btn btn-outline-danger"
                                                 style={{marginTop: '20px', marginBottom: '30px', width: '200px'}}>Đặt mua ngay
-                                        </button>
+                                        </Link>
                                     )}
                                 </CartContext.Consumer>
                             </div>
                         </div>
                         <div style={{zIndex: 2, position: 'inherit'}}>
                             <div className="productName">
-                                <Link to={'/product/' + this.convertToSlug(product.name)} href="#"
+                                <Link to={'/product/' + this.convertToSlug(product.name)}
                                       className="link-detail">{product.name}</Link>
                             </div>
                             <div className="price">

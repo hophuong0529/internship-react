@@ -1,9 +1,11 @@
 import {Component} from "react";
 import {Col, Container, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
-import {CartContext} from "../contexts/CartContext";
+import axios from "axios";
+import {CartContext} from "./contexts/CartContext";
+import {Star} from "react-bootstrap-icons";
 
-class TopProduct extends Component {
+class CategoryProducts extends Component {
     constructor(props) {
 
         super(props);
@@ -32,13 +34,13 @@ class TopProduct extends Component {
     }
 
     componentDidMount() {
-        fetch('/api/top-product')
-            .then(response => {
-                return response.json();
+        const category_name = this.props.match.params.name
+        axios.get(`/api/category/${category_name}`).then(response => {
+            this.setState({
+                products: response.data.products,
+                category: response.data.category.name
             })
-            .then(products => {
-                this.setState({products});
-            });
+        })
     }
 
     renderProducts() {
@@ -57,9 +59,9 @@ class TopProduct extends Component {
                             <div className="order">
                                 <CartContext.Consumer>
                                     {({addToCart}) => (
-                                        <button onClick={() => addToCart(product)} className="btn btn-outline-danger"
-                                                style={{marginTop: '20px', marginBottom: '30px', width: '200px'}}>Đặt mua ngay
-                                        </button>
+                                        <Link to="cart" onClick={() => addToCart(product)} className="btn btn-outline-danger"
+                                              style={{marginTop: '20px', marginBottom: '30px', width: '200px'}}>Đặt mua ngay
+                                        </Link>
                                     )}
                                 </CartContext.Consumer>
                             </div>
@@ -81,29 +83,24 @@ class TopProduct extends Component {
 
     render() {
         return (
+
             <div>
-                <div style={{height: '60px', backgroundColor: '#eb9b9b'}}>
-                    <h3 style={{
-                        lineHeight: '2.45',
-                        fontWeight: 'bold',
-                        paddingLeft: '10%',
-                        marginBottom: '20px',
-                        marginTop: '15px',
-                        color: 'brown'
-                    }}>Sản phẩm bán chạy</h3>
-                </div>
+                <h1 style={{
+                    textAlign: 'center',
+                    fontWeight: 'bold',
+                    paddingTop: '30px',
+                    color: '#c20000'
+                }}>
+                    --- {this.state.category} ---</h1>
                 <Container>
                     <Row>
                         {this.renderProducts()}
                     </Row>
                 </Container>
-                <div style={{textAlign: "center", padding: '20px'}}>
-                    <a href="" className="btn-pink">Xem thêm</a>
-                </div>
             </div>
 
         );
     }
 }
 
-export default TopProduct
+export default CategoryProducts
