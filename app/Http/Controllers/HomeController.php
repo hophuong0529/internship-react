@@ -25,7 +25,13 @@ class HomeController extends Controller
 
     public function productTop()
     {
-        $products = Product::with('images')->where('is_top', 1)->limit(8)->get();
+        $products = Product::with('images')->where('is_top', 1)->get();
+        return $products->toJson();
+    }
+
+    public function productSale()
+    {
+        $products = Product::with('images')->where('on_sale', 1)->get();
         return $products->toJson();
     }
 

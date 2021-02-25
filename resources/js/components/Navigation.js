@@ -24,9 +24,6 @@ function Navigation() {
                         <Link to="" className="nav-link">TRANG CHỦ</Link>
                     </li>
                     <li className="nav-item">
-                        <Link to="#" className="nav-link">SẢN PHẨM</Link>
-                    </li>
-                    <li className="nav-item">
                         <Link to="#" className="nav-link">GIỚI THIỆU</Link>
                     </li>
                     <li className="nav-item">
@@ -37,6 +34,18 @@ function Navigation() {
                     </li>
                     <li className="nav-item">
                         <Link to="products" className="nav-link">Tất cả</Link>
+                    </li>
+                    <li className="nav-item dropdown">
+                        <a className="nav-link dropdown-toggle" id="navbarDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            SẢN PHẨM
+                        </a>
+                        <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <Link to={"category/ao"} className="dropdown-item">Áo</Link>
+                            <Link to={"category/quan"} className="dropdown-item">Quần</Link>
+                            <Link to={"category/set"} className="dropdown-item">Set</Link>
+                            <Link to={"category/phu-kien"} className="dropdown-item">Phụ kiện</Link>
+                        </div>
                     </li>
                 </ul>
                 {account.length !== 0 ? (

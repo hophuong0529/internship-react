@@ -1,7 +1,7 @@
 import React, {useContext} from "react";
-import '../../css/cart.css'
+import '../../../css/cart.css'
 import {Link} from "react-router-dom";
-import {CartContext} from "./contexts/CartContext";
+import {CartContext} from "../contexts/CartContext";
 import {Alert} from "react-bootstrap";
 import {ExclamationTriangle} from "react-bootstrap-icons";
 

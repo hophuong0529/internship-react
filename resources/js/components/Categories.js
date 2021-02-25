@@ -57,9 +57,9 @@ class Categories extends Component {
                     <h6 className="list-group-item header" style={{marginBottom: 0}}><ListUl/>&emsp;DANH MỤC SẢN PHẨM
                     </h6>
                     {this.renderCategories()}
-                    <a href="#" className="list-group-item list-group-item-action">
+                    <Link to="sale-product" className="list-group-item list-group-item-action">
                         Sản phẩm giảm giá
-                    </a>
+                    </Link>
                     <a href="#" className="list-group-item list-group-item-action">
                         Sản phẩm bán chạy
                     </a>

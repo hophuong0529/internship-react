@@ -185,9 +185,14 @@ nav {
     color: #ae0000;
     font-weight: bold;
 }
+
 .list-group-item:hover {
-    background: #ffc1cd;
-    color: #ff7575;
+    background: #ffc2cc;
+    color: white;
+}
+
+.dropdown-item:hover {
+    background: #ffd2da;
 }
 
 .btn-pink {

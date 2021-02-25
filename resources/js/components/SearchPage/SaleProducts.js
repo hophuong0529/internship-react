@@ -1,10 +1,9 @@
 import {Component} from "react";
 import {Col, Container, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
-import axios from "axios";
-import {CartContext} from "./contexts/CartContext";
+import {CartContext} from "../contexts/CartContext";
 
-class AllProducts extends Component {
+class TopProducts extends Component {
     constructor(props) {
 
         super(props);
@@ -33,11 +32,13 @@ class AllProducts extends Component {
     }
 
     componentDidMount() {
-        axios.get('/api/products').then(response => {
-            this.setState({
-                products: response.data,
+        fetch('/api/sale-product')
+            .then(response => {
+                return response.json();
             })
-        })
+            .then(products => {
+                this.setState({products});
+            });
     }
 
     renderProducts() {
@@ -57,7 +58,7 @@ class AllProducts extends Component {
                                 <CartContext.Consumer>
                                     {({addToCart}) => (
                                         <Link to="cart" onClick={() => addToCart(product)} className="btn btn-outline-danger"
-                                                style={{marginTop: '20px', marginBottom: '30px', width: '200px'}}>Đặt mua ngay
+                                              style={{marginTop: '20px', marginBottom: '30px', width: '200px'}}>Đặt mua ngay
                                         </Link>
                                     )}
                                 </CartContext.Consumer>
@@ -81,12 +82,14 @@ class AllProducts extends Component {
     render() {
         return (
             <div>
-                <h1 style={{
-                    textAlign: 'center',
-                    fontWeight: 'bold',
-                    paddingTop: '30px',
-                    color: '#c20000'
-                }}>Tất cả sản phẩm</h1>
+                <div>
+                    <h1 style={{
+                        textAlign: 'center',
+                        fontWeight: 'bold',
+                        paddingTop: '30px',
+                        color: '#c20000'
+                    }}>Sản phẩm giảm giá</h1>
+                </div>
                 <Container>
                     <Row>
                         {this.renderProducts()}
@@ -98,4 +101,4 @@ class AllProducts extends Component {
     }
 }
 
-export default AllProducts
+export default TopProducts

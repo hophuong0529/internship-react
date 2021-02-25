@@ -1,11 +1,15 @@
 import React, {useContext, useState} from "react";
-import '../../css/login.css'
+import '../../../css/login.css'
 import axios from "axios";
-import {AccountContext} from "./contexts/AccountContext";
-import {useHistory} from "react-router";
+import {AccountContext} from "../contexts/AccountContext";
+import {useHistory, useLocation} from "react-router";
 
 function Login() {
-    const history = useHistory()
+    let history = useHistory();
+    let location = useLocation();
+
+    let { from } = location.state || { from: { pathname: "/" } };
+
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [account, setAccount] = useContext(AccountContext);
@@ -25,7 +29,7 @@ function Login() {
             .then(response => {
                 setAccount(response.data)
                 alert('Đăng nhập thành công. Chào mừng bạn quay trở lại.')
-                history.push(`/`)
+                history.replace(from);
             })
 
             .catch(() => {

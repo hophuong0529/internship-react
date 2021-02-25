@@ -2,7 +2,7 @@ import {Component} from "react";
 import {Col, Container, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import axios from "axios";
-import {CartContext} from "./contexts/CartContext";
+import {CartContext} from "../contexts/CartContext";
 import {Star} from "react-bootstrap-icons";
 
 class CategoryProducts extends Component {

@@ -139,9 +139,9 @@ class Detail extends Component {
                             </div>
                             <CartContext.Consumer>
                                 {({addToCart}) => (
-                                    <button onClick={() => addToCart(product)} className="btn btn-outline-danger"
+                                    <Link to="cart" onClick={() => addToCart(product)} className="btn btn-outline-danger"
                                           style={{marginTop: '20px', marginBottom: '30px', width: '200px'}}>Đặt mua ngay
-                                    </button>
+                                    </Link>
                                 )}
                             </CartContext.Consumer>
                             <div>

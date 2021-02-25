@@ -6,13 +6,15 @@ import Navigation from "./Navigation";
 import Footer from "./Footer";
 import Home from "./HomePage/Home";
 import Detail from "./DetailPage/Detail";
-import AllProducts from "./AllProducts";
-import Login from "./Login";
-import SearchItem from "./SearchItem";
-import Cart from "./Cart";
+import AllProducts from "./NavigationPages/AllProducts";
+import Login from "./NavigationPages/Login";
+import SearchItem from "./SearchPage/SearchItem";
+import Cart from "./NavigationPages/Cart";
 import {AccountProvider} from "./contexts/AccountContext";
 import {CartProvider} from "./contexts/CartContext";
-import CategoryProducts from "./CategoryProducts";
+import CategoryProducts from "./SearchPage/CategoryProducts";
+import {PrivateRoute} from "./contexts/AccountContext";
+import SaleProducts from "./SearchPage/SaleProducts";
 
 function App() {
     return (
@@ -26,8 +28,9 @@ function App() {
                     <Route path='/login' component={Login}/>
                     <Route path='/product/:name' component={Detail}/>
                     <Route path='/search' component={SearchItem}/>
-                    <Route path='/cart' component={Cart}/>
+                    <PrivateRoute path='/cart' component={Cart}/>
                     <Route path='/category/:name' component={CategoryProducts}/>
+                    <Route path='/sale-product' component={SaleProducts}/>
                     <Footer/>
                 </BrowserRouter>
             </CartProvider>

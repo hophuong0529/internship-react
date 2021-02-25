@@ -23,6 +23,8 @@ Route::get('latest-product', [HomeController::class, 'productLatest']);
 
 Route::get('top-product', [HomeController::class, 'productTop']);
 
+Route::get('sale-product', [HomeController::class, 'productSale']);
+
 Route::get('products', [HomeController::class, 'allProduct']);
 
 Route::get('search/{keyword}', [HomeController::class, 'search']);
