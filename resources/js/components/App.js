@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
-import {BrowserRouter, Route} from "react-router-dom";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
 import Header from "./Header";
 import Navigation from "./Navigation";
 import Footer from "./Footer";
@@ -10,6 +10,7 @@ import AllProducts from "./NavigationPages/AllProducts";
 import Login from "./NavigationPages/Login";
 import SearchItem from "./SearchPage/SearchItem";
 import Cart from "./NavigationPages/Cart";
+import Checkout from "./NavigationPages/Checkout";
 import {AccountProvider} from "./contexts/AccountContext";
 import {CartProvider} from "./contexts/CartContext";
 import CategoryProducts from "./SearchPage/CategoryProducts";
@@ -23,14 +24,17 @@ function App() {
                 <BrowserRouter>
                     <Header/>
                     <Navigation/>
-                    <Route exact path='/' component={Home}/>
-                    <Route path='/products' component={AllProducts}/>
-                    <Route path='/login' component={Login}/>
-                    <Route path='/product/:name' component={Detail}/>
-                    <Route path='/search' component={SearchItem}/>
-                    <PrivateRoute path='/cart' component={Cart}/>
-                    <Route path='/category/:name' component={CategoryProducts}/>
-                    <Route path='/sale-product' component={SaleProducts}/>
+                    <Switch>
+                        <Route exact path='/' component={Home}/>
+                        <Route exact path='/products' component={AllProducts}/>
+                        <Route exact path='/login' component={Login}/>
+                        <Route exact path='/product/:name' component={Detail}/>
+                        <Route exact path='/search' component={SearchItem}/>
+                        <PrivateRoute exact path='/cart' component={Cart}/>
+                        <PrivateRoute exact path='/checkout' component={Checkout}/>
+                        <Route exact path='/category/:name' component={CategoryProducts}/>
+                        <Route exact path='/sale-product' component={SaleProducts}/>
+                    </Switch>
                     <Footer/>
                 </BrowserRouter>
             </CartProvider>

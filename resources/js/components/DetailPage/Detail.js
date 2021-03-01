@@ -35,21 +35,27 @@ class Detail extends Component {
         return name;
     }
 
-    componentDidMount() {
-        const product_name = this.props.match.params.name
-
-        axios.get(`/api/product/${product_name}`).then(response => {
+    getData(name) {
+        axios.get(`/api/product/${name}`).then(response => {
             this.setState({
                 product: response.data,
                 images: response.data.images
             })
         })
 
-        axios.get(`/api/related-product/${product_name}`).then(response => {
+        axios.get(`/api/related-product/${name}`).then(response => {
             this.setState({
                 products: response.data
             })
         })
+    }
+
+    componentDidMount() {
+        this.getData(this.props.match.params.name)
+    }
+
+    componentWillReceiveProps(newProps, preProps) {
+        this.getData(newProps.match.params.name)
     }
 
     renderProducts() {
@@ -68,8 +74,10 @@ class Detail extends Component {
                             <div className="order">
                                 <CartContext.Consumer>
                                     {({addToCart}) => (
-                                        <Link to="cart" onClick={() => addToCart(product)} className="btn btn-outline-danger"
-                                                style={{marginTop: '20px', marginBottom: '30px', width: '200px'}}>Đặt mua ngay
+                                        <Link to="/cart" onClick={() => addToCart(product)}
+                                              className="btn btn-outline-danger"
+                                              style={{marginTop: '20px', marginBottom: '30px', width: '200px'}}>
+                                            Đặt mua ngay
                                         </Link>
                                     )}
                                 </CartContext.Consumer>
@@ -132,14 +140,15 @@ class Detail extends Component {
                                 <br/>- Thanh toán online đảm bảo hoặc thanh toán khi nhận hàng
                             </p>
                             <hr/>
-                            <h2>Giá : <span style={{color: '#d0011b'}}>{product.price}₫<span/></span>
+                            <h2>Giá : <span style={{color: '#d0011b'}}>{product?.price?.toLocaleString()}₫<span/></span>
                             </h2>
                             <div style={{color: 'red'}}>
                                 * Chỉ còn {product.quantity} sản phẩm
                             </div>
                             <CartContext.Consumer>
                                 {({addToCart}) => (
-                                    <Link to="cart" onClick={() => addToCart(product)} className="btn btn-outline-danger"
+                                    <Link to="/cart" onClick={() => addToCart(product)}
+                                          className="btn btn-outline-danger"
                                           style={{marginTop: '20px', marginBottom: '30px', width: '200px'}}>Đặt mua ngay
                                     </Link>
                                 )}

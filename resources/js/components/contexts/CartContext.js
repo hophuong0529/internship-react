@@ -3,6 +3,7 @@ import {createContext, useState} from "react";
 export const CartContext = createContext(null)
 export const CartProvider = (props) => {
     const [cartItems, setCartItems] = useState([])
+    const [totalCart, setTotalCart] = useState(0)
 
     const addToCart = (product) => {
         const exist = cartItems.find(x => x.id === product.id)
@@ -35,7 +36,7 @@ export const CartProvider = (props) => {
             cartItems.filter((x) => x.id !== product.id))
     }
     return (
-        <CartContext.Provider value={{cartItems, setCartItems, addToCart, removeToCart, removeItem}}>
+        <CartContext.Provider value={{totalCart, setTotalCart, cartItems, setCartItems, addToCart, removeToCart, removeItem}}>
             {props.children}
         </CartContext.Provider>
     )

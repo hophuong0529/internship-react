@@ -38,3 +38,5 @@ Route::get('product/{name}', [HomeController::class, 'detailProduct']);
 Route::get('category/{name}', [HomeController::class, 'categoryProduct']);
 
 Route::post('login', [HomeController::class, 'login']);
+
+Route::post('order', [HomeController::class, 'order']);

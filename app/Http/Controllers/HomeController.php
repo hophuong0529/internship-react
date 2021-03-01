@@ -4,10 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Account;
 use App\Models\Category;
+use App\Models\OrderReceiver;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use App\Models\Order;
+use App\Models\OrderDetail;
+
 
 class HomeController extends Controller
 {
@@ -102,4 +106,43 @@ class HomeController extends Controller
             }
         }
     }
+
+    public function order(Request $request)
+    {
+        Order::insert([
+            'user_id' => $request->input('account.id'),
+            'method_id' => $request->input('method'),
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+        $order = Order::orderBy('id','desc')->first();
+
+        OrderReceiver::insert([
+            'order_id' => $order->id,
+            'name' => $request->input('name'),
+            'mobile' => $request->input('mobile'),
+            'address' => $request->input('address'),
+            'note' =>  $request->input('note')
+        ]);
+
+        foreach ($request->input('cartItems') as $item):
+
+            OrderDetail::insert([
+                'order_id' => $order->id,
+                'product_id' => $item['id'],
+                'quantity' => $item['quantity'],
+                'price' => $item['price']
+            ]);
+
+            $product = Product::find($item['id']);
+            $product->update([
+                'quantity' => ($product->quantity - $item['quantity'])
+            ]);
+
+        endforeach;
+
+        return response()->json("Success");
+    }
+
 }

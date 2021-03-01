@@ -1,11 +1,11 @@
 import {BagCheckFill, Shop} from "react-bootstrap-icons";
 import React, {useContext} from "react";
 import {Link} from "react-router-dom";
-import {AccountContext} from "./contexts/AccountContext";
 import {CartContext} from "./contexts/CartContext";
+import {AccountContext} from "./contexts/AccountContext";
 
 function Navigation() {
-    const [account, setAccount] = useContext(AccountContext);
+    const [account] = useContext(AccountContext);
 
     return (
         <nav className="navbar navbar-expand-lg navbar-light"
@@ -41,29 +41,40 @@ function Navigation() {
                             SẢN PHẨM
                         </a>
                         <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <Link to={"category/ao"} className="dropdown-item">Áo</Link>
-                            <Link to={"category/quan"} className="dropdown-item">Quần</Link>
-                            <Link to={"category/set"} className="dropdown-item">Set</Link>
-                            <Link to={"category/phu-kien"} className="dropdown-item">Phụ kiện</Link>
+                            <Link to="/category/ao" className="dropdown-item">Áo</Link>
+                            <Link to="/category/quan" className="dropdown-item">Quần</Link>
+                            <Link to="/category/set" className="dropdown-item">Set</Link>
+                            <Link to="/category/phu-kien" className="dropdown-item">Phụ kiện</Link>
                         </div>
                     </li>
                 </ul>
                 {account.length !== 0 ? (
                     <ul className="navbar-nav justify-content-end">
                         <li className="nav-item">
-                            <span className="nav-link">Xin chào, {account.name}</span>
-                        </li>
-                        <li className="nav-item">
                             <CartContext.Consumer>
                                 {({cartItems}) => (
                                     <Link to="/cart" className="nav-link">
-                                        <BagCheckFill style={{marginTop: '-5px'}}/>({cartItems.length}) Giỏ hàng
+                                        <BagCheckFill style={{marginTop: '-5px'}}/> Giỏ hàng
+                                        <span style={{
+                                            fontSize: '0.85rem',
+                                            fontWeight: "bold",
+                                            marginLeft: '1.5px'
+                                        }}>({cartItems.length})
+                                        </span>
                                     </Link>
                                 )}
                             </CartContext.Consumer>
                         </li>
+                        <li className="nav-item dropdown">
+                            <a className="nav-link dropdown-toggle" id="navbarDropdown" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Xin chào, {account.name}
+                            </a>
+                            <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <button className="dropdown-item">Đăng xuất</button>
+                            </div>
+                        </li>
                     </ul>
-
                 ) : (
                     <ul className="navbar-nav justify-content-end">
                         <li className="nav-item">

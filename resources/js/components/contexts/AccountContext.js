@@ -1,4 +1,4 @@
-import {createContext, useContext, useState, Component} from "react";
+import {createContext, useContext, useState, Component, useEffect} from "react";
 import {Redirect, Route} from "react-router";
 
 export const AccountContext = createContext(null)
@@ -12,7 +12,7 @@ export const AccountProvider = (props) => {
 }
 
 export const PrivateRoute = ({component: Component, ...rest}) => {
-    let [account, setAccount] = useContext(AccountContext);
+    let [account] = useContext(AccountContext);
     return (
         <Route {...rest} render={(props) => (
             account.length !== 0

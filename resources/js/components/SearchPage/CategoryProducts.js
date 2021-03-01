@@ -3,7 +3,7 @@ import {Col, Container, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import axios from "axios";
 import {CartContext} from "../contexts/CartContext";
-import {Star} from "react-bootstrap-icons";
+import {Dash} from "react-bootstrap-icons";
 
 class CategoryProducts extends Component {
     constructor(props) {
@@ -33,14 +33,21 @@ class CategoryProducts extends Component {
         return name;
     }
 
-    componentDidMount() {
-        const category_name = this.props.match.params.name
-        axios.get(`/api/category/${category_name}`).then(response => {
+    getData(name) {
+        axios.get(`/api/category/${name}`).then(response => {
             this.setState({
                 products: response.data.products,
                 category: response.data.category.name
             })
         })
+    }
+
+    componentDidMount() {
+        this.getData(this.props.match.params.name)
+    }
+
+    componentWillReceiveProps(newProps, preProps) {
+        this.getData(newProps.match.params.name)
     }
 
     renderProducts() {
@@ -59,7 +66,7 @@ class CategoryProducts extends Component {
                             <div className="order">
                                 <CartContext.Consumer>
                                     {({addToCart}) => (
-                                        <Link to="cart" onClick={() => addToCart(product)} className="btn btn-outline-danger"
+                                        <Link to="/cart" onClick={() => addToCart(product)} className="btn btn-outline-danger"
                                               style={{marginTop: '20px', marginBottom: '30px', width: '200px'}}>Đặt mua ngay
                                         </Link>
                                     )}
@@ -91,7 +98,8 @@ class CategoryProducts extends Component {
                     paddingTop: '30px',
                     color: '#c20000'
                 }}>
-                    --- {this.state.category} ---</h1>
+                    <Dash/> {this.state.category} <Dash/>
+                </h1>
                 <Container>
                     <Row>
                         {this.renderProducts()}

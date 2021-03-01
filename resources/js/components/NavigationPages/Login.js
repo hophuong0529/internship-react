@@ -8,11 +8,11 @@ function Login() {
     let history = useHistory();
     let location = useLocation();
 
-    let { from } = location.state || { from: { pathname: "/" } };
+    let {from} = location.state || {from: {pathname: "/"}};
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [account, setAccount] = useContext(AccountContext);
+    const [, setAccount] = useContext(AccountContext);
 
     function handleUsernameChange(event) {
         setUsername(event.target.value);
