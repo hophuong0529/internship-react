@@ -90,7 +90,7 @@ function Checkout() {
                         <div id="DIV_124">
 
                             <label id="LABEL_125">
-                                <input type="radio" value="2" name="method_id"/>
+                                <input type="radio" value="2"onChange={handleMethodChange} name="method_id"/>
                                 <div id="DIV_127">
                                     Chuyển khoản trước toàn bộ tiền hàng
                                 </div>

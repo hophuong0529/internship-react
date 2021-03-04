@@ -68,7 +68,7 @@ class Detail extends Component {
                     <div className="thumbnail">
                         <div className="img-order">
                             <Link to={'/product/' + this.convertToSlug(product.name)}>
-                                <img src={"../../../" + product.images[0].path}
+                                <img src={"../../../storage/" + product.images[0].path}
                                      className="imgProduct" alt=""/>
                             </Link>
                             <div className="order">
@@ -112,7 +112,7 @@ class Detail extends Component {
                                         <div className={"carousel-item" + (image === images[0] ? " active" : "")}
                                              key={image.id}>
                                             <img style={{width: "60%"}} className="d-block w-100"
-                                                 src={"../../../" + image.path}
+                                                 src={"../../../storage/" + image.path}
                                                  alt="First slide"/>
                                         </div>
                                     ))}

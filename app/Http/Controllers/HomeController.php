@@ -17,7 +17,7 @@ class HomeController extends Controller
 {
     public function allProduct()
     {
-        $products = Product::with('images')->get();
+        $products = Product::with('images', 'category')->get();
         return $products->toJson();
     }
 
@@ -61,15 +61,17 @@ class HomeController extends Controller
 
     public function detailProduct($slug)
     {
-        $names = Product::pluck('id', 'name');
-        foreach ($names as $name => $id) {
-            if (Str::slug($name) == $slug) {
-                $product_id = $id;
-
-                $product = Product::with('images')->find($product_id);
-                return $product->toJson();
+        $product = Product::with('images', 'category')->find($slug);
+        if(!$product) {
+            $names = Product::pluck('id', 'name');
+            foreach ($names as $name => $id) {
+                if (Str::slug($name) == $slug) {
+                    $product_id = $id;
+                    $product = Product::with('images', 'category')->find($product_id);
+                }
             }
         }
+        return $product->toJson();
     }
 
     public function login(Request $request)

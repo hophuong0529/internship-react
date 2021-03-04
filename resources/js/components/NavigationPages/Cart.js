@@ -80,7 +80,7 @@ function Cart() {
                                                 <td id="TD_cart_16">
                                                     <div id="DIV_cart_17">
                                                         <Link to={'/product/' + convertToSlug(item.name)}>
-                                                            <img src={"../../../" + item.images[0].path}
+                                                            <img src={"../../../storage/" + item.images[0].path}
                                                                  id="IMG_cart_20"/>
                                                         </Link>
                                                     </div>
@@ -122,7 +122,7 @@ function Cart() {
                                                     <CartContext.Consumer>
                                                         {({removeItem}) => (
                                                             <button onClick={() => {
-                                                                if (window.confirm('Bạn muốn xóa sản phẩm này?')) removeItem(item)
+                                                                if(window.confirm('Bạn muốn xóa sản phẩm này?')) removeItem(item)
                                                             }}
                                                                     id="A_cart_45">Xóa</button>
                                                         )}

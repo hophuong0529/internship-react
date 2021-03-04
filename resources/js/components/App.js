@@ -16,31 +16,61 @@ import {CartProvider} from "./contexts/CartContext";
 import CategoryProducts from "./SearchPage/CategoryProducts";
 import {PrivateRoute} from "./contexts/AccountContext";
 import SaleProducts from "./SearchPage/SaleProducts";
+import Overview from "./AdminPage/Overview";
+import AdHeader from "./AdminPage/Ad-Header";
+import AdLeft from "./AdminPage/Ad-Left";
+import AddProduct from "./AdminPage/ProductPage/AddProduct";
+import EditProduct from "./AdminPage/ProductPage/EditProduct";
+import AdFooter from "./AdminPage/Ad-Footer";
 
 function App() {
     return (
-        <AccountProvider>
-            <CartProvider>
-                <BrowserRouter>
-                    <Header/>
-                    <Navigation/>
-                    <Switch>
-                        <Route exact path='/' component={Home}/>
-                        <Route exact path='/products' component={AllProducts}/>
-                        <Route exact path='/login' component={Login}/>
-                        <Route exact path='/product/:name' component={Detail}/>
-                        <Route exact path='/search' component={SearchItem}/>
-                        <PrivateRoute exact path='/cart' component={Cart}/>
-                        <PrivateRoute exact path='/checkout' component={Checkout}/>
-                        <Route exact path='/category/:name' component={CategoryProducts}/>
-                        <Route exact path='/sale-product' component={SaleProducts}/>
-                    </Switch>
-                    <Footer/>
-                </BrowserRouter>
-            </CartProvider>
-        </AccountProvider>
-    )
+        <BrowserRouter>
+            <Switch>
+                <Route path="/admin/">
+                    <AdHeader/>
+                    <div className="container-fluid row">
+                        <div className="col-md-2">
+                            <AdLeft/>
+                        </div>
+                        <div className="col-md-10">
+                            <Switch>
+                                <Route exact path='/admin/' component={Overview}/>
+                                <Route path='/admin/products' component={Overview}/>
+                                <Route path='/admin/product/add' component={AddProduct}/>
+                                <Route path='/admin/product/edit/:id' component={EditProduct}/>
+                            </Switch>
+                        </div>
+                    </div>
+                    <AdFooter/>
+                </Route>
+                <Route path='/'>
+                    <AccountProvider>
+                        <CartProvider>
+                            <Header/>
+                            <Navigation/>
+                            <Switch>
+                                <Route exact path='/' component={Home}/>
+                                <Route path='/products' component={AllProducts}/>
+                                <Route path='/login' component={Login}/>
+                                <Route path='/product/:name' component={Detail}/>
+                                <Route path='/search' component={SearchItem}/>
+                                <PrivateRoute path='/cart' component={Cart}/>
+                                <PrivateRoute path='/checkout' component={Checkout}/>
+                                <Route path='/category/:name' component={CategoryProducts}/>
+                                <Route path='/sale-product' component={SaleProducts}/>
+                            </Switch>
+                            <Footer/>
+                        </CartProvider>
+                    </AccountProvider>
+                </Route>
+            </Switch>
+        </BrowserRouter>
+
+)
 }
 
-ReactDOM.render(<App/>, document.getElementById('app'))
+ReactDOM.render(
+    <App/>
+, document.getElementById('app'))
 

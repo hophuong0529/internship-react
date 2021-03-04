@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Shop Online</title>
-    <link href="{{ asset('images/sakura.png') }}" rel="icon" type="image/x-icon">
+    <link href="{{ asset('storage/images/sakura.png') }}" rel="icon" type="image/x-icon">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>

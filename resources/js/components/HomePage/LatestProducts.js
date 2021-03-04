@@ -51,7 +51,7 @@ class LatestProducts extends Component {
                     <div className="thumbnail">
                         <div className="img-order">
                             <Link to={'/product/' + this.convertToSlug(product.name)}>
-                                <img src={"../../../" + product.images[0].path}
+                                <img src={"../../../storage/" + product.images[0].path}
                                      className="imgProduct" alt=""/>
                             </Link>
                             <div className="order">

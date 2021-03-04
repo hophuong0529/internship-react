@@ -33,7 +33,7 @@ function Navigation() {
                         <Link to="#" className="nav-link">LIÊN HỆ</Link>
                     </li>
                     <li className="nav-item">
-                        <Link to="products" className="nav-link">Tất cả</Link>
+                        <Link to="/products" className="nav-link">Tất cả</Link>
                     </li>
                     <li className="nav-item dropdown">
                         <a className="nav-link dropdown-toggle" id="navbarDropdown" role="button"
@@ -78,13 +78,13 @@ function Navigation() {
                 ) : (
                     <ul className="navbar-nav justify-content-end">
                         <li className="nav-item">
-                            <Link to="login" className="nav-link">Đăng nhập</Link>
+                            <Link to="/login" className="nav-link">Đăng nhập</Link>
                         </li>
                         <li className="nav-item">
                             <Link to="#" className="nav-link">Đăng ký</Link>
                         </li>
                         <li className="nav-item">
-                            <Link to="cart" className="nav-link">
+                            <Link to="/cart" className="nav-link">
                                 <BagCheckFill style={{marginTop: '-5px'}}/> Giỏ hàng
                             </Link>
                         </li>
