@@ -3,16 +3,28 @@ import {PencilFill, PlusSquare, TrashFill} from "react-bootstrap-icons";
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {Link} from "react-router-dom";
+import Pagination from "react-js-pagination";
 
 function Overview() {
     const [products, setProducts] = useState([])
+    const [perPage, setPerPage] = useState(0);
+    const [totalItemsPage, setTotalItemsPage] = useState(0)
+    const [activePage, setActivePage] = useState(1)
 
     useEffect(() => {
         axios.get('/api/products').then(response => {
-            setProducts(response.data)
+            setProducts(response.data.data)
+            setPerPage(response.data.per_page)
+            setTotalItemsPage(response.data.total)
         })
     }, [])
 
+    const handlePageChange = pageNumber => {
+        axios.get('/api/products?page=' + pageNumber).then(response => {
+            setProducts(response.data.data)
+            setActivePage(pageNumber)
+        })
+    }
     const handleDelete = (item) => {
         const productId = item.id
         axios.post(`/api/product/delete`, {productId})
@@ -91,6 +103,19 @@ function Overview() {
                     )}
                     </tbody>
                 </table>
+            </div>
+            <div className="d-flex justify-content-end" style={{marginTop: '20px'}}>
+            <Pagination
+                activePage={activePage}
+                itemsCountPerPage={perPage}
+                totalItemsCount={totalItemsPage}
+                pageRangeDisplayed={5}
+                onChange={handlePageChange}
+                itemClass="page-item"
+                linkClass="page-link"
+                prevPageText="Prev"
+                nextPageText="Next"
+            />
             </div>
         </div>
     )

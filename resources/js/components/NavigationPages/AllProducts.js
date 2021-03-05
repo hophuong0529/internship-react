@@ -35,7 +35,7 @@ class AllProducts extends Component {
     componentDidMount() {
         axios.get('/api/products').then(response => {
             this.setState({
-                products: response.data,
+                products: response.data.data,
             })
         })
     }

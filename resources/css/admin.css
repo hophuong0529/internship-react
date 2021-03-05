@@ -3411,3 +3411,16 @@
     outline: none;
     transition: border .24s ease-in-out;
 }
+.page-item.active .page-link {
+    background-color: rgb(255 176 189);
+    border-color: rgb(198 198 198);
+}
+
+.page-link {
+    color: rgb(255 145 163);
+}
+
+.page-link:hover {
+    background-color: rgb(255 234 237);
+    color: #414141;
+}

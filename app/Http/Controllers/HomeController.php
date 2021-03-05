@@ -17,7 +17,7 @@ class HomeController extends Controller
 {
     public function allProduct()
     {
-        $products = Product::with('images', 'category')->get();
+        $products = Product::with('images', 'category')->paginate(4);
         return $products->toJson();
     }
 
