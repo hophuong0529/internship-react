@@ -3424,3 +3424,9 @@
     background-color: rgb(255 234 237);
     color: #414141;
 }
+
+.close {
+    color: rgb(255 66 97);
+    right: 20px;
+    position: absolute;
+}

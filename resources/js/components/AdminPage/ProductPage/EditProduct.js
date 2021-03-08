@@ -3,6 +3,7 @@ import axios from "axios";
 import {useDropzone} from 'react-dropzone';
 import {Link} from "react-router-dom";
 import {useHistory, useParams} from "react-router";
+import {CloseButton} from "react-bootstrap";
 
 function EditProduct() {
     const {getRootProps, getInputProps} = useDropzone();
@@ -29,10 +30,14 @@ function EditProduct() {
 
             const fileArray = Array.from(e.target.files).map((file) => URL.createObjectURL(file))
             setSelectImages((prevImages) => prevImages.concat(fileArray))
-
-            Array.from(e.target.files).map((file) => URL.revokeObjectURL(file)
-            )
         }
+    }
+
+    const handleRemoveImage = (item) => {
+        setSelectImages(
+            selectImages.filter((x) => x !== item))
+        setImagesPre(
+            imagesPre.filter((x) => x.id !== item.id))
     }
 
     const slug = useParams();
@@ -59,7 +64,12 @@ function EditProduct() {
 
     const renderPhotos = (source) => {
         return source.map((photo) => {
-            return <img src={photo} key={photo} alt="" style={{width: '23.5%', margin: '0px 10px 10px 0px'}}/>
+            return (
+                <div className="col-md-3" style={{position: 'relative'}} key={photo}>
+                    <CloseButton onClick={() => handleRemoveImage(photo)}/>
+                    <img src={photo} alt="" style={{width: '100%', margin: '0px 10px 10px 0px'}}/>
+                </div>
+            )
         })
     }
 
@@ -135,12 +145,15 @@ function EditProduct() {
                                 <td style={{fontWeight: 'bold'}}>Product Images</td>
                                 <td>
                                     {(selectImages.length !== 0)
-                                        ? (<div>{renderPhotos(selectImages)}</div>)
-                                        : (<div>
+                                        ? (<div className="container-fluid row">{renderPhotos(selectImages)}</div>)
+                                        : (<div className="container-fluid row">
                                             {imagesPre.map((image) =>
-                                                <img key={image.id} src={"../../../storage/" + image.path}
-                                                     alt=""
-                                                     style={{width: '23.5%', margin: '0px 10px 10px 0px'}}/>
+                                                <div className="col-md-3" style={{position: 'relative'}} key={image.id}>
+                                                    <CloseButton onClick={() => handleRemoveImage(image)}/>
+                                                    <img src={"../../../storage/" + image.path}
+                                                         alt=""
+                                                         style={{width: '100%', margin: '0px 10px 10px 0px'}}/>
+                                                </div>
                                             )}
                                         </div>)
                                     }

@@ -9,7 +9,8 @@ function Checkout() {
     let history = useHistory();
 
     const [account] = useContext(AccountContext);
-    const {cartItems, totalCart} = useContext(CartContext);
+    const {cartItems, setCartItems} = useContext(CartContext);
+    const {totalCart, setTotalCart} = useContext(CartContext);
     const [name, setName] = useState(account.name);
     const [mobile, setMobile] = useState(account.mobile);
     const [address, setAddress] = useState(account.address);
@@ -42,6 +43,8 @@ function Checkout() {
         axios.post(`/api/order`, {name, mobile, address, note, method, account, cartItems})
             .then(() => {
                 alert('Đặt hàng thành công. Nhân viên shop sẽ gọi điện xác nhận cho bạn trong thời gian sớm nhất ạ.')
+                setCartItems([])
+                setTotalCart(0)
                 history.push('/')
             })
 
@@ -67,7 +70,8 @@ function Checkout() {
                                    onChange={handleMobileChange} placeholder="Điện thoại *" required/>
                         </div>
                         <div id="DIV_114">
-                            <textarea id="TEXTAREA_115" name="address" rows="2" onChange={handleAddressChange} value={address}
+                            <textarea id="TEXTAREA_115" name="address" rows="2" onChange={handleAddressChange}
+                                      value={address}
                                       placeholder="Địa chỉ *" required>{address}
                             </textarea>
                         </div>
@@ -90,7 +94,7 @@ function Checkout() {
                         <div id="DIV_124">
 
                             <label id="LABEL_125">
-                                <input type="radio" value="2"onChange={handleMethodChange} name="method_id"/>
+                                <input type="radio" value="2" onChange={handleMethodChange} name="method_id"/>
                                 <div id="DIV_127">
                                     Chuyển khoản trước toàn bộ tiền hàng
                                 </div>
@@ -197,7 +201,7 @@ function Checkout() {
                                 </tfoot>
                             </table>
                         </div>
-                        <div id="DIV_202"></div>
+                        <div id="DIV_202"/>
                         <div id="DIV_203">
                             <button onClick={handlePay} id="DIV_204">
                                 Thanh toán

@@ -3,6 +3,7 @@ import axios from "axios";
 import {useDropzone} from 'react-dropzone';
 import {Link} from "react-router-dom";
 import {useHistory} from "react-router";
+import {CloseButton} from "react-bootstrap";
 
 function AddProduct() {
     const {getRootProps, getInputProps} = useDropzone();
@@ -25,16 +26,24 @@ function AddProduct() {
             setImages(e.target.files)
 
             const fileArray = Array.from(e.target.files).map((file) => URL.createObjectURL(file))
-            setSelectImages((prevImages) => prevImages.concat(fileArray))
-
-            Array.from(e.target.files).map((file) => URL.revokeObjectURL(file)
-            )
+            setSelectImages(
+                (prevImages) => prevImages.concat(fileArray))
         }
+    }
+
+    const handleRemoveImage = (item) => {
+        setSelectImages(
+            selectImages.filter((x) => x !== item))
     }
 
     const renderPhotos = (source) => {
         return source.map((photo) => {
-            return <img src={photo} key={photo} alt="" style={{width: '23.5%', margin: '0px 10px 10px 0px'}}/>
+            return (
+                <div className="col-md-3" style={{position: 'relative'}} key={photo}>
+                    <CloseButton onClick={() => handleRemoveImage(photo)}/>
+                    <img src={photo} alt="" style={{width: '100%', margin: '0px 10px 10px 0px'}}/>
+                </div>
+            )
         })
     }
 
@@ -115,7 +124,7 @@ function AddProduct() {
                             <tr>
                                 <td style={{fontWeight: 'bold'}}>Product Images</td>
                                 <td>
-                                    <div>
+                                    <div className="container-fluid row">
                                         {renderPhotos(selectImages)}
                                     </div>
                                     <span>Select files:</span>
@@ -152,6 +161,7 @@ function AddProduct() {
                                 </td>
                             </tr>
                             <tr>
+                                <td/>
                                 <td>
                                     <div className="form-check">
                                         <label style={{marginRight: "200px"}}>
