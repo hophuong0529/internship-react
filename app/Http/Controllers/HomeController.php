@@ -17,7 +17,7 @@ class HomeController extends Controller
 {
     public function allProduct()
     {
-        $products = Product::with('images', 'category')->paginate(5);
+        $products = Product::with('images', 'category')->paginate(8);
         return $products->toJson();
     }
 
@@ -29,7 +29,7 @@ class HomeController extends Controller
 
     public function productTop()
     {
-        $products = Product::with('images')->where('is_top', 1)->get();
+        $products = Product::with('images')->where('is_top', 1)->limit(8)->get();
         return $products->toJson();
     }
 
@@ -62,7 +62,7 @@ class HomeController extends Controller
     public function detailProduct($slug)
     {
         $product = Product::with('images', 'category')->find($slug);
-        if(!$product) {
+        if (!$product) {
             $names = Product::pluck('id', 'name');
             foreach ($names as $name => $id) {
                 if (Str::slug($name) == $slug) {
@@ -118,14 +118,14 @@ class HomeController extends Controller
             'updated_at' => now()
         ]);
 
-        $order = Order::orderBy('id','desc')->first();
+        $order = Order::orderBy('id', 'desc')->first();
 
         OrderReceiver::insert([
             'order_id' => $order->id,
             'name' => $request->input('name'),
             'mobile' => $request->input('mobile'),
             'address' => $request->input('address'),
-            'note' =>  $request->input('note')
+            'note' => $request->input('note')
         ]);
 
         foreach ($request->input('cartItems') as $item):

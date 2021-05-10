@@ -271,7 +271,7 @@ nav {
 
 .img-order:hover .imgProduct {
     opacity: 1;
-    transform: scale(1.1);
+
 }
 
 .img-order:hover .order {

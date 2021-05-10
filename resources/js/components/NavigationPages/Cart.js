@@ -6,7 +6,7 @@ import {Alert} from "react-bootstrap";
 import {ExclamationTriangle} from "react-bootstrap-icons";
 
 function Cart() {
-    const {cartItems, setCartItems} = useContext(CartContext)
+    const {cartItems} = useContext(CartContext)
     const {totalCart, setTotalCart} = useContext(CartContext)
 
     useEffect(() => {
